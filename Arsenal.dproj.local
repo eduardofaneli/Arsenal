@@ -1,9 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <BorlandProject>
-  <Transactions>
-    <Transaction>2017/06/19 10:29:00.423,=H:\NBS\DelphiXE\Unit1.pas</Transaction>
-    <Transaction>2017/06/19 10:30:31.794,C:\Eduardo Faneli\GIT\Arsenal\uPrincipal.dfm=H:\NBS\DelphiXE\Unit1.dfm</Transaction>
-    <Transaction>2017/06/19 10:30:31.794,C:\Eduardo Faneli\GIT\Arsenal\uPrincipal.pas=H:\NBS\DelphiXE\Unit1.pas</Transaction>
-    <Transaction>2017/06/19 10:30:35.929,C:\Eduardo Faneli\GIT\Arsenal\Arsenal.dproj=H:\NBS\DelphiXE\Project1.dproj</Transaction>
+	<Transactions>
+    <Transaction>2017/06/19 10:29:00.000.423,=H:\NBS\DelphiXE\Unit1.pas</Transaction>
+    <Transaction>2017/06/19 10:30:31.000.794,H:\NBS\DelphiXE\Unit1.pas=C:\Eduardo Faneli\GIT\Arsenal\uPrincipal.pas</Transaction>
+    <Transaction>2017/06/19 10:30:31.000.794,H:\NBS\DelphiXE\Unit1.dfm=C:\Eduardo Faneli\GIT\Arsenal\uPrincipal.dfm</Transaction>
+    <Transaction>2017/06/19 10:30:35.000.929,H:\NBS\DelphiXE\Project1.dproj=C:\Eduardo Faneli\GIT\Arsenal\Arsenal.dproj</Transaction>
+    <Transaction>2017/06/19 15:35:08.747,=C:\Eduardo Faneli\GIT\Arsenal\Unit1.pas</Transaction>
+    <Transaction>2017/06/19 15:35:33.923,C:\Eduardo Faneli\GIT\Arsenal\uDmPrincipal.dfm=C:\Eduardo Faneli\GIT\Arsenal\Unit1.dfm</Transaction>
+    <Transaction>2017/06/19 15:35:33.923,C:\Eduardo Faneli\GIT\Arsenal\uDmPrincipal.pas=C:\Eduardo Faneli\GIT\Arsenal\Unit1.pas</Transaction>
+    <Transaction>2017/06/19 15:40:09.731,=C:\Eduardo Faneli\GIT\Arsenal\Unit1.pas</Transaction>
+    <Transaction>2017/06/19 15:40:18.844,C:\Eduardo Faneli\GIT\Arsenal\uClasses.pas=C:\Eduardo Faneli\GIT\Arsenal\Unit1.pas</Transaction>
   </Transactions>
 </BorlandProject>

@@ -1,0 +1,54 @@
+package AtriumComponentes;
+
+{$R *.res}
+{$IFDEF IMPLICITBUILDING This IFDEF should not be used by users}
+{$ALIGN 8}
+{$ASSERTIONS ON}
+{$BOOLEVAL OFF}
+{$DEBUGINFO OFF}
+{$EXTENDEDSYNTAX ON}
+{$IMPORTEDDATA ON}
+{$IOCHECKS ON}
+{$LOCALSYMBOLS OFF}
+{$LONGSTRINGS ON}
+{$OPENSTRINGS ON}
+{$OPTIMIZATION ON}
+{$OVERFLOWCHECKS OFF}
+{$RANGECHECKS OFF}
+{$REFERENCEINFO OFF}
+{$SAFEDIVIDE OFF}
+{$STACKFRAMES OFF}
+{$TYPEDADDRESS OFF}
+{$VARSTRINGCHECKS ON}
+{$WRITEABLECONST OFF}
+{$MINENUMSIZE 1}
+{$IMAGEBASE $400000}
+{$DEFINE RELEASE}
+{$ENDIF IMPLICITBUILDING}
+{$IMPLICITBUILD ON}
+
+requires
+  rtl,
+  vcl,
+  vcldb,
+  dbrtl;
+
+contains
+  uAEdit in 'uAEdit.pas',
+  uAEditReal in 'uAEditReal.pas',
+  uAEditInteiro in 'uAEditInteiro.pas',
+  uAEditCPF in 'uAEditCPF.pas',
+  uAEditTelefone in 'uAEditTelefone.pas',
+  uAEditEmail in 'uAEditEmail.pas',
+  uAEditCNPJ in 'uAEditCNPJ.pas',
+  uAEditData in 'uAEditData.pas',
+  uADBEdit in 'uADBEdit.pas',
+  uADBEditEmail in 'uADBEditEmail.pas',
+  uADBEditReal in 'uADBEditReal.pas',
+  uADBEditInteiro in 'uADBEditInteiro.pas',
+  uADBEditTelefone in 'uADBEditTelefone.pas',
+  uADBEditCNPJ in 'uADBEditCNPJ.pas',
+  uADBEditCPF in 'uADBEditCPF.pas',
+  uADBEditData in 'uADBEditData.pas';
+
+end.
