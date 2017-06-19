@@ -41,7 +41,6 @@
 		</PropertyGroup>
 		<PropertyGroup Condition="'$(Base)'!=''">
 			<DCC_Namespace>System;Xml;Data;Datasnap;Web;Soap;Vcl;Vcl.Imaging;Vcl.Touch;Vcl.Samples;Vcl.Shell;$(DCC_Namespace)</DCC_Namespace>
-			<VCL_Custom_Styles>&quot;Metro Black|VCLSTYLE|$(PUBLIC)\Documents\RAD Studio\9.0\Styles\MetroBlack.vsf&quot;</VCL_Custom_Styles>
 			<DCC_UsePackage>AnyDAC_PhysADS_D16;AnyDAC_Comp_D16;fmx;AnyDAC_PhysPg_D16;AnyDAC_PhysDb2_D16;IndySystem;AnyDAC_Phys_D16;DBXInterBaseDriver;DataSnapClient;DataSnapCommon;DataSnapServer;DataSnapProviderClient;AnyDAC_PhysMSSQL_D16;DbxCommonDriver;dbxcds;AnyDAC_PhysTDBX_D16;DBXOracleDriver;CustomIPTransport;AnyDAC_PhysOracle_D16;dsnap;fmxase;IndyCore;AnyDAC_PhysSQLITE_D16;CloudService;AnyDAC_PhysMySQL_D16;FmxTeeUI;inetdbxpress;AnyDAC_PhysODBC_D16;bindcompfmx;rtl;dbrtl;DbxClientDriver;bindcomp;inetdb;AnyDAC_PhysASA_D16;xmlrtl;ibxpress;IndyProtocols;DBXMySQLDriver;soaprtl;FMXTee;bindengine;DBXInformixDriver;AnyDAC_ComI_D16;DBXFirebirdDriver;inet;fmxobj;AnyDAC_PhysIB_D16;AnyDAC_PhysMSAcc_D16;DBXSybaseASADriver;fmxdae;AnyDAC_GUIxForms_D16;dbexpress;DataSnapIndy10ServerTransport;$(DCC_UsePackage)</DCC_UsePackage>
 			<Icon_MainIcon>$(BDS)\bin\delphi_PROJECTICON.ico</Icon_MainIcon>
 			<DCC_DcuOutput>.\$(Platform)\$(Config)</DCC_DcuOutput>

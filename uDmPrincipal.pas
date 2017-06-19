@@ -24,9 +24,11 @@ type
     qryListaAtletasorgao_expeditor: TStringField;
     qryListaAtletascpf: TStringField;
     qryListaAtletasstatus: TIntegerField;
-    qryListaAtletasDesc_Status: TWideStringField;
     qryListaAtletasdata_cadastro: TSQLTimeStampField;
     qryListaAtletasdata_atualizacao: TSQLTimeStampField;
+    qryListaAtletasid: TADAutoIncField;
+    qryListaAtletasid_clube: TIntegerField;
+    qryListaAtletasDesc_Status: TWideStringField;
   private
     { Private declarations }
   public

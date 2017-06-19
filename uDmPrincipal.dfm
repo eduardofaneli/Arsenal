@@ -23,10 +23,11 @@ object dmPrincipal: TdmPrincipal
     Top = 8
   end
   object qryListaAtletas: TADQuery
-    Active = True
     Connection = Conexao
     SQL.Strings = (
-      'select Nome'
+      'select id'
+      '      ,id_clube      '
+      '      ,Nome'
       '      ,email'
       '      ,telefone'
       '      ,data_nascimento'
@@ -42,7 +43,8 @@ object dmPrincipal: TdmPrincipal
       '       end as Desc_Status'#9
       '      ,data_cadastro'
       '      ,data_atualizacao'
-      'from Atleta')
+      'from Atleta'
+      'where status <> 3')
     Left = 28
     Top = 68
     object qryListaAtletasnome: TStringField
@@ -91,14 +93,6 @@ object dmPrincipal: TdmPrincipal
       Origin = 'status'
       Required = True
     end
-    object qryListaAtletasDesc_Status: TWideStringField
-      AutoGenerateValue = arDefault
-      FieldName = 'Desc_Status'
-      Origin = 'Desc_Status'
-      ProviderFlags = []
-      ReadOnly = True
-      Size = 32767
-    end
     object qryListaAtletasdata_cadastro: TSQLTimeStampField
       FieldName = 'data_cadastro'
       Origin = 'data_cadastro'
@@ -107,6 +101,25 @@ object dmPrincipal: TdmPrincipal
     object qryListaAtletasdata_atualizacao: TSQLTimeStampField
       FieldName = 'data_atualizacao'
       Origin = 'data_atualizacao'
+    end
+    object qryListaAtletasid: TADAutoIncField
+      FieldName = 'id'
+      Origin = 'id'
+      ProviderFlags = [pfInWhere, pfInKey]
+      ReadOnly = False
+    end
+    object qryListaAtletasid_clube: TIntegerField
+      FieldName = 'id_clube'
+      Origin = 'id_clube'
+      Required = True
+    end
+    object qryListaAtletasDesc_Status: TWideStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'Desc_Status'
+      Origin = 'Desc_Status'
+      ProviderFlags = []
+      ReadOnly = True
+      Size = 32767
     end
   end
   object dsListaAtletas: TDataSource
