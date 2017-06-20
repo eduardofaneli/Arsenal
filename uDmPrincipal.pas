@@ -28,7 +28,18 @@ type
     qryListaAtletasdata_atualizacao: TSQLTimeStampField;
     qryListaAtletasid: TADAutoIncField;
     qryListaAtletasid_clube: TIntegerField;
-    qryListaAtletasDesc_Status: TWideStringField;
+    qryPosicoes: TADQuery;
+    dsPosicoes: TDataSource;
+    qryListaAtletasDesc_Status: TStringField;
+    qryPosicoesid: TIntegerField;
+    qryPosicoesnome: TStringField;
+    qryPosicoesSigla: TStringField;
+    qryTvPosicoes: TADQuery;
+    qryTvPosicoesid: TIntegerField;
+    qryTvPosicoesnome: TStringField;
+    qryTvPosicoesSigla: TStringField;
+    qryTvPosicoesPrincipal: TStringField;
+    qryTvPosicoesid_atleta: TIntegerField;
   private
     { Private declarations }
   public

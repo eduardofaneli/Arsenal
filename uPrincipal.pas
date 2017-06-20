@@ -7,7 +7,8 @@ uses
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Buttons, PngSpeedButton,
   Vcl.StdCtrls, PngBitBtn, Vcl.ExtCtrls, Vcl.Imaging.pngimage, Vcl.ComCtrls,
   Vcl.Grids, Vcl.DBGrids, uClasses, uDmPrincipal, uAEdit, uAEditInteiro,
-  uAEditCPF, uAEditData, uAEditTelefone, uAEditEmail;
+  uAEditCPF, uAEditData, uAEditTelefone, uAEditEmail, Vcl.DBCtrls,
+  Vcl.ImgList, Vcl.Menus;
 
 type
   EAcao = (stCadastrar, stAlterar);
@@ -56,15 +57,23 @@ type
     dtDataNascimento: TDateTimePicker;
     pnlDadosAtletas: TPanel;
     gbPosicoesAtleta: TGroupBox;
-    ckbQuaterBack: TCheckBox;
-    ckRunningBack: TCheckBox;
-    ckbReceiver: TCheckBox;
-    ckbTightEnd: TCheckBox;
-    ckbCenter: TCheckBox;
-    ckbFullBack: TCheckBox;
-    ckbLineBacker: TCheckBox;
-    ckbDefensiveBack: TCheckBox;
     rgStatus: TRadioGroup;
+    tvPosicoes: TTreeView;
+    imgTreeViewPosicoes: TImageList;
+    pnlIncluirPosicao: TPanel;
+    lblPosicao: TLabel;
+    dblkpPosicao: TDBLookupComboBox;
+    ckbPosicaoPrincipal: TCheckBox;
+    btnIncluirPosicao: TPngSpeedButton;
+    pnlLegendaPosicao: TPanel;
+    GroupBox1: TGroupBox;
+    Image1: TImage;
+    Label8: TLabel;
+    Image2: TImage;
+    Label9: TLabel;
+    ppmTreeView: TPopupMenu;
+    Excluirposio1: TMenuItem;
+    imgListPopup: TImageList;
     procedure btnExpansorClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure btnInicioClick(Sender: TObject);
@@ -81,6 +90,9 @@ type
       const Rect: TRect; DataCol: Integer; Column: TColumn;
       State: TGridDrawState);
     procedure btnExcluirAtletaClick(Sender: TObject);
+    procedure btnIncluirPosicaoClick(Sender: TObject);
+    procedure ckbPosicaoPrincipalClick(Sender: TObject);
+    procedure Excluirposio1Click(Sender: TObject);
   private
     FMensagens: TMensagens;
     FDadosAtleta: TAtleta;
@@ -89,10 +101,12 @@ type
     procedure OcultarSheets();
     procedure EncerrarAplicacao();
     procedure HabilitarCrudAtleta(AHabilitar: Boolean);
-    procedure CarregarInformacoes;
-    procedure GravarDadosAtleta;
-    procedure AbrirQueryAtletas;
-    procedure LimparCampos;
+    procedure CarregarInformacoes();
+    procedure GravarDadosAtleta();
+    procedure AbrirQueryAtletas();
+    procedure AbrirQueryPosicoesAtleta();
+    procedure LimparCampos();
+    procedure MontarTreeViewPosicoes;
 
     { Private declarations }
   public
@@ -117,13 +131,22 @@ begin
 
 end;
 
+procedure TfrmPrincipal.AbrirQueryPosicoesAtleta;
+begin
+
+  dmPrincipal.qryPosicoes.Close;
+  dmPrincipal.qryPosicoes.ParamByName('atleta').AsInteger := FDadosAtleta.Codigo;
+  dmPrincipal.qryPosicoes.Open;
+
+end;
+
 procedure TfrmPrincipal.btnAlterarAtletaClick(Sender: TObject);
 begin
 
   HabilitarCrudAtleta(True);
-
   pcAtleta.ActivePage := tbDadosAtleta;
-
+  AbrirQueryPosicoesAtleta();
+  MontarTreeViewPosicoes();
   FAcao := stAlterar;
 
 end;
@@ -186,6 +209,31 @@ begin
 
 end;
 
+procedure TfrmPrincipal.btnIncluirPosicaoClick(Sender: TObject);
+begin
+
+  try
+
+    FDadosAtleta.CodigoPosicao := dblkpPosicao.KeyValue;
+
+    if ckbPosicaoPrincipal.Checked then
+      FDadosAtleta.PosicaoPrincipal := 'S'
+    else
+      FDadosAtleta.PosicaoPrincipal := 'N';
+
+    FDadosAtleta.AdicionarPosicaoJogador;
+
+    AbrirQueryPosicoesAtleta;
+    MontarTreeViewPosicoes;
+
+  except
+    on e: Exception do
+    FMensagens.MensagemErro(e.Message);
+
+  end;
+
+end;
+
 procedure TfrmPrincipal.btnInicioClick(Sender: TObject);
 begin
 
@@ -198,6 +246,8 @@ begin
   HabilitarCrudAtleta(True);
   pcAtleta.ActivePage := tbDadosAtleta;
   LimparCampos();
+  FDadosAtleta.Codigo := FDadosAtleta.setSequenceAtleta();
+  AbrirQueryPosicoesAtleta();
   FAcao := stCadastrar;
 
 end;
@@ -243,6 +293,19 @@ begin
 
 end;
 
+procedure TfrmPrincipal.ckbPosicaoPrincipalClick(Sender: TObject);
+begin
+
+  if ckbPosicaoPrincipal.Checked then
+    if FDadosAtleta.ExistePosicaoPrincipal then
+    begin
+      FMensagens.MensagemInformacao('O atleta só pode ter uma posição principal!');
+      ckbPosicaoPrincipal.Checked := False;
+      Exit;
+    end;
+
+end;
+
 procedure TfrmPrincipal.dbgrdListaAtletasDrawColumnCell(Sender: TObject;
   const Rect: TRect; DataCol: Integer; Column: TColumn;
   State: TGridDrawState);
@@ -258,6 +321,25 @@ begin
   else
     DefocusControl(TBitBtn(ActiveControl), True);
 
+end;
+
+procedure TfrmPrincipal.Excluirposio1Click(Sender: TObject);
+begin
+
+  try
+
+    FDadosAtleta.CodigoPosicao := TPosicoesAtleta(tvPosicoes.Selected.Data).CodigoPosicao;
+    FDadosAtleta.ExcluirPosicaoJogador;
+
+    tvPosicoes.Items.Delete(tvPosicoes.Selected);
+
+    AbrirQueryPosicoesAtleta;
+
+  except
+    on e: Exception do
+      FMensagens.MensagemErro(e.Message);
+
+  end;
 end;
 
 procedure TfrmPrincipal.Expansor;
@@ -306,7 +388,6 @@ begin
     stCadastrar:
     begin
 
-      FDadosAtleta.Codigo := FDadosAtleta.setSequenceAtleta();
       FDadosAtleta.CodigoClube := 1;
       FDadosAtleta.Nome := Trim(edtNome.Text);
       FDadosAtleta.Email := Trim(edtEmail.Text);
@@ -350,6 +431,53 @@ begin
   edtRG.Clear;
   edtOrgaoExpeditor.Clear;
   edtCPF.Clear;
+end;
+
+procedure TfrmPrincipal.MontarTreeViewPosicoes;
+var
+  Node: TTreeNode;
+  FPosicoesAtleta: TPosicoesAtleta;
+begin
+
+  dmPrincipal.qryTvPosicoes.Close;
+  dmPrincipal.qryTvPosicoes.ParamByName('atleta').AsInteger := FDadosAtleta.Codigo;
+  dmPrincipal.qryTvPosicoes.Open;
+
+  tvPosicoes.Items.Clear;
+
+  while not dmPrincipal.qryTvPosicoes.Eof do
+  begin
+
+    FPosicoesAtleta := TPosicoesAtleta.Create(Self);
+
+    FPosicoesAtleta.CodigoAtleta := dmPrincipal.qryTvPosicoesid_atleta.AsInteger;
+    FPosicoesAtleta.CodigoPosicao := dmPrincipal.qryTvPosicoesid.AsInteger;
+    FPosicoesAtleta.Principal := dmPrincipal.qryTvPosicoesPrincipal.AsString;
+
+    Node := tvPosicoes.Items.AddObject(nil, dmPrincipal.qryTvPosicoesnome.AsString + ' - ' + dmPrincipal.qryTvPosicoesSigla.AsString, FPosicoesAtleta);
+
+    if dmPrincipal.qryTvPosicoesPrincipal.AsString = 'S' then
+    begin
+
+      Node.ImageIndex := 1;
+      Node.SelectedIndex := 1;
+      Node.StateIndex := 1;
+      node.ExpandedImageIndex := 1;
+
+    end
+    else
+    begin
+
+      Node.ImageIndex := 0;
+      Node.SelectedIndex := 0;
+      Node.StateIndex := 0;
+      node.ExpandedImageIndex := 0;
+
+    end;
+
+    dmPrincipal.qryTvPosicoes.Next;
+  end;
+
 end;
 
 procedure TfrmPrincipal.OcultarSheets;

@@ -113,18 +113,107 @@ object dmPrincipal: TdmPrincipal
       Origin = 'id_clube'
       Required = True
     end
-    object qryListaAtletasDesc_Status: TWideStringField
-      AutoGenerateValue = arDefault
+    object qryListaAtletasDesc_Status: TStringField
       FieldName = 'Desc_Status'
-      Origin = 'Desc_Status'
-      ProviderFlags = []
-      ReadOnly = True
-      Size = 32767
+      Size = 255
     end
   end
   object dsListaAtletas: TDataSource
     DataSet = qryListaAtletas
     Left = 28
     Top = 116
+  end
+  object qryPosicoes: TADQuery
+    Connection = Conexao
+    SQL.Strings = (
+      'select id'
+      '      ,'#39'('#39' || Sigla ||'#39') '#39' ||nome as nome'
+      '      ,Sigla'
+      'from Posicao'
+      
+        'where id not in (select id_posicao from posicao_jogador where id' +
+        '_atleta = :atleta)')
+    Left = 92
+    Top = 68
+    ParamData = <
+      item
+        Name = 'ATLETA'
+        DataType = ftInteger
+        ParamType = ptInput
+        Value = Null
+      end>
+    object qryPosicoesid: TIntegerField
+      FieldName = 'id'
+      Origin = 'id'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+    end
+    object qryPosicoesnome: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'nome'
+      Origin = 'nome'
+      ProviderFlags = []
+      ReadOnly = True
+      Size = 32767
+    end
+    object qryPosicoesSigla: TStringField
+      FieldName = 'Sigla'
+      Origin = 'Sigla'
+      Required = True
+      Size = 3
+    end
+  end
+  object dsPosicoes: TDataSource
+    DataSet = qryPosicoes
+    Left = 92
+    Top = 116
+  end
+  object qryTvPosicoes: TADQuery
+    Connection = Conexao
+    SQL.Strings = (
+      'select p.* '
+      '      ,pj.Principal'
+      '      ,pj.id_atleta      '
+      'from posicao_jogador pj'
+      'inner join Posicao p on p.id = pj.id_posicao'
+      'where pj.id_atleta = :atleta')
+    Left = 144
+    Top = 68
+    ParamData = <
+      item
+        Name = 'ATLETA'
+        DataType = ftInteger
+        ParamType = ptInput
+        Value = Null
+      end>
+    object qryTvPosicoesid: TIntegerField
+      FieldName = 'id'
+      Origin = 'id'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+    end
+    object qryTvPosicoesnome: TStringField
+      FieldName = 'nome'
+      Origin = 'nome'
+      Required = True
+      Size = 255
+    end
+    object qryTvPosicoesSigla: TStringField
+      FieldName = 'Sigla'
+      Origin = 'Sigla'
+      Required = True
+      Size = 3
+    end
+    object qryTvPosicoesPrincipal: TStringField
+      FieldName = 'Principal'
+      Origin = 'Principal'
+      Size = 1
+    end
+    object qryTvPosicoesid_atleta: TIntegerField
+      FieldName = 'id_atleta'
+      Origin = 'id_atleta'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+    end
   end
 end

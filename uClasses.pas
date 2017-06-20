@@ -32,7 +32,22 @@ type
       function getSequenceAtleta: TADQuery;
       function InserirAtleta: TADQuery;
       function ExcluirAtleta: TADQuery;
+      function AdicionarPosicaoJogador: TADQuery;
+      function getPosicaoPrincipal: TADQuery;
+      function ExcluirPosicaoJogador: TADQuery;
 
+  end;
+
+  TPosicoesAtleta = class (TComponent)
+    private
+    FPrincipal: String;
+    FCodigoAtleta: Integer;
+    FCodigoPosicao: Integer;
+
+    published
+      property CodigoPosicao : Integer read FCodigoPosicao write FCodigoPosicao;
+      property CodigoAtleta  : Integer read FCodigoAtleta  write FCodigoAtleta;
+      property Principal     : String  read FPrincipal     write FPrincipal;
   end;
 
   TAtleta = class
@@ -49,30 +64,55 @@ type
     FTelefone: String;
 
     FQueryAtleta: TQuery;
+    FCodigoPosicao: Integer;
+    FPosicaoPrincipal: String;
     
     public
       constructor Create;
       procedure CadastrarAtleta;
-      function setSequenceAtleta: Integer;
       procedure ExcluirAtleta;
+      procedure AdicionarPosicaoJogador;
+      procedure ExcluirPosicaoJogador;
+
+      function setSequenceAtleta: Integer;
+      function ExistePosicaoPrincipal: Boolean;
 
     published
-      property Codigo         : Integer read FCodigo         write FCodigo         ;
-      property CodigoClube    : Integer read FCodigoClube    write FCodigoClube    ;
-      property Nome           : String  read FNome           write FNome           ;
-      property Email          : String  read FEmail          write FEmail          ;
-      property Telefone       : String read FTelefone       write FTelefone       ;
-      property DataNascimento : TDate   read FDataNascimento write FDataNascimento ;
-      property RG             : String  read FRG             write FRG             ;
-      property OrgaoExpeditor : String  read FOrgaoExpeditor write FOrgaoExpeditor ;
-      property CPF            : String  read FCPF            write FCPF            ;
-      property Status         : Integer read FStatus         write FStatus         ;
+      property Codigo           : Integer read FCodigo           write FCodigo         ;
+      property CodigoClube      : Integer read FCodigoClube      write FCodigoClube    ;
+      property Nome             : String  read FNome             write FNome           ;
+      property Email            : String  read FEmail            write FEmail          ;
+      property Telefone         : String  read FTelefone         write FTelefone       ;
+      property DataNascimento   : TDate   read FDataNascimento   write FDataNascimento ;
+      property RG               : String  read FRG               write FRG             ;
+      property OrgaoExpeditor   : String  read FOrgaoExpeditor   write FOrgaoExpeditor ;
+      property CPF              : String  read FCPF              write FCPF            ;
+      property Status           : Integer read FStatus           write FStatus         ;
+      property CodigoPosicao    : Integer read FCodigoPosicao    write FCodigoPosicao  ;
+      property PosicaoPrincipal : String  read FPosicaoPrincipal write FPosicaoPrincipal;
 
   end;
 
 implementation
 
 { TQuery }
+
+function TQuery.AdicionarPosicaoJogador: TADQuery;
+begin
+
+  Result := GetQry;
+
+  with Result do
+  begin
+
+    Close;
+    SQL.Clear;
+    SQL.Add(' insert into posicao_jogador (id_atleta, id_posicao, Principal)  ');
+    SQL.Add(' values (:id_atleta, :id_posicao, :Principal); ');
+
+  end;
+
+end;
 
 constructor TQuery.Create;
 begin
@@ -93,6 +133,42 @@ begin
     SQL.Add(' set status = 3 ');
     SQL.Add(' where id = :id ');
   
+  end;
+
+end;
+
+function TQuery.ExcluirPosicaoJogador: TADQuery;
+begin
+
+  Result := GetQry;
+
+  with Result do
+  begin
+
+    Close;
+    SQL.Clear;
+    SQL.Add(' delete from posicao_jogador ');
+    SQL.Add(' where id_atleta = :atleta ');
+    SQL.Add('   and id_posicao = :posicao ');
+
+  end;
+
+end;
+
+function TQuery.getPosicaoPrincipal: TADQuery;
+begin
+
+  Result := GetQry;
+
+  with Result do
+  begin
+
+    Close;
+    SQL.Clear;
+    SQL.Add(' select * from posicao_jogador ');
+    SQL.Add(' where id_atleta = :atleta ');
+    SQL.Add('   and Principal = ''S'' ');
+
   end;
 
 end;
@@ -175,6 +251,36 @@ end;
 
 { TAtleta }
 
+procedure TAtleta.AdicionarPosicaoJogador;
+var
+  qryAdicionarPosicaoJogador: TADQuery;
+begin
+
+  qryAdicionarPosicaoJogador := FQueryAtleta.AdicionarPosicaoJogador;
+
+  try
+
+    try
+
+      qryAdicionarPosicaoJogador.ParamByName('ID_ATLETA').AsInteger := Codigo;
+      qryAdicionarPosicaoJogador.ParamByName('ID_POSICAO').AsInteger := CodigoPosicao;
+      qryAdicionarPosicaoJogador.ParamByName('PRINCIPAL').AsString := PosicaoPrincipal;
+
+      qryAdicionarPosicaoJogador.ExecSQL;
+
+    except
+      on e:Exception do
+        raise Exception.Create('Erro ao adicionar posição.' + sLineBreak + 'Motivo: ' + sLineBreak + e.Message);
+    end;
+
+  finally
+
+    FreeAndNil(qryAdicionarPosicaoJogador);
+
+  end;
+
+end;
+
 procedure TAtleta.CadastrarAtleta;
 var
   qryCadastrarAtleta: TADQuery;
@@ -249,6 +355,60 @@ begin
   
   end;
 
+
+
+end;
+
+procedure TAtleta.ExcluirPosicaoJogador;
+var
+  qryExcluirPosicao: TADQuery;
+begin
+
+  qryExcluirPosicao := FQueryAtleta.ExcluirPosicaoJogador;
+
+  try
+
+    try
+
+      qryExcluirPosicao.ParamByName('ATLETA').AsInteger  := Codigo;
+      qryExcluirPosicao.ParamByName('POSICAO').AsInteger := CodigoPosicao;
+
+      qryExcluirPosicao.ExecSQL;
+
+    except
+      on e:Exception do
+        raise Exception.Create('Erro ao excluir posição do jogador.' + sLineBreak + 'Motivo: ' + sLineBreak + e.Message);
+
+    end;
+
+  finally
+
+    FreeAndNil(qryExcluirPosicao);
+
+  end;
+
+end;
+
+function TAtleta.ExistePosicaoPrincipal: Boolean;
+var
+  qryVerificar: TADQuery;
+begin
+
+  qryVerificar := FQueryAtleta.getPosicaoPrincipal;
+
+  try
+
+    qryVerificar.ParamByName('ATLETA').AsInteger := Codigo;
+
+    qryVerificar.Open;
+
+    Result := qryVerificar.RecordCount > 0;
+
+  finally
+
+    FreeAndNil(qryVerificar);
+
+  end;
 
 
 end;
