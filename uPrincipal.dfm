@@ -235,7 +235,6 @@ object frmPrincipal: TfrmPrincipal
       ExplicitWidth = 735
       object tbInicio: TTabSheet
         Caption = 'tbInicio'
-        ExplicitWidth = 724
         object imgInicio: TImage
           Left = 0
           Top = 0
@@ -1455,7 +1454,6 @@ object frmPrincipal: TfrmPrincipal
             ExplicitWidth = 724
             object tbListaAtletas: TTabSheet
               Caption = 'tbListaAtletas'
-              ExplicitWidth = 716
               object dbgrdListaAtletas: TDBGrid
                 Left = 0
                 Top = 0
@@ -1530,7 +1528,6 @@ object frmPrincipal: TfrmPrincipal
                     Height = 13
                     Align = alTop
                     Caption = 'Nome'
-                    ExplicitTop = 24
                     ExplicitWidth = 30
                   end
                   object Label2: TLabel
@@ -1541,7 +1538,6 @@ object frmPrincipal: TfrmPrincipal
                     Height = 13
                     Align = alTop
                     Caption = 'Email'
-                    ExplicitTop = 67
                     ExplicitWidth = 27
                   end
                   object Label6: TLabel
@@ -1551,8 +1547,6 @@ object frmPrincipal: TfrmPrincipal
                     Height = 13
                     Align = alTop
                     Caption = 'CPF'
-                    ExplicitLeft = 5
-                    ExplicitTop = 196
                     ExplicitWidth = 19
                   end
                   object Label7: TLabel
@@ -1562,8 +1556,6 @@ object frmPrincipal: TfrmPrincipal
                     Height = 13
                     Align = alTop
                     Caption = 'Data de Nascimento'
-                    ExplicitLeft = 5
-                    ExplicitTop = 239
                     ExplicitWidth = 103
                   end
                   object Label3: TLabel
@@ -1574,7 +1566,6 @@ object frmPrincipal: TfrmPrincipal
                     Height = 13
                     Align = alTop
                     Caption = 'Telefone'
-                    ExplicitTop = 18
                     ExplicitWidth = 44
                   end
                   object edtNome: TAEdit
@@ -1587,8 +1578,6 @@ object frmPrincipal: TfrmPrincipal
                     TabOrder = 0
                     ColorOnFocus = clInfoBk
                     Required = True
-                    ExplicitTop = 40
-                    ExplicitWidth = 344
                   end
                   object edtEmail: TAEditEmail
                     AlignWithMargins = True
@@ -1604,8 +1593,6 @@ object frmPrincipal: TfrmPrincipal
                     ColorOnFocus = clInfoBk
                     Required = True
                     InvalidColor = clRed
-                    ExplicitTop = 83
-                    ExplicitWidth = 344
                   end
                   object pnlTelefoneAtleta: TPanel
                     Left = 2
@@ -1615,7 +1602,6 @@ object frmPrincipal: TfrmPrincipal
                     Align = alTop
                     BevelOuter = bvNone
                     TabOrder = 2
-                    ExplicitWidth = 410
                     object edtTelefone: TAEditTelefone
                       AlignWithMargins = True
                       Left = 3
@@ -1631,7 +1617,6 @@ object frmPrincipal: TfrmPrincipal
                       ColorOnFocus = clInfoBk
                       Required = True
                       InvalidColor = clRed
-                      ExplicitLeft = 10
                       ExplicitHeight = 21
                     end
                   end
@@ -1643,7 +1628,6 @@ object frmPrincipal: TfrmPrincipal
                     Align = alTop
                     BevelOuter = bvNone
                     TabOrder = 3
-                    ExplicitWidth = 410
                     object Label4: TLabel
                       Left = 3
                       Top = 4
@@ -1685,7 +1669,6 @@ object frmPrincipal: TfrmPrincipal
                     Align = alTop
                     BevelOuter = bvNone
                     TabOrder = 4
-                    ExplicitWidth = 410
                     object edtCPF: TAEditCPF
                       AlignWithMargins = True
                       Left = 5
@@ -1730,7 +1713,6 @@ object frmPrincipal: TfrmPrincipal
                     Align = alTop
                     BevelOuter = bvNone
                     TabOrder = 6
-                    ExplicitWidth = 410
                     object rgStatus: TRadioGroup
                       AlignWithMargins = True
                       Left = 3
@@ -1746,10 +1728,6 @@ object frmPrincipal: TfrmPrincipal
                         'Ativo'
                         'Suspenso')
                       TabOrder = 0
-                      ExplicitLeft = 5
-                      ExplicitTop = 282
-                      ExplicitWidth = 344
-                      ExplicitHeight = 47
                     end
                   end
                 end
@@ -1859,7 +1837,6 @@ object frmPrincipal: TfrmPrincipal
                     Align = alBottom
                     BevelOuter = bvNone
                     TabOrder = 2
-                    ExplicitWidth = 341
                     object GroupBox1: TGroupBox
                       AlignWithMargins = True
                       Left = 3
@@ -1869,7 +1846,6 @@ object frmPrincipal: TfrmPrincipal
                       Align = alClient
                       Caption = 'Legenda'
                       TabOrder = 0
-                      ExplicitWidth = 335
                       object Image1: TImage
                         AlignWithMargins = True
                         Left = 5
@@ -1988,7 +1964,6 @@ object frmPrincipal: TfrmPrincipal
             BevelKind = bkTile
             BevelOuter = bvNone
             TabOrder = 1
-            ExplicitWidth = 724
             object btnSairAtleta: TPngBitBtn
               AlignWithMargins = True
               Left = 714
@@ -2025,7 +2000,6 @@ object frmPrincipal: TfrmPrincipal
                 818F9785C1D7C380E1F94B1A655850112421C6CFE0EEACCBF0FFDF3FDA154167
                 CE010B550348A1FAF2C57B86F3676F0DF16A62D42230A05B738B160D4800C35C
                 5C81A3706D100000000049454E44AE426082}
-              ExplicitLeft = 684
             end
             object btnNovoAtleta: TPngBitBtn
               AlignWithMargins = True

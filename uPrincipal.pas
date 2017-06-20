@@ -207,8 +207,8 @@ begin
 
     GravarDadosAtleta();
 
-    HabilitarCrudAtleta(False);
     AbrirQueryAtletas();
+    HabilitarCrudAtleta(False);
     pcAtleta.ActivePage := tbListaAtletas;
 
   except
@@ -224,6 +224,13 @@ begin
 
   try
 
+    if dblkpPosicao.Text = EmptyStr then
+    begin
+      FMensagens.MensagemInformacao('Informe a "Posição para adicionar.');
+      dblkpPosicao.SetFocus;
+      Exit;
+    end;
+
     FDadosAtleta.CodigoPosicao := dblkpPosicao.KeyValue;
 
     if ckbPosicaoPrincipal.Checked then
@@ -238,7 +245,15 @@ begin
 
   except
     on e: Exception do
-    FMensagens.MensagemErro(e.Message);
+    begin
+
+      if pos('foreign key', e.Message) > 0 then
+        FMensagens.MensagemInformacao('Para adicionar as posições é necessário "Gravar" o cadastro do atleta!')
+      else
+        FMensagens.MensagemErro(e.Message);
+
+    end;
+
 
   end;
 
@@ -256,9 +271,18 @@ begin
   HabilitarCrudAtleta(True);
   pcAtleta.ActivePage := tbDadosAtleta;
   LimparCampos();
+
   FDadosAtleta.Codigo := FDadosAtleta.setSequenceAtleta();
   AbrirQueryPosicoesAtleta();
   FAcao := stCadastrar;
+
+  if Assigned(FDadosAtleta) then
+  begin
+    FreeAndNil(FDadosAtleta);
+
+    FDadosAtleta := TAtleta.Create;
+
+  end;
 
 end;
 
