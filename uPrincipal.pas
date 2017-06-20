@@ -8,7 +8,7 @@ uses
   Vcl.StdCtrls, PngBitBtn, Vcl.ExtCtrls, Vcl.Imaging.pngimage, Vcl.ComCtrls,
   Vcl.Grids, Vcl.DBGrids, uClasses, uDmPrincipal, uAEdit, uAEditInteiro,
   uAEditCPF, uAEditData, uAEditTelefone, uAEditEmail, Vcl.DBCtrls,
-  Vcl.ImgList, Vcl.Menus;
+  Vcl.ImgList, Vcl.Menus, uAEditReal;
 
 type
   EAcao = (stCadastrar, stAlterar);
@@ -17,7 +17,7 @@ type
     btnSair: TPngBitBtn;
     PngBitBtn2: TPngBitBtn;
     PngBitBtn3: TPngBitBtn;
-    PngBitBtn4: TPngBitBtn;
+    btnFichaAtleta: TPngBitBtn;
     btnAtletas: TPngBitBtn;
     btnInicio: TPngBitBtn;
     pnlPrincipal: TPanel;
@@ -79,6 +79,86 @@ type
     dtDataNascimento: TDateTimePicker;
     pnlStatusAtleta: TPanel;
     rgStatus: TRadioGroup;
+    tbFichaAtleta: TTabSheet;
+    pnlFichaAtlelas: TPanel;
+    pcFichasAtleta: TPageControl;
+    tbListaFichasAtleta: TTabSheet;
+    dbGridListaFichas: TDBGrid;
+    tbDetalhesFichaAtleta: TTabSheet;
+    pnlMenuFichas: TPanel;
+    btnSairFichas: TPngBitBtn;
+    btnAbaListaFicha: TPngBitBtn;
+    btnAbaDetalhesFicha: TPngBitBtn;
+    pnlUltimaMedicao: TPanel;
+    Panel3: TPanel;
+    pnlMelhorMedicao: TPanel;
+    Panel4: TPanel;
+    Label19: TLabel;
+    Label20: TLabel;
+    Label21: TLabel;
+    Label22: TLabel;
+    Label23: TLabel;
+    Label24: TLabel;
+    Label25: TLabel;
+    Panel2: TPanel;
+    Panel5: TPanel;
+    Panel6: TPanel;
+    Panel7: TPanel;
+    Label10: TLabel;
+    edtNomeFicha: TAEdit;
+    Label18: TLabel;
+    dtDataFicha: TDateTimePicker;
+    Image3: TImage;
+    lblAtletaFicha: TLabel;
+    Image4: TImage;
+    Label33: TLabel;
+    Image5: TImage;
+    Label34: TLabel;
+    Image6: TImage;
+    Label35: TLabel;
+    edtMelhorAltura: TAEditReal;
+    edtMelhorPeso: TAEditReal;
+    edtMelhorSaltoVertical: TAEditReal;
+    edtMelhor40Jardas: TAEditReal;
+    edtMelhorSaltoHorizontal: TAEditReal;
+    edtMelhorShuttle: TAEditReal;
+    edtMelhor3Cones: TAEditReal;
+    Label11: TLabel;
+    edtUltimaAltura: TAEditReal;
+    Label12: TLabel;
+    edtUltimoPeso: TAEditReal;
+    Label13: TLabel;
+    edtUltimoSaltoVertical: TAEditReal;
+    Label14: TLabel;
+    edtUltimo40Jardas: TAEditReal;
+    Label15: TLabel;
+    edtUltimoSaltoHorizontal: TAEditReal;
+    Label16: TLabel;
+    edtUltimoShuttle: TAEditReal;
+    edtUltimo3Cones: TAEditReal;
+    Label17: TLabel;
+    Label26: TLabel;
+    edtAltura: TAEditReal;
+    Label27: TLabel;
+    edtPeso: TAEditReal;
+    Label28: TLabel;
+    edtSaltoVertical: TAEditReal;
+    Label29: TLabel;
+    edt40Jardas: TAEditReal;
+    Label30: TLabel;
+    edtSaltoHorizontal: TAEditReal;
+    Label31: TLabel;
+    edtShuttle: TAEditReal;
+    edt3Cones: TAEditReal;
+    Label32: TLabel;
+    btnLimparFicha: TPngSpeedButton;
+    btnAdicionarFicha: TPngSpeedButton;
+    DateTimePicker1: TDateTimePicker;
+    DateTimePicker2: TDateTimePicker;
+    Label36: TLabel;
+    edtUltimoIMC: TAEditReal;
+    Label37: TLabel;
+    edtMelhorIMC: TAEditReal;
     procedure btnExpansorClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure btnInicioClick(Sender: TObject);
@@ -98,6 +178,11 @@ type
     procedure btnIncluirPosicaoClick(Sender: TObject);
     procedure ckbPosicaoPrincipalClick(Sender: TObject);
     procedure Excluirposio1Click(Sender: TObject);
+    procedure btnSairFichaAtletaClick(Sender: TObject);
+    procedure btnSairFichasClick(Sender: TObject);
+    procedure btnFichaAtletaClick(Sender: TObject);
+    procedure btnAbaListaFichaClick(Sender: TObject);
+    procedure btnAbaDetalhesFichaClick(Sender: TObject);
   private
     FMensagens: TMensagens;
     FDadosAtleta: TAtleta;
@@ -197,6 +282,16 @@ begin
   Expansor();
 end;
 
+procedure TfrmPrincipal.btnFichaAtletaClick(Sender: TObject);
+begin
+  pcPrincipal.ActivePage := tbFichaAtleta;
+
+  AbrirQueryAtletas();
+
+  pcFichasAtleta.ActivePage := tbListaFichasAtleta;
+
+end;
+
 procedure TfrmPrincipal.btnGravarAtletaClick(Sender: TObject);
 begin
 
@@ -272,8 +367,6 @@ begin
   pcAtleta.ActivePage := tbDadosAtleta;
   LimparCampos();
 
-  FDadosAtleta.Codigo := FDadosAtleta.setSequenceAtleta();
-  AbrirQueryPosicoesAtleta();
   FAcao := stCadastrar;
 
   if Assigned(FDadosAtleta) then
@@ -283,6 +376,9 @@ begin
     FDadosAtleta := TAtleta.Create;
 
   end;
+
+  FDadosAtleta.Codigo := FDadosAtleta.setSequenceAtleta();
+  AbrirQueryPosicoesAtleta();
 
 end;
 
@@ -299,6 +395,18 @@ begin
 
   EncerrarAplicacao();
 
+end;
+
+procedure TfrmPrincipal.btnSairFichaAtletaClick(Sender: TObject);
+begin
+  pcPrincipal.ActivePage := tbInicio;
+
+end;
+
+procedure TfrmPrincipal.btnSairFichasClick(Sender: TObject);
+begin
+  pcPrincipal.ActivePage := tbInicio;
+  pcFichasAtleta.ActivePage := tbListaFichasAtleta;
 end;
 
 procedure TfrmPrincipal.CarregarInformacoes;
@@ -413,6 +521,8 @@ begin
 
   pcPrincipal.ActivePage := tbInicio;
 
+  AbrirQueryAtletas();
+
 end;
 
 procedure TfrmPrincipal.GravarDadosAtleta;
@@ -524,6 +634,18 @@ begin
       TTabSheet(Components[I]).TabVisible := False;
 
 
+end;
+
+procedure TfrmPrincipal.btnAbaListaFichaClick(Sender: TObject);
+begin
+  pcFichasAtleta.ActivePage := tbListaFichasAtleta;
+end;
+
+procedure TfrmPrincipal.btnAbaDetalhesFichaClick(Sender: TObject);
+begin
+  pcFichasAtleta.ActivePage := tbDetalhesFichaAtleta;
+
+  dtDataFicha.Date := Now;
 end;
 
 function TfrmPrincipal.ValidarDadosAtletaObrigatorio: Boolean;

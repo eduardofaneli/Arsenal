@@ -25,7 +25,7 @@ object frmPrincipal: TfrmPrincipal
     Align = alLeft
     BevelKind = bkSoft
     BevelOuter = bvNone
-    Constraints.MaxWidth = 150
+    Constraints.MaxWidth = 130
     Constraints.MinWidth = 43
     TabOrder = 0
     object btnSair: TPngBitBtn
@@ -97,13 +97,14 @@ object frmPrincipal: TfrmPrincipal
       ParentFont = False
       TabOrder = 3
     end
-    object PngBitBtn4: TPngBitBtn
+    object btnFichaAtleta: TPngBitBtn
       AlignWithMargins = True
       Left = 3
       Top = 81
       Width = 33
       Height = 33
       Align = alTop
+      Caption = 'Ficha do Atleta'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindow
       Font.Height = -11
@@ -112,6 +113,35 @@ object frmPrincipal: TfrmPrincipal
       Margin = 4
       ParentFont = False
       TabOrder = 2
+      OnClick = btnFichaAtletaClick
+      PngImage.Data = {
+        89504E470D0A1A0A0000000D494844520000001A0000001A0806000000A94A4C
+        CE00000006624B474400FF00FF00FFA0BDA793000003124944415478DAED945B
+        48544118C767CEECB9EC51B755B3222B42A28452B11EC4ACF02D087ACBE8B66A
+        BB8A5D08145C3717A335517215BA3C545E5659579034287AE825432D888A7A08
+        2343D22D2BCBC0326F7B3967669A859445B275D37A88BEA733FFEFFCBFDFCCF7
+        3103C15F0AB894C5B21DC5E9AC62C4AC80705F4BCE850F4B0E3AD260DEC923EE
+        6EAC2E9A28AA0AC626C60B9DF9F6FA250705C2505F9C2F49E2E5F8D838DE3D3C
+        7C62D1A0DCBAD244018C0ED417D42BB3AD6B341B59492BA0C4A6417C1DC6B868
+        51A0EC46CB21006815A4609402725422E37D5EA4BFC88A25F9A926AB2DBF6AE4
+        88C392C2019CD062AABD193E880298E3B0D80820BB20AFD907549CCCB46B2CE3
+        8790F688EAB7A2E01306079CBFA0B99065479DA69A968094D55EA4D58EF3CD4C
+        9BF644C9C73AF6DBFC01DDE828895208DDE9CAAFB9135CE2608375A500C89A79
+        41875B4FE938AFDCC40122301E6292CA117A9670F00A5BDF72E555DB1734C366
+        8B354A924B6549F27DFAF2350ACE4926114CAF33D1E534D9CFB36DD01F03AE20
+        009C6CCDB3DF5A68974D4DA565DB366EAAD8B0662DB8D1D3353E0B32349618D8
+        A29C1537B598EC5DC1A6ACF62CD4B1BF038733CE9F820C8E924B1C05A9088203
+        4D26FB70E8B6985769207F1B2124504A89CFAF143AF3AAEF8704653B2C3B86DE
+        691F75DB6CEA42766B6C3A9D1029CB4F3353B646F7BA07A65F0FBFCF75E5D574
+        2CA875C191ED2C8AD760510C7C2B3E75D275BCF6F35C902E22F2F19EB4F4E54F
+        FB5F4DF60DBD318A883F07218CA76CA014D20700D3872141A6666B3FDB710CC1
+        187915FF93869CCADDA140322FD9F76ECF583FE9F180AEE7CFBA5505DF0B092A
+        709E71079BA6D80C10A169337984B8CE3F02F263B573754C5C79AC4E477BDD83
+        2AA47473D820C3D5E215922CBA380E0AACBDD8E7F5958982D8F62B938AD5D4B0
+        41817E4748DA67195B92F52FDFBA3DEE918F39A14CBF0D0AD7F41FF40F830884
+        2FF472C4D4B4CF2B79FC3EA380F8CAE09741216A8F56104B458DE01D9B9858C6
+        AE4262B81E9869B36912D679D7CD5C5645A38E408AF5C16F9D96433E9587B133
+        FF0C0E4943E17ABE034FE52A2D1107F6A80000000049454E44AE426082}
     end
     object btnAtletas: TPngBitBtn
       AlignWithMargins = True
@@ -229,10 +259,10 @@ object frmPrincipal: TfrmPrincipal
       Top = 0
       Width = 762
       Height = 451
-      ActivePage = tbAtleta
+      ActivePage = tbFichaAtleta
       Align = alClient
       TabOrder = 0
-      ExplicitWidth = 735
+      ExplicitLeft = 4
       object tbInicio: TTabSheet
         Caption = 'tbInicio'
         object imgInicio: TImage
@@ -241,6 +271,7 @@ object frmPrincipal: TfrmPrincipal
           Width = 754
           Height = 423
           Align = alClient
+          AutoSize = True
           Center = True
           Picture.Data = {
             0954506E67496D61676589504E470D0A1A0A0000000D49484452000001900000
@@ -1786,7 +1817,6 @@ object frmPrincipal: TfrmPrincipal
                       Width = 23
                       Height = 23
                       Hint = 'Adicionar Posi'#231#227'o'
-                      Flat = True
                       ParentShowHint = False
                       ShowHint = True
                       OnClick = btnIncluirPosicaoClick
@@ -2244,6 +2274,1026 @@ object frmPrincipal: TfrmPrincipal
           end
         end
       end
+      object tbFichaAtleta: TTabSheet
+        Caption = 'tbFichaAtleta'
+        ImageIndex = 2
+        object pnlFichaAtlelas: TPanel
+          Left = 0
+          Top = 0
+          Width = 754
+          Height = 423
+          Align = alClient
+          BevelOuter = bvNone
+          TabOrder = 0
+          ExplicitLeft = 100
+          ExplicitTop = 36
+          ExplicitWidth = 185
+          ExplicitHeight = 41
+          object pcFichasAtleta: TPageControl
+            Left = 0
+            Top = 43
+            Width = 754
+            Height = 380
+            ActivePage = tbDetalhesFichaAtleta
+            Align = alClient
+            TabOrder = 0
+            object tbListaFichasAtleta: TTabSheet
+              Caption = 'tbListaFichasAtleta'
+              object dbGridListaFichas: TDBGrid
+                Left = 0
+                Top = 0
+                Width = 746
+                Height = 352
+                Align = alClient
+                DataSource = dmPrincipal.dsListaAtletas
+                Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
+                TabOrder = 0
+                TitleFont.Charset = DEFAULT_CHARSET
+                TitleFont.Color = clWindowText
+                TitleFont.Height = -11
+                TitleFont.Name = 'Segoe UI'
+                TitleFont.Style = []
+                OnDrawColumnCell = dbgrdListaAtletasDrawColumnCell
+                Columns = <
+                  item
+                    Expanded = False
+                    FieldName = 'nome'
+                    Title.Caption = 'Nome'
+                    Width = 200
+                    Visible = True
+                  end
+                  item
+                    Expanded = False
+                    FieldName = 'email'
+                    Title.Caption = 'Email'
+                    Width = 200
+                    Visible = True
+                  end
+                  item
+                    Expanded = False
+                    FieldName = 'telefone'
+                    Title.Alignment = taCenter
+                    Title.Caption = 'Telefone'
+                    Width = 100
+                    Visible = True
+                  end>
+              end
+            end
+            object tbDetalhesFichaAtleta: TTabSheet
+              Caption = 'tbDetalhesFichaAtleta'
+              ImageIndex = 1
+              ExplicitLeft = 2
+              object pnlUltimaMedicao: TPanel
+                Left = 0
+                Top = 172
+                Width = 746
+                Height = 88
+                Align = alTop
+                BevelKind = bkTile
+                TabOrder = 0
+                ExplicitTop = 89
+                object Label11: TLabel
+                  Left = 16
+                  Top = 36
+                  Width = 31
+                  Height = 13
+                  Caption = 'Altura'
+                end
+                object Label12: TLabel
+                  Left = 105
+                  Top = 36
+                  Width = 47
+                  Height = 13
+                  Caption = 'Peso (KG)'
+                end
+                object Label13: TLabel
+                  Left = 283
+                  Top = 36
+                  Width = 67
+                  Height = 13
+                  Caption = 'Salto Vertical'
+                end
+                object Label14: TLabel
+                  Left = 372
+                  Top = 36
+                  Width = 47
+                  Height = 13
+                  Caption = '40 Jardas'
+                end
+                object Label15: TLabel
+                  Left = 461
+                  Top = 36
+                  Width = 83
+                  Height = 13
+                  Caption = 'Salto Horizontal'
+                end
+                object Label16: TLabel
+                  Left = 550
+                  Top = 36
+                  Width = 37
+                  Height = 13
+                  Caption = 'Shuttle'
+                end
+                object Label17: TLabel
+                  Left = 639
+                  Top = 36
+                  Width = 41
+                  Height = 13
+                  Caption = '3 Cones'
+                end
+                object Label36: TLabel
+                  Left = 194
+                  Top = 36
+                  Width = 20
+                  Height = 13
+                  Caption = 'IMC'
+                end
+                object Panel3: TPanel
+                  Left = 1
+                  Top = 1
+                  Width = 740
+                  Height = 34
+                  Align = alTop
+                  BevelKind = bkTile
+                  BevelOuter = bvNone
+                  Color = clActiveCaption
+                  ParentBackground = False
+                  TabOrder = 0
+                  object Image5: TImage
+                    AlignWithMargins = True
+                    Left = 3
+                    Top = 3
+                    Width = 24
+                    Height = 24
+                    Align = alLeft
+                    AutoSize = True
+                    Center = True
+                    Picture.Data = {
+                      0954506E67496D61676589504E470D0A1A0A0000000D49484452000000180000
+                      00180806000000E0773DF800000006624B474400FF00FF00FFA0BDA793000002
+                      CD4944415478DA6364400301155B8C1928001B3A7CCE22F319312CA8D9FE5558
+                      58E81B3986BF7DFB8E6B438B2737511648494A8AF0F1F31165F0A78F9F189E3D
+                      7FFE86380B8041C4C1F6A75A4A512350524282280B9EBF78C1F0ECFE8DF53F7E
+                      B1B4120C2210486A5A3EFD3FBB78062B2B2B5116FCFEFD9B81F1E7CB19F3EA22
+                      33D1E5B05A50D1333BCDD3C966A6A18E0651169CBF728361FBBE23E91D25A9B3
+                      88B2A0B2674EBC8B9DC51C53036D16622C387DFEEA9F5D074F267796252F22CE
+                      82AE79F686FAEAEB3D1CAD0489B160FBBEA3EF2E5CBA1ED05E967A98280BCA3A
+                      E7F20A0A70DFCE4A0813676464C46BF8FFFFFF19A62F58F5E2CDA75F2A3DA571
+                      5F89B200045AA62E9B6B6B61186DA8ABC18ECF82B397AEFF3C7AF2C2A29AECA8
+                      346CF2382D28E95EC4CDC7C974C9D3C5465E5D499E199B9A1B771EFCDDB1EFE8
+                      FD7F6FBEEA3734A47F23C90210A89A305B9C838563A38AA29C86B3AD393F2707
+                      C433DF7FFC64D87BF8E4C7DBF71E5FFFFCE3B37F4F69E62B5C66E0B5A0A47BBA
+                      183F17DF2A2539693D071B53415E6E2EB0F8E7AFDF18F61F39FDFEC1E32717BF
+                      7EF815D65E95F49A640BA04174C1CFDD4151495E1A1C444CDFDE81E5FE710981
+                      E9BB0F9EFCD9BAEBD0BD3F6FBE18921C442D5396CEB7B5328E34D4516767FCF3
+                      9381E3C151069677F7C1727F8414197E285833FC6761673877E5C6CF4327CE2D
+                      AECB8A4E25DA82F28E99FCFC82FCB7B313C24499FEFE62E0BCB19D81F9DB5B14
+                      357FB94518BEAB7B30FC63666398B660E5AB9F3FFFAA36E4C57C22CA828AEED9
+                      0E467A5AEB40198DF3D64E06960F4FB0FAF28F802CC3773537704603FA24B0B3
+                      24E5105116C08A0A4B450116CE9B3BF0A503866FEA9E0C27EEBD27ADA8801576
+                      963C6F19585FDDC06BC16F314D86E35F84482BEC60C5353BC31F6092F98BD702
+                      062666869F0C2CC417D7A00A878DF54F858C9246082915CE937B37D6FCFACDD2
+                      41749D4CBB2A93E6953E959B2D008DBA4B285C635A660000000049454E44AE42
+                      6082}
+                  end
+                  object Label34: TLabel
+                    AlignWithMargins = True
+                    Left = 33
+                    Top = 3
+                    Width = 122
+                    Height = 27
+                    Align = alLeft
+                    Caption = #218'ltima Medi'#231#227'o'
+                    Font.Charset = DEFAULT_CHARSET
+                    Font.Color = clWindowText
+                    Font.Height = -16
+                    Font.Name = 'Segoe UI'
+                    Font.Style = [fsBold]
+                    ParentFont = False
+                    ExplicitHeight = 21
+                  end
+                  object DateTimePicker2: TDateTimePicker
+                    AlignWithMargins = True
+                    Left = 641
+                    Top = 3
+                    Width = 92
+                    Height = 24
+                    Align = alRight
+                    Date = 42906.750214479170000000
+                    Time = 42906.750214479170000000
+                    Color = clInactiveCaption
+                    Enabled = False
+                    TabOrder = 0
+                    ExplicitLeft = 639
+                    ExplicitTop = 9
+                    ExplicitHeight = 21
+                  end
+                end
+                object edtUltimaAltura: TAEditReal
+                  Left = 16
+                  Top = 52
+                  Width = 83
+                  Height = 21
+                  Color = clInactiveCaption
+                  Enabled = False
+                  TabOrder = 1
+                end
+                object edtUltimoPeso: TAEditReal
+                  Left = 105
+                  Top = 52
+                  Width = 83
+                  Height = 21
+                  Color = clInactiveCaption
+                  Enabled = False
+                  TabOrder = 2
+                end
+                object edtUltimoSaltoVertical: TAEditReal
+                  Left = 283
+                  Top = 52
+                  Width = 83
+                  Height = 21
+                  Color = clInactiveCaption
+                  Enabled = False
+                  TabOrder = 4
+                end
+                object edtUltimo40Jardas: TAEditReal
+                  Left = 372
+                  Top = 52
+                  Width = 83
+                  Height = 21
+                  Color = clInactiveCaption
+                  Enabled = False
+                  TabOrder = 5
+                end
+                object edtUltimoSaltoHorizontal: TAEditReal
+                  Left = 461
+                  Top = 52
+                  Width = 83
+                  Height = 21
+                  Color = clInactiveCaption
+                  Enabled = False
+                  TabOrder = 6
+                end
+                object edtUltimoShuttle: TAEditReal
+                  Left = 550
+                  Top = 52
+                  Width = 83
+                  Height = 21
+                  Color = clInactiveCaption
+                  Enabled = False
+                  TabOrder = 7
+                end
+                object edtUltimo3Cones: TAEditReal
+                  Left = 639
+                  Top = 52
+                  Width = 83
+                  Height = 21
+                  Color = clInactiveCaption
+                  Enabled = False
+                  TabOrder = 8
+                end
+                object edtUltimoIMC: TAEditReal
+                  Left = 194
+                  Top = 52
+                  Width = 83
+                  Height = 21
+                  Color = clInactiveCaption
+                  Enabled = False
+                  TabOrder = 3
+                end
+              end
+              object pnlMelhorMedicao: TPanel
+                Left = 0
+                Top = 83
+                Width = 746
+                Height = 89
+                Align = alTop
+                BevelKind = bkTile
+                TabOrder = 1
+                ExplicitTop = 0
+                object Label19: TLabel
+                  Left = 16
+                  Top = 36
+                  Width = 31
+                  Height = 13
+                  Caption = 'Altura'
+                end
+                object Label20: TLabel
+                  Left = 105
+                  Top = 36
+                  Width = 47
+                  Height = 13
+                  Caption = 'Peso (KG)'
+                end
+                object Label21: TLabel
+                  Left = 283
+                  Top = 36
+                  Width = 67
+                  Height = 13
+                  Caption = 'Salto Vertical'
+                end
+                object Label22: TLabel
+                  Left = 372
+                  Top = 36
+                  Width = 47
+                  Height = 13
+                  Caption = '40 Jardas'
+                end
+                object Label23: TLabel
+                  Left = 461
+                  Top = 36
+                  Width = 83
+                  Height = 13
+                  Caption = 'Salto Horizontal'
+                end
+                object Label24: TLabel
+                  Left = 550
+                  Top = 36
+                  Width = 37
+                  Height = 13
+                  Caption = 'Shuttle'
+                end
+                object Label25: TLabel
+                  Left = 639
+                  Top = 36
+                  Width = 41
+                  Height = 13
+                  Caption = '3 Cones'
+                end
+                object Label37: TLabel
+                  Left = 194
+                  Top = 36
+                  Width = 20
+                  Height = 13
+                  Caption = 'IMC'
+                end
+                object Panel4: TPanel
+                  Left = 1
+                  Top = 1
+                  Width = 740
+                  Height = 34
+                  Align = alTop
+                  BevelKind = bkTile
+                  BevelOuter = bvNone
+                  Color = clActiveCaption
+                  ParentBackground = False
+                  TabOrder = 0
+                  object Image4: TImage
+                    AlignWithMargins = True
+                    Left = 3
+                    Top = 3
+                    Width = 24
+                    Height = 24
+                    Align = alLeft
+                    AutoSize = True
+                    Center = True
+                    Picture.Data = {
+                      0954506E67496D61676589504E470D0A1A0A0000000D49484452000000180000
+                      00180806000000E0773DF800000006624B474400FF00FF00FFA0BDA793000004
+                      014944415478DA95954B6C1B4518C767F6E17DF8856D9CB87E61EAC409A5400F
+                      800A948044413D720997929402CD015110521F9820642191D2E45089964B026A
+                      43414814D41B075289B6A982842AF14C50122776B05DD9711C3FD7EBF57A7799
+                      354DE5A4B6B3FD4EBBF3F87EFFFFCC3733106C89FEEFDE63D83CB5EB4E83A254
+                      26874ECF82267168FCE4C300427AE31F12F4EC85C3A14AE3187837A01F3794FC
+                      FF9AF5AC192771A950E21451129FB870786CB171DCE0783040D1F05793410F25
+                      51C2F31C972F1996BD975EB924B505D4274F9C7CD571BFF933BFD36129726530
+                      1F4B5C993874EAC5C6316F4E7E70A5D7E37CC1A867C1F2AD643699CE1D9D1C1A
+                      FD666BAEA600D585A9DC15DED3BDD3A72370F0E7523453E02ACF5E3C32FA8FDA
+                      3FF0C5B1DD2696BDF6A8DF67ADD66AE0F77024E289505DA15048D604D870B103
+                      B9D8895C14381E2CC413531383232FA97D47BE1A9E0AB89DFB4D7A062C21F5A9
+                      16EADB026EBB58DED3FDA0574710C8C5CA1A02F50128E348FD55A4DE56AD8948
+                      7DB4A5FAB600355E3B1F1CE83019CFFADD0E73B1CCAB7B310514087BBCCEFD46
+                      16A94FA4F2E95CEEEDF3AF9FFEBA558EB600D58519B978ACDB875C90E0B7C5E5
+                      2C8E6100A9B7D4D52F46A39E28E56FA57E5BC0860BBBD978AECBE530CDADC481
+                      C76E03AAFA7022995FCBE5DBAAD704505D18CBDD915EEF0E4F229D05BB7C6E20
+                      8835F0475855AF6BAB5E13408D8FBF0DBE13D0C3333D561623711C2C642BF25C
+                      5678F7C3839F9EDB6E6E5B8082D4F3AE9E3312060EE2369B956259B5155451D9
+                      4AD94C0693A58B4C3C7C0C6E39BD9A008A12C2F85FC49F089B752F69EFD0371B
+                      23A6563931979961F7EA0E40788F65CADD087E44DA6C27C8CECE3BC915746A65
+                      7475E0665303245592B2EB23CCD323A7340394D9908E2FD4624C20D0816ECB7A
+                      9B542AA164C9FA37EDEF6AB40AF885F955864CBBE1E3E3A226007FFDF87398C5
+                      7259E7F25836DAA4421E607A0310A291CD0014D5446C5DCE645F669E1F9BD604
+                      284D9F18A01CCE2F318381C4286A535F6529BC09200B02908BC5AA904CBE61E8
+                      BBFB4C340594A78FF7131D8E4999E3189DDB831E12A22940DD936A3C0630565F
+                      AEAD2607D9BEB11F34012AD3C180C2D23770A3D10E51DD13166B53406D7D1D51
+                      6450CB17D250283D453F33B6A409A00637333C473FE07BA87A2B06D05E008CA6
+                      6FAB169123B2BE34AA7AD2E902E24AF46F54458F34CBD31250BE3EFC24A0B11F
+                      69B7D726C4E300B901684FEA558396AE5E5594CB052AB15806BDA907F4FB3EB9
+                      794F803A64E6FD7E80939F536E975DA98A40E2F97A3BCEB000EA08458827D680
+                      20BCC5F68D7EDF2AC7B67751E1E7602F4E83B3102376434247FEBF4C555191A5
+                      BF24A976D4B46F74BEDD7C4D975D3DE9CD21922FDED7A97E33C65CAAD9A16A16
+                      FF013236C7280DC896210000000049454E44AE426082}
+                  end
+                  object Label33: TLabel
+                    AlignWithMargins = True
+                    Left = 33
+                    Top = 3
+                    Width = 125
+                    Height = 27
+                    Align = alLeft
+                    Caption = 'Melhor Medi'#231#227'o'
+                    Font.Charset = DEFAULT_CHARSET
+                    Font.Color = clWindowText
+                    Font.Height = -16
+                    Font.Name = 'Segoe UI'
+                    Font.Style = [fsBold]
+                    ParentFont = False
+                    ExplicitHeight = 21
+                  end
+                  object DateTimePicker1: TDateTimePicker
+                    AlignWithMargins = True
+                    Left = 641
+                    Top = 3
+                    Width = 92
+                    Height = 24
+                    Align = alRight
+                    Date = 42906.750214479170000000
+                    Time = 42906.750214479170000000
+                    Color = clInactiveCaption
+                    Enabled = False
+                    TabOrder = 0
+                    ExplicitLeft = 639
+                    ExplicitTop = 9
+                    ExplicitHeight = 21
+                  end
+                end
+                object edtMelhorAltura: TAEditReal
+                  Left = 16
+                  Top = 52
+                  Width = 83
+                  Height = 21
+                  Color = clInactiveCaption
+                  Enabled = False
+                  TabOrder = 1
+                end
+                object edtMelhorPeso: TAEditReal
+                  Left = 105
+                  Top = 52
+                  Width = 83
+                  Height = 21
+                  Color = clInactiveCaption
+                  Enabled = False
+                  TabOrder = 2
+                end
+                object edtMelhorSaltoVertical: TAEditReal
+                  Left = 283
+                  Top = 52
+                  Width = 83
+                  Height = 21
+                  Color = clInactiveCaption
+                  Enabled = False
+                  TabOrder = 3
+                end
+                object edtMelhor40Jardas: TAEditReal
+                  Left = 372
+                  Top = 52
+                  Width = 83
+                  Height = 21
+                  Color = clInactiveCaption
+                  Enabled = False
+                  TabOrder = 4
+                end
+                object edtMelhorSaltoHorizontal: TAEditReal
+                  Left = 461
+                  Top = 52
+                  Width = 83
+                  Height = 21
+                  Color = clInactiveCaption
+                  Enabled = False
+                  TabOrder = 5
+                end
+                object edtMelhorShuttle: TAEditReal
+                  Left = 550
+                  Top = 52
+                  Width = 83
+                  Height = 21
+                  Color = clInactiveCaption
+                  Enabled = False
+                  TabOrder = 6
+                end
+                object edtMelhor3Cones: TAEditReal
+                  Left = 639
+                  Top = 52
+                  Width = 83
+                  Height = 21
+                  Color = clInactiveCaption
+                  Enabled = False
+                  TabOrder = 7
+                end
+                object edtMelhorIMC: TAEditReal
+                  Left = 194
+                  Top = 52
+                  Width = 83
+                  Height = 21
+                  Color = clInactiveCaption
+                  Enabled = False
+                  TabOrder = 8
+                end
+              end
+              object Panel2: TPanel
+                Left = 0
+                Top = 260
+                Width = 746
+                Height = 88
+                Align = alTop
+                BevelKind = bkTile
+                TabOrder = 2
+                ExplicitTop = 89
+                object Label26: TLabel
+                  Left = 16
+                  Top = 36
+                  Width = 31
+                  Height = 13
+                  Caption = 'Altura'
+                end
+                object Label27: TLabel
+                  Left = 105
+                  Top = 36
+                  Width = 47
+                  Height = 13
+                  Caption = 'Peso (KG)'
+                end
+                object Label28: TLabel
+                  Left = 194
+                  Top = 36
+                  Width = 67
+                  Height = 13
+                  Caption = 'Salto Vertical'
+                end
+                object Label29: TLabel
+                  Left = 283
+                  Top = 36
+                  Width = 47
+                  Height = 13
+                  Caption = '40 Jardas'
+                end
+                object Label30: TLabel
+                  Left = 372
+                  Top = 36
+                  Width = 83
+                  Height = 13
+                  Caption = 'Salto Horizontal'
+                end
+                object Label31: TLabel
+                  Left = 461
+                  Top = 36
+                  Width = 37
+                  Height = 13
+                  Caption = 'Shuttle'
+                end
+                object Label32: TLabel
+                  Left = 550
+                  Top = 36
+                  Width = 41
+                  Height = 13
+                  Caption = '3 Cones'
+                end
+                object Panel5: TPanel
+                  Left = 1
+                  Top = 1
+                  Width = 740
+                  Height = 34
+                  Align = alTop
+                  BevelKind = bkTile
+                  BevelOuter = bvNone
+                  Color = clActiveCaption
+                  ParentBackground = False
+                  TabOrder = 0
+                  object Image6: TImage
+                    AlignWithMargins = True
+                    Left = 3
+                    Top = 3
+                    Width = 24
+                    Height = 24
+                    Align = alLeft
+                    AutoSize = True
+                    Center = True
+                    Picture.Data = {
+                      0954506E67496D61676589504E470D0A1A0A0000000D49484452000000180000
+                      00180806000000E0773DF800000006624B474400FF00FF00FFA0BDA793000004
+                      744944415478DAB5956B4C5B6518C79F73E9252D506E450A05D68D5E002F41DD
+                      0C4E452373DC0AA88C29C98CB878897E99891F18C3A40C91A9717CC00FC619CC
+                      B2A989380894EB50613A6644C7DC662FB03A0695AD2DB52097D2734ECF7B3C6C
+                      96D1D1AC249BFF6FE77DDFF3FFBD79FE4F9E1783307AD6D09F80737091240582
+                      C01A8B10303E5F694763F14FE1FEC7C21D28ABEE7A282E21A14F97A1890FAC5D
+                      7338C066B3BDDED950FCD95D00F46E22C4C41F1152291958F35134E75B5EACEC
+                      68D0B7DF316045FA035DEF601CF651E09BE3B8AF8D8DC5956BCF941B06F60107
+                      8F2F7998CADEE6426A4380A2EAAECD2201B91727892A0CB078FE34061CC6210E
+                      2D0187BE61FCFE239D0D45BFE9F7F7E4464649BB13E2E522BBDDFE8B77967D3A
+                      0009092830F444493941339F6B7E6A5A52AC441241D23E8A0F97051CC3412812
+                      024533DCF45F5767BC3EAF8962E813225CD0ACD5A9B1B9D939BFC3E538D45657
+                      F06E484049755FBA4084F7AB54692924AF2B939368E5CE8A5809E29805821447
+                      FB1D9E259C62584299AC44628984181FB3720CE3C70982A471C06629E4CB31BE
+                      5732B10EA03718E3859CF05C466666F2B4DDCE22C60BBB7395E4630F6BAFEF37
+                      7DFA15BCFDC68DD24F4DFF0D9FB48DB2F39400D4E96AC262B1D234CB14221F3D
+                      D2F961E942C80CCA0DFD67D41AED36BB7D0AB4C991E8E502B5A0B37708F65414
+                      AD2B63DF0F6740AD4A05D334838CA72740A7D3E2268B6592AF51466B53C5F23A
+                      40494D5F915C1E7B5C22114B70FF2256FF6A8E0036A8633D16F657DB1C924547
+                      B376FBD5C36D757907D60176D50D5CC8CCC8B8CF6C36235DB413D7E76D079D46
+                      0543C367E1899C6CC0713CA4B973C603C75B7BE0D262A27F4BBA96B458AD3398
+                      694ED1DA5AC1AE027619FA6209423496AC54C444E20BDC5BCFDD4FF25D025191
+                      52F8EED408389C6EA82CCF0F09E1C385A5E5651836B9E1FB736E9AB7F43A9D33
+                      65C6C6C253AB80B25AE39389F724B5F97C94B42A7F8B305B9B1064F2E3CFA330
+                      7E790A4AF373212E46161244FB11BCF9F1209B969A4AD86C13FBDBEB771E5A05
+                      94D674576E52A95A5C2E07F9C2A331449A520E9BD392830C5ABEEC00F3F8046C
+                      CDCE82DD653B82F65C6E0F5CBE320D47061C48ABD5E256EB78CBB7861D7B8300
+                      2A1EE074F280EDA101C323E7A1BD7B10B63D980515A5A1019FF300CD0DC0173C
+                      E0955540494DD7530A85E2848FA2A42F3DA3126ED525860C74F69F7990454684
+                      2E11CD97A869882F51CAFA12AD848C1342738A32592E42F3685FC5CD90C32910
+                      F2E98B6E18BCE0A1118BE65D33EEF2A0906F404EFE9E756FD603269309E96437
+                      DB349C56DB7449E14F576B49B3D9E2E2DB3429A84DAFE750DB5B181F177B4C22
+                      9146E2CC3C57FF5A8E30ACFB7F3ADA63F29FFD73819345C9FC5376FBE1F6833B
+                      6B037BB78C8A93C36A8DE691FF6554ACE8CE86DD98DBEBF5E6757DA03FBFD673
+                      E3E33A4E82307A5E408863FCD73C4BB0765C5F1A1F77B12CF562DBC1E2C15BFD
+                      EECA83B34CD3553D0D4593A1BC6EFB64EA6B3B55424CBC8724F1E7590CE48058
+                      2960B80F077C16716C3F4553478DEFEB476FE7F12F197A5E371A029E04000000
+                      0049454E44AE426082}
+                  end
+                  object Label35: TLabel
+                    AlignWithMargins = True
+                    Left = 33
+                    Top = 3
+                    Width = 111
+                    Height = 27
+                    Align = alLeft
+                    Caption = 'Medi'#231#227'o Atual'
+                    Font.Charset = DEFAULT_CHARSET
+                    Font.Color = clWindowText
+                    Font.Height = -16
+                    Font.Name = 'Segoe UI'
+                    Font.Style = [fsBold]
+                    ParentFont = False
+                    ExplicitHeight = 21
+                  end
+                  object btnLimparFicha: TPngSpeedButton
+                    Left = 706
+                    Top = 0
+                    Width = 30
+                    Height = 30
+                    Align = alRight
+                    PngImage.Data = {
+                      89504E470D0A1A0A0000000D4948445200000018000000180806000000E0773D
+                      F800000006624B474400FF00FF00FFA0BDA7930000029C4944415478DA636420
+                      1284AE2AE4E47CCF260A627F17FCF57A7558FF7762F431E2938C9D5762CECDC6
+                      95FFFFDF7F47365616162E7676B0FA6F3F7FFEFFF9FBCF1F6626A67D5F7F7C9F
+                      B828A5EB144916C4CC2D53E761E75820C0C3A3AE25A720282628C8C0C4C884A2
+                      E6DFFF7F0C2FDFBF67B8FEF0FEFB779FBF5EFFF5F77BC282C4EEDB042D485A58
+                      EEC9C1C2BED056C75054989F8FA8E07BF3E903C3E1CB975EFDF8FB236E7E5CE7
+                      4E9C16242F28F7E6E5E25DE8626822CCC6CA4A6CF480C1CFDFBF19F69C3BFDF6
+                      F38F2FB1F3E23BB76358103DAF588B9F95FB8097859528A986235BB2FDE4F157
+                      9F7E7EB75B92DC7513C582B44575A71D0D0C4C84F9F8711AA0C8AF00A6EF7F7C
+                      8037B80E5EBC7072666CB305DC8298D9A5B63222A21B9D0C8D05F1B9D05CD214
+                      4C9F7C7E1AAF4FF69E3FFBFEE9EBB73E4BD23A8F812DC8585AB7C6465B3F584C
+                      4080811A16BCFCF08EE1E8E54BAB66C43687832D485F5CF32CC8C64192919191
+                      2A16FCFBF79F61C3D183CF8016483326CD2DE305A69C3BDE9656620C0400B116
+                      80C0D6E3475FBDFBFD4989316E56A59A9498E061270363140B40112AC6258AA2
+                      899B950B4C7FFDFD0D45FCD5B7D71811BFEFC2B9572FDEBFB26104E55A596191
+                      438E34B0E0D9AB77B68CA1531B78244498EEFA9A5B533588360383E805F37B05
+                      482A5A52FB34D0DA5E8ACA91FC1418C9326013D316D72C0626D318092121AA58
+                      F0FCDD5B86A357AF2C9C15DB9400B6206E6EB98D9490F006604613A686057BCE
+                      9F7DF3E2DD2BBF45C93DC7E16192BAA8F69093A1918D302F1FCE7022B2A8F8BF
+                      FFC28583B3E39A1D417CB861F1334B957978B88F7A9A59885354D89D3AF6F2F3
+                      B76F968B537BEEA358000209F32B3C04B8799650525C7FFCF63D724162DB6E98
+                      387D2B1C18A06995890C6856E96303E4365B001D086E4FFC437A270000000049
+                      454E44AE426082}
+                    ExplicitLeft = 704
+                  end
+                  object btnAdicionarFicha: TPngSpeedButton
+                    Left = 676
+                    Top = 0
+                    Width = 30
+                    Height = 30
+                    Align = alRight
+                    PngImage.Data = {
+                      89504E470D0A1A0A0000000D4948445200000018000000180806000000E0773D
+                      F800000006624B474400FF00FF00FFA0BDA793000003234944415478DA636420
+                      13544D982DFEFDD36F8DFE7F9987191A18FFE152C7488EE1B975D3BCB9B83936
+                      CA4A4B32DD7FF4F8E3AF5F3FE42737E47DA28A05390DD36278B93917FAB83A30
+                      B1B2B230BC7DFF8961D781C3DF39799815DB0A525F5264416EE3D44816669625
+                      66A6264C92A2820C5CECAC60F1F71F3F33ECD807B28409C312A22D0019CECACC
+                      BCC4D4C48489939303A8939141808713C9924F0CDBF71EF9CEC58B6A095116E4
+                      354C89606161596A6A6ACCC4C9C189E43C460641A0259CC896007DC285145C04
+                      2D0019CECCCCBAD4CCCC08D5705C967CF8CCB07DFFA1EF4071E509D5E9CFF15A
+                      50D838D5F73F23D306136323261E1E6EDC0AD12C0145FCEE03473FF6FD4915C2
+                      694155F71C1D360EF67DBF7EFC155553576310E0E7C3EB53904182BC5C0C1C50
+                      4B4E9DBBFCFFF6BD47EE582D28EF9BAFCBCBC1BE2B3AD84B8299898961D6A2F5
+                      0CAAAA2A0CFCFCFC842DE1E3626002FA68E3F63DFFFEFC6414C5B0A0A2679629
+                      1F0FEF96B8501F313E5E1EB0D8E72FDF18662E5CCBA0A0A0C020242484D7924F
+                      9F3E335CBA72E5DFAF3FBFBC27D566EF40B1A0AC738E99003FF76664C3618018
+                      4B3E7EFAC470F6DC857FFF18FE7A4DA9CFDD09F31541C389B1046638230B93C7
+                      C4EA8CDDC8C14694E130F00568C98C85EB18E4E5E519848585F01A0EB6A0A161
+                      26179328F79DD8106F49614101066200B225CC2C2C0CE72F5EFACBC4C0E8D55F
+                      9BBE0B23E2CB3AE7AACBC9881D05BA5E9828D36141F2F90BC38CF96B19BE7CFF
+                      F18F99E1BF7F5F6DE6166CEA1819FEFF676C9CBAEC90838591B1A19E0627B116
+                      BCFBF09161E1AAADAFDEBE7F9F38A936671B2E75E038686858C5C624F26BA7A5
+                      89BEA9B9910E3721C35FBF7DCFB06CDD8E679FBEFE74E82E4BBC8D4F2D3C1581
+                      2C6114F9B5C3DA54DFCCCC10B72520C397AFDFF1F4E3979F8E840C47B100CD12
+                      73A0255C941A8E61015270EDB042B3841CC3B15A0002693367B2CAFCE1DE696D
+                      666066AAAFCD0D33FCCB8F6F0E1D45297788351CA705109FCCE7601665DB29C0
+                      C7ABF7FAED3BD693870F6CFBF0EECD07620DFEFFEFFFE25307B71EC65FE10093
+                      707673BFD68DB3A784BE7CFAFC8D1497FFF9CFF4F0EC81CD6F0017FE66152C58
+                      13D80000000049454E44AE426082}
+                    ExplicitLeft = 704
+                  end
+                end
+                object edtAltura: TAEditReal
+                  Left = 16
+                  Top = 52
+                  Width = 83
+                  Height = 21
+                  TabOrder = 1
+                end
+                object edtPeso: TAEditReal
+                  Left = 105
+                  Top = 52
+                  Width = 83
+                  Height = 21
+                  TabOrder = 2
+                end
+                object edtSaltoVertical: TAEditReal
+                  Left = 194
+                  Top = 52
+                  Width = 83
+                  Height = 21
+                  TabOrder = 3
+                end
+                object edt40Jardas: TAEditReal
+                  Left = 283
+                  Top = 52
+                  Width = 83
+                  Height = 21
+                  TabOrder = 4
+                end
+                object edtSaltoHorizontal: TAEditReal
+                  Left = 372
+                  Top = 52
+                  Width = 83
+                  Height = 21
+                  TabOrder = 5
+                end
+                object edtShuttle: TAEditReal
+                  Left = 461
+                  Top = 52
+                  Width = 83
+                  Height = 21
+                  TabOrder = 6
+                end
+                object edt3Cones: TAEditReal
+                  Left = 550
+                  Top = 52
+                  Width = 83
+                  Height = 21
+                  TabOrder = 7
+                end
+              end
+              object Panel6: TPanel
+                Left = 0
+                Top = 0
+                Width = 746
+                Height = 83
+                Align = alTop
+                BevelKind = bkTile
+                TabOrder = 3
+                object Label10: TLabel
+                  Left = 11
+                  Top = 37
+                  Width = 30
+                  Height = 13
+                  Caption = 'Nome'
+                end
+                object Label18: TLabel
+                  Left = 272
+                  Top = 37
+                  Width = 24
+                  Height = 13
+                  Caption = 'Data'
+                end
+                object Panel7: TPanel
+                  Left = 1
+                  Top = 1
+                  Width = 740
+                  Height = 34
+                  Align = alTop
+                  BevelKind = bkTile
+                  BevelOuter = bvNone
+                  Color = clActiveCaption
+                  ParentBackground = False
+                  TabOrder = 0
+                  object Image3: TImage
+                    AlignWithMargins = True
+                    Left = 3
+                    Top = 3
+                    Width = 24
+                    Height = 24
+                    Align = alLeft
+                    AutoSize = True
+                    Center = True
+                    Picture.Data = {
+                      0954506E67496D61676589504E470D0A1A0A0000000D49484452000000180000
+                      00180806000000E0773DF800000006624B474400FF00FF00FFA0BDA793000002
+                      BF4944415478DAE5935B4853711CC7BFE7BF9B9B9B53A7E5149C97D108616A93
+                      F09265915111DD0B82BC615608411091DA8B2F6910412F85668A652F11A10F06
+                      7981C0407D68797948A553E64CA74EE76CF3B2B99DD3D989459189AC4550DFA7
+                      DFF9DD3EBFDFEF9C43E10F8BFA65840555585F7E9681A79430EC9A790CA15802
+                      C1BDC6E2EAC75C27764380BCFB6517C512729962A10D55C8A865A78BD89756D6
+                      9C412193422A163136C712CBB2A05DABCC9DA6F3376B7E00545656920FB18E3D
+                      2222BA24A088C1CD30D1BAD8184A299772746E2C6E2EF39C1533F30BE0607C91
+                      5422C6A63025D4AA7050947759169F1D4B18364DB2422131310CFBCAE5F6D426
+                      8C4BBBA982BA32832448D0A18D8E0A0B91CB30488F21591BE7D7BD07E88FD06B
+                      353C8C9E9C9A77AE787279802A34F8053775842FE97700BEDA11D3C4EC9C6D71
+                      FF3F02502AA49D9AA8C8506F809E3023451BCF27B10C303E6CC69BCE216C4D4F
+                      806E7B1CFA38FB9DD104C6C34293A446FA613DF7A2BF7E8CFDF428B4316ADE1E
+                      9BB2D816ECCB7BA9FCDA6BB1444CAA080581372024D431834E2BF1DACF6BBAB0
+                      EAF4C06A5E40D6F11484A8E4686BE8C6C10B3B4008412B17DF75DA80787D0CDF
+                      D438423BDD0CDBECB519161EC6C554FCF41F943CBA6E49D325F2E7B25B17A108
+                      0F464359330748C58CC98A65FB0AF61565F2B96D0D3D904845C83993C63FBF1E
+                      793F5B977F23F2FB7EEB027CF20146073F2124428ECCA329BCBFBBA51FB6693B
+                      B751766000DEDBABA295C83892CCFB7B5A0660B33870A0242B308049DA02F7AA
+                      07B905E9BCBFE3612F8282C5C83EB92D3000894C8CAE27461C2ADDC957B6DEED
+                      426E5106D4091181016C498B83B1FD2D867A47211451D0E7E8909495F82DCF6F
+                      C046F59F00AE3CABB2EED6A786F9037839D8377FFB4445F8DFDDA0B8B1DCAED9
+                      1C29F70730366D71D417562BD605E43DB87ACA9FE63E359DBBF5745D40A0F505
+                      2AFC746FD6CED3850000000049454E44AE426082}
+                  end
+                  object lblAtletaFicha: TLabel
+                    AlignWithMargins = True
+                    Left = 33
+                    Top = 3
+                    Width = 60
+                    Height = 27
+                    Align = alLeft
+                    Caption = 'Atleta'
+                    Font.Charset = DEFAULT_CHARSET
+                    Font.Color = clWindowText
+                    Font.Height = -16
+                    Font.Name = 'Segoe UI'
+                    Font.Style = [fsBold]
+                    ParentFont = False
+                  end
+                end
+                object edtNomeFicha: TAEdit
+                  Left = 11
+                  Top = 53
+                  Width = 255
+                  Height = 21
+                  Color = clInactiveCaption
+                  Enabled = False
+                  TabOrder = 1
+                end
+                object dtDataFicha: TDateTimePicker
+                  Left = 272
+                  Top = 53
+                  Width = 92
+                  Height = 21
+                  Date = 42906.750214479170000000
+                  Time = 42906.750214479170000000
+                  Color = clInactiveCaption
+                  Enabled = False
+                  TabOrder = 2
+                end
+              end
+            end
+          end
+          object pnlMenuFichas: TPanel
+            Left = 0
+            Top = 0
+            Width = 754
+            Height = 43
+            Align = alTop
+            BevelKind = bkTile
+            BevelOuter = bvNone
+            TabOrder = 1
+            ExplicitLeft = 2
+            object btnSairFichas: TPngBitBtn
+              AlignWithMargins = True
+              Left = 714
+              Top = 3
+              Width = 33
+              Height = 33
+              Align = alRight
+              Caption = 'Sair'
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clWindow
+              Font.Height = -11
+              Font.Name = 'Segoe UI'
+              Font.Style = []
+              Margin = 4
+              ParentFont = False
+              TabOrder = 2
+              OnClick = btnSairFichasClick
+              PngImage.Data = {
+                89504E470D0A1A0A0000000D494844520000001A0000001A0806000000A94A4C
+                CE00000006624B474400FF00FF00FFA0BDA793000001E74944415478DA6364C0
+                020AA71F9366F8FF979D8112C0C6FCA13FC5EA1D8CCB884D4DC59C13B7B839D9
+                85189918FE9363C7AF5F7FD881787E47AA653E5E8BAAE69DBCEFEC6AA4C0CACA
+                4296679E3D7DC370E9C2DD696DC916D9A3160D1E8BCE9CBFCF60ACAFC0C0C8C4
+                C8F0FAD50786B3A76FD2C6A205CB8E3008F07232F879190179FF19CE9CBAB9BC
+                24502B8AEA16CD5F7A848199998D4150808DC1C75D9FE1F98B77E7230C458C68
+                62919A9A26C3E3C78F1938D8FE319818C85D88321135A49945CCCC2C0C0F1EDC
+                67F8F7E7FBA71BEF7E0A1F6870FC43D0A2CF5F7E306CDA7E81E13F11E5C3870F
+                5F19CCCC4C18585858C07174FBF69D7F6FDEBE5BB5AED10D184F8CFFF15AF4EE
+                FD57865DFB6E3228292B13E52B906F18E126FE67B879F3F6D70FEF3F6C5ED3E8
+                1A45D0A29D7BAF33C8292812651127073B3C9040A170E7CEDDAF6FDEBC3DC07C
+                FD833F5E8BBE7CFDC9B073CF15A282EED5EB8F0C26A6C6E0A003A9BF7FEFDEBF
+                572FDF6E63BAF13E60F5EAB0BF544F0C2C2CCC0C77EFDE656065F9FB6E728699
+                08287E1818A89DEA5435181E3E7AC82024C8C6A0AB21753ED29846F98895859D
+                818F9785C1D7C380E1F94B1A655850112421C6CFE0EEACCBF0FFDF3FDA154167
+                CE010B550348A1FAF2C57B86F3676F0DF16A62D42230A05B738B160D4800C35C
+                5C81A3706D100000000049454E44AE426082}
+            end
+            object btnAbaListaFicha: TPngBitBtn
+              AlignWithMargins = True
+              Left = 3
+              Top = 3
+              Width = 33
+              Height = 33
+              Align = alLeft
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clWindow
+              Font.Height = -11
+              Font.Name = 'Segoe UI'
+              Font.Style = []
+              Margin = 4
+              ParentFont = False
+              TabOrder = 0
+              OnClick = btnAbaListaFichaClick
+              PngImage.Data = {
+                89504E470D0A1A0A0000000D494844520000001A0000001A0806000000A94A4C
+                CE00000006624B474400FF00FF00FFA0BDA793000001D14944415478DA6364A0
+                13601C7E168536EC10FAF79FB1FE3F23030B58E4DFBFBFBFFEFEE9DCD2EAFB94
+                AA1679576C51E2E2E2BCA0A428CF0B1278F4E8F1E7EF9FBF3A6EE8F0394B758B
+                04F8794ECACACA8AFCF9F397E1D5ABD76F3FBD7BEFAE26F8F21623D3BF03D4B0
+                848599CD0F6C113F1FCF291D1D2DE1FFC0F0BB79F3E6BB4FEF3EB86D68F73E57
+                D1315D801A1671FC7CF591D1A77AB3341B13DB7E46264656B0E8FFFF7F7EFDFE
+                E5BBB9DDF70655838E9A868D308BBC4AB74A7072326F626262620309FCFBFFFF
+                F7CFBFBFA2B6B4F8DEA6AA45A054C7CBC37D464B5B53102470FBE6EDF79F3F7C
+                74A5593E92969616F90BCC47AFDFBC05E72303A90FB7BFFFFC71811A96B03031
+                D9832DE2E1E13CA7A2ACCC0F12BC7FEFE1A76F9F3F3B51DD47BE0D9B45581858
+                2731333081F311308EFEFCFEF1AB7C73A7EF23AA5A444DC3469845C5538ECAB3
+                B0325E626666FE0712F8FBF72FD3EFFF7FEDFA326C2F52D5A2C2698795840579
+                4EDA391A8880048E1FBDFAF6D5CBF7EE8F449E5F507EF4D1801A96707CE1BF8C
+                D322C6AFF76F3033FC5E400D8BFE32FCCA065BC4CDC1765141598A0324F8F8E1
+                CB1F5FBE7C77E8CDB2A56E3E2A9B7B84F7EFCFFF9128A2CC7FD6F5A63BBEA1AA
+                45D4346C50580400AF3DCD81F5EC97960000000049454E44AE426082}
+            end
+            object btnAbaDetalhesFicha: TPngBitBtn
+              AlignWithMargins = True
+              Left = 42
+              Top = 3
+              Width = 33
+              Height = 33
+              Align = alLeft
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clWindow
+              Font.Height = -11
+              Font.Name = 'Segoe UI'
+              Font.Style = []
+              Margin = 4
+              ParentFont = False
+              TabOrder = 1
+              OnClick = btnAbaDetalhesFichaClick
+              PngImage.Data = {
+                89504E470D0A1A0A0000000D494844520000001A0000001A0806000000A94A4C
+                CE00000006624B474400FF00FF00FFA0BDA793000004404944415478DAEDD47B
+                4C1C451C07F0999D9D7DC0119E07549E01DA428236413C621B1B1F044A41DA62
+                E13F5BA591FA97F1512F9CB6E1104BB5A9698C51FF2892608D3610412A05C15A
+                8A36A93C6D1329422C25F4AA528ED7F51EBB37BB33DE61882D601014FF72FE9A
+                EC77673F3BBFDFEE40B08E23E7507B60C7895C977F0ED703283437076149EA87
+                08455346BF6DB4E614AC19CA2F6F09E510DC0E34FAC3976F3F397E0F547E6E87
+                312AAC213535CDD0D3DDEB508092BC26E8516B271FA6ABA391D191C6C9DB936E
+                E6D1B7341EDF695BC88BCD6D9B75110E0607072B730EC72F0F70975397850A5F
+                6B8EC2827C9201E6703AC12B0B755E18799656A341126E984C9981838343647A
+                7A76DFD9EABC33FECC6AB572035E5313E0401F60AC4B74BB7A1B4E96789685F6
+                5674B4C7C4C6642BAA57B3DB273FFCDC9AF3E2DDF92E4BCB231CE65B7C2DE621
+                80139AA6E910827A1EF3B98CB2705DD3FA9BABF3F7DEBD6659E8A98A8EE19494
+                A44D8AA2B2F19BB6016546DFD6F6DE4E757EB796D66D00B28F1003854DC7F247
+                FCD7765B9B42100B184A49498EF6280AB3D96CA71B2B77EC5F0662B0C8DC1683
+                48C894579A7D8341FA381604E28BA708212380E9793C122228A041BE6B4ECAD8
+                D6B36FE60D2FA9427CEC138A47D1ED76FB922A403FE2DBC1258C71BAD74B04A2
+                EB9F49D8F97C83B5C4FB67A95A2B63E3638E2424C4C1EF2FF7BA1AAB720D8BAB
+                B0C7DA1E89747654E7E0ACCB05AC8BFB0AFD37F0901B31991E0ABE36F49367DA
+                6EDFD35C5DD07E6F4FCE656151F82A2C3494B74F4F5D6BACCCCD5AED973ABFA3
+                A28A8E2B0172409CDBED561871DDDF74AC686AC91B1F6E49A38C4B99C3F2D717
+                AD8F292B3DF8999AF21DA2880F509D12A7AABC30DFA3B2B23E3C113591EAF1F0
+                A38BB7BCD671A0D672383936AEEA967D72CEA37832D6E5085A801EDCB4B96AE4
+                96CDEE7039B356849EAE79B598E7D069C600A0502BF8B8F4C4F9856CFF297319
+                C7A377A9AFA68082AD75CFBDD5FF8FA0B4F8C45AC54BC8D86D5BC96268CBC68D
+                EF4FCC4CCFFD669FC9A5483740C03007D10462DCAE758310029DC6903030E374
+                74EB9ADEB522545A677919715CB24EE97542B49B7F17C2189DCFCEC80CE9BCDA
+                7F5123FA372B4207EB8EDC484F4A4EFC71F4FA989B28E67F0DDA57633689187F
+                EA3B18A1A2A90765249FCA356525B6F7742F8104245A10E0923440BFD3BCE4D2
+                EAA0DA43D909C6FB1A7C181EB68D3F1B80A5E37F0561249EC9C9C80CBF7065E0
+                AAEFD0FD60D55062646CBD24603C343E56BA12946F7A38BCBDAFFB7FE83F8630
+                277E8138C83C5EB55440F868A02C45B83C8ADDAB93D76541ACD5298384AABB79
+                883F31C8B2E056949F7DFF588D2C89EF104DE7348D6E87085C089264AA106F0F
+                A15A976F9DC5E32588632C7D1E2AAE7F490E728A1BFC73C26B1390E921BC2E8A
+                1A525506D12CD6F8287F76C7A0FE6A70C20808044CA1EEE6287401C819FFC824
+                1B76DCD9207118115573CA1C52350CC3FDD9E8B834FE3B2FFC84878BA2333F00
+                00000049454E44AE426082}
+            end
+          end
+        end
+      end
     end
   end
   object pnlExpansor: TPanel
@@ -2280,8 +3330,8 @@ object frmPrincipal: TfrmPrincipal
   end
   object imgTreeViewPosicoes: TImageList
     ColorDepth = cd32Bit
-    Left = 690
-    Top = 26
+    Left = 422
+    Top = 2
     Bitmap = {
       494C010102000500040010001000FFFFFFFF2110FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000001000000001002000000000000010
@@ -2424,8 +3474,8 @@ object frmPrincipal: TfrmPrincipal
   end
   object ppmTreeView: TPopupMenu
     Images = imgListPopup
-    Left = 738
-    Top = 170
+    Left = 474
+    Top = 2
     object Excluirposio1: TMenuItem
       Caption = 'Excluir posi'#231#227'o'
       ImageIndex = 0
@@ -2434,8 +3484,8 @@ object frmPrincipal: TfrmPrincipal
   end
   object imgListPopup: TImageList
     ColorDepth = cd32Bit
-    Left = 742
-    Top = 214
+    Left = 526
+    Top = 2
     Bitmap = {
       494C010102000500040010001000FFFFFFFF2110FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000001000000001002000000000000010
