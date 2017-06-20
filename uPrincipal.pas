@@ -43,21 +43,12 @@ type
     gbDadosPessoaisAtletas: TGroupBox;
     Label1: TLabel;
     Label2: TLabel;
-    Label3: TLabel;
-    Label4: TLabel;
-    Label5: TLabel;
     Label6: TLabel;
     Label7: TLabel;
     edtNome: TAEdit;
     edtEmail: TAEditEmail;
-    edtTelefone: TAEditTelefone;
-    edtRG: TAEditInteiro;
-    edtOrgaoExpeditor: TAEdit;
-    edtCPF: TAEditCPF;
-    dtDataNascimento: TDateTimePicker;
     pnlDadosAtletas: TPanel;
     gbPosicoesAtleta: TGroupBox;
-    rgStatus: TRadioGroup;
     tvPosicoes: TTreeView;
     imgTreeViewPosicoes: TImageList;
     pnlIncluirPosicao: TPanel;
@@ -74,6 +65,20 @@ type
     ppmTreeView: TPopupMenu;
     Excluirposio1: TMenuItem;
     imgListPopup: TImageList;
+    pnlTelefoneAtleta: TPanel;
+    edtTelefone: TAEditTelefone;
+    Label3: TLabel;
+    pnlDocumentoAtleta: TPanel;
+    Label4: TLabel;
+    Label5: TLabel;
+    edtRG: TAEditInteiro;
+    edtOrgaoExpeditor: TAEdit;
+    pnlCPFAtleta: TPanel;
+    edtCPF: TAEditCPF;
+    pnlNascimentoAtleta: TPanel;
+    dtDataNascimento: TDateTimePicker;
+    pnlStatusAtleta: TPanel;
+    rgStatus: TRadioGroup;
     procedure btnExpansorClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure btnInicioClick(Sender: TObject);
@@ -107,6 +112,8 @@ type
     procedure AbrirQueryPosicoesAtleta();
     procedure LimparCampos();
     procedure MontarTreeViewPosicoes;
+
+    function ValidarDadosAtletaObrigatorio: Boolean;
 
     { Private declarations }
   public
@@ -192,6 +199,9 @@ end;
 
 procedure TfrmPrincipal.btnGravarAtletaClick(Sender: TObject);
 begin
+
+  if ValidarDadosAtletaObrigatorio then
+    Exit;
 
   try
 
@@ -489,6 +499,84 @@ begin
     if Components[I].ClassType = TTabSheet then
       TTabSheet(Components[I]).TabVisible := False;
 
+
+end;
+
+function TfrmPrincipal.ValidarDadosAtletaObrigatorio: Boolean;
+begin
+
+  Result := False;
+
+  if Trim(edtNome.Text) = EmptyStr then
+  begin
+    Result := True;
+    edtNome.SetFocus;
+    FMensagens.MensagemInformacao('O campo "Nome" é obrigatório!');
+    Exit;
+  end;
+  if Trim(edtEmail.Text) = EmptyStr then
+  begin
+    Result := True;
+    edtEmail.SetFocus;
+    FMensagens.MensagemInformacao('O campo "Email" é obrigatório!');
+    Exit;
+  end
+  else
+  if edtEmail.Invalid then
+  begin
+    Result := True;
+    edtEmail.SetFocus;
+    FMensagens.MensagemInformacao('Informe um "Email" válido!');
+    Exit;
+  end;
+
+  if Trim(edtTelefone.Text) = EmptyStr then
+  begin
+    Result := True;
+    edtTelefone.SetFocus;
+    FMensagens.MensagemInformacao('O campo "Telefone" é obrigatório!');
+    Exit;
+  end
+  else
+  if edtTelefone.Invalid then
+  begin
+    Result := True;
+    edtTelefone.SetFocus;
+    FMensagens.MensagemInformacao('Informe um "Telefone" válido!');
+    Exit;
+  end;
+
+  if Trim(edtRG.Text) = EmptyStr then
+  begin
+    Result := True;
+    edtRG.SetFocus;
+    FMensagens.MensagemInformacao('O campo "RG" é obrigatório!');
+    Exit;
+  end;
+
+  if Trim(edtOrgaoExpeditor.Text) = EmptyStr then
+  begin
+    Result := True;
+    edtOrgaoExpeditor.SetFocus;
+    FMensagens.MensagemInformacao('O campo "Orgao Expeditor" é obrigatório!');
+    Exit;
+  end;
+
+  if Trim(edtCPF.Text) = EmptyStr then
+  begin
+    Result := True;
+    edtCPF.SetFocus;
+    FMensagens.MensagemInformacao('O campo "CPF" é obrigatório!');
+    Exit;
+  end
+  else
+  if edtCPF.Invalid then
+  begin
+    Result := True;
+    edtCPF.SetFocus;
+    FMensagens.MensagemInformacao('Informe um "CPF" válido!');
+    Exit;
+  end;
 
 end;
 

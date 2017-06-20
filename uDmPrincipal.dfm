@@ -1,5 +1,6 @@
 object dmPrincipal: TdmPrincipal
   OldCreateOrder = False
+  OnCreate = DataModuleCreate
   Left = 417
   Top = 187
   Height = 320
@@ -17,7 +18,6 @@ object dmPrincipal: TdmPrincipal
       'Database=C:\Eduardo Faneli\GIT\Arsenal\BD\kaepernick.s3db'
       'LockingMode=Normal'
       'DriverID=SQLite')
-    Connected = True
     LoginPrompt = False
     Left = 32
     Top = 8
@@ -40,6 +40,7 @@ object dmPrincipal: TdmPrincipal
       '      '#9' when 1 then '#39'Ativo'#39
       '      '#9' when 2 then '#39'Suspenso'#39
       '      '#9' when 3 then '#39'Exclu'#237'do'#39
+      '      '#9' else'#9#39'Inv'#225'lido'#39
       '       end as Desc_Status'#9
       '      ,data_cadastro'
       '      ,data_atualizacao'
@@ -112,10 +113,6 @@ object dmPrincipal: TdmPrincipal
       FieldName = 'id_clube'
       Origin = 'id_clube'
       Required = True
-    end
-    object qryListaAtletasDesc_Status: TStringField
-      FieldName = 'Desc_Status'
-      Size = 255
     end
   end
   object dsListaAtletas: TDataSource

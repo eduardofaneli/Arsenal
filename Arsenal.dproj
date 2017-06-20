@@ -40,6 +40,7 @@
 			<Base>true</Base>
 		</PropertyGroup>
 		<PropertyGroup Condition="'$(Base)'!=''">
+			<VCL_Custom_Styles>&quot;Metro Black|VCLSTYLE|$(PUBLIC)\Documents\RAD Studio\9.0\Styles\MetroBlack.vsf&quot;</VCL_Custom_Styles>
 			<DCC_Namespace>System;Xml;Data;Datasnap;Web;Soap;Vcl;Vcl.Imaging;Vcl.Touch;Vcl.Samples;Vcl.Shell;$(DCC_Namespace)</DCC_Namespace>
 			<DCC_UsePackage>AnyDAC_PhysADS_D16;AnyDAC_Comp_D16;fmx;AnyDAC_PhysPg_D16;AnyDAC_PhysDb2_D16;IndySystem;AnyDAC_Phys_D16;DBXInterBaseDriver;DataSnapClient;DataSnapCommon;DataSnapServer;DataSnapProviderClient;AnyDAC_PhysMSSQL_D16;DbxCommonDriver;dbxcds;AnyDAC_PhysTDBX_D16;DBXOracleDriver;CustomIPTransport;AnyDAC_PhysOracle_D16;dsnap;fmxase;IndyCore;AnyDAC_PhysSQLITE_D16;CloudService;AnyDAC_PhysMySQL_D16;FmxTeeUI;inetdbxpress;AnyDAC_PhysODBC_D16;bindcompfmx;rtl;dbrtl;DbxClientDriver;bindcomp;inetdb;AnyDAC_PhysASA_D16;xmlrtl;ibxpress;IndyProtocols;DBXMySQLDriver;soaprtl;FMXTee;bindengine;DBXInformixDriver;AnyDAC_ComI_D16;DBXFirebirdDriver;inet;fmxobj;AnyDAC_PhysIB_D16;AnyDAC_PhysMSAcc_D16;DBXSybaseASADriver;fmxdae;AnyDAC_GUIxForms_D16;dbexpress;DataSnapIndy10ServerTransport;$(DCC_UsePackage)</DCC_UsePackage>
 			<Icon_MainIcon>$(BDS)\bin\delphi_PROJECTICON.ico</Icon_MainIcon>
@@ -50,6 +51,7 @@
 			<DCC_UsePackage>Utilities_DXE2;TeeDB;NBSIFireDAC;vclib;officeXPrt;DBXSybaseASEDriver;vclimg;vcldb;vcldsnap;Diversos;DBXDb2Driver;EControlTI;vclribbon;vcl;DBXMSSQLDriver;gtDocEngD16;webdsnap;adortl;OrpheusNBSI;Tee;DBXOdbcDriver;SynEdit_RXE2;fcstudiowin;vclactnband;TeeUI;ipstudiowin;bindcompvcl;pkBarCodeDXE2;vclie;NBSI;vcltouch;QR5RunNBDEDXE2;websnap;PngComponents;VclSmp;DataSnapConnectors;ipstudiowinclient;dsnapcon;vclx;$(DCC_UsePackage)</DCC_UsePackage>
 		</PropertyGroup>
 		<PropertyGroup Condition="'$(Base_Win32)'!=''">
+			<Icon_MainIcon>Imagens\American-football_40469.ico</Icon_MainIcon>
 			<Manifest_File>$(BDS)\bin\default_app.manifest</Manifest_File>
 			<VerInfo_Locale>1033</VerInfo_Locale>
 			<VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
@@ -90,6 +92,11 @@
 				<DesignClass>TDataModule</DesignClass>
 			</DCCReference>
 			<DCCReference Include="uClasses.pas"/>
+			<RcItem Include="BD\kaepernick.s3db">
+				<ContainerId>ResourceItem</ContainerId>
+				<ResourceType>s3db</ResourceType>
+				<ResourceId>kaepernick</ResourceId>
+			</RcItem>
 			<BuildConfiguration Include="Release">
 				<Key>Cfg_2</Key>
 				<CfgParent>Base</CfgParent>
