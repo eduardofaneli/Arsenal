@@ -1,5 +1,7 @@
 program Arsenal;
 
+
+
 {$R *.dres}
 
 uses

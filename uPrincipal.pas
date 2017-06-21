@@ -106,8 +106,6 @@ type
     Panel7: TPanel;
     Label10: TLabel;
     edtNomeFicha: TAEdit;
-    Label18: TLabel;
-    dtDataFicha: TDateTimePicker;
     Image3: TImage;
     lblAtletaFicha: TLabel;
     Image4: TImage;
@@ -152,13 +150,31 @@ type
     edt3Cones: TAEditReal;
     Label32: TLabel;
     btnLimparFicha: TPngSpeedButton;
-    btnAdicionarFicha: TPngSpeedButton;
-    DateTimePicker1: TDateTimePicker;
-    DateTimePicker2: TDateTimePicker;
     Label36: TLabel;
     edtUltimoIMC: TAEditReal;
     Label37: TLabel;
     edtMelhorIMC: TAEditReal;
+    dtMelhorAltura: TDateTimePicker;
+    dtMelhorPeso: TDateTimePicker;
+    dtMelhorIMC: TDateTimePicker;
+    dtMelhorSaltoVertical: TDateTimePicker;
+    dtMelhor40Jardas: TDateTimePicker;
+    dtMelhorSaltoHorizontal: TDateTimePicker;
+    dtMelhorShuttle: TDateTimePicker;
+    dtMelhor3Cones: TDateTimePicker;
+    dtUltimaAltura: TDateTimePicker;
+    dtUltimoPeso: TDateTimePicker;
+    dtUltimoIMC: TDateTimePicker;
+    dtUltimoSaltoVertical: TDateTimePicker;
+    dtUltimo40Jardas: TDateTimePicker;
+    dtUltimoSaltoHorizontal: TDateTimePicker;
+    dtUltimoShuttle: TDateTimePicker;
+    dtUltimo3Cones: TDateTimePicker;
+    dtDataFicha: TDateTimePicker;
+    Label18: TLabel;
+    edtIMCAtual: TAEditReal;
+    Label38: TLabel;
+    btnAdicionarFicha: TPngBitBtn;
     procedure btnExpansorClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure btnInicioClick(Sender: TObject);
@@ -183,6 +199,9 @@ type
     procedure btnFichaAtletaClick(Sender: TObject);
     procedure btnAbaListaFichaClick(Sender: TObject);
     procedure btnAbaDetalhesFichaClick(Sender: TObject);
+    procedure edtPesoExit(Sender: TObject);
+    procedure btnLimparFichaClick(Sender: TObject);
+    procedure btnAdicionarFichaClick(Sender: TObject);
   private
     FMensagens: TMensagens;
     FDadosAtleta: TAtleta;
@@ -191,12 +210,18 @@ type
     procedure OcultarSheets();
     procedure EncerrarAplicacao();
     procedure HabilitarCrudAtleta(AHabilitar: Boolean);
-    procedure CarregarInformacoes();
+    procedure CarregarInformacoesObjeto();
+    procedure CarregarDadosAtleta();
     procedure GravarDadosAtleta();
     procedure AbrirQueryAtletas();
     procedure AbrirQueryPosicoesAtleta();
     procedure LimparCampos();
-    procedure MontarTreeViewPosicoes;
+    procedure MontarTreeViewPosicoes();
+    procedure InserirFichaAtleta();
+    procedure LimparFichaAtleta();
+    procedure CarregarMedicoes();
+    procedure getMelhorMedicao();
+    procedure getUltimaMedicao();
 
     function ValidarDadosAtletaObrigatorio: Boolean;
 
@@ -335,8 +360,8 @@ begin
 
     FDadosAtleta.AdicionarPosicaoJogador;
 
-    AbrirQueryPosicoesAtleta;
-    MontarTreeViewPosicoes;
+    AbrirQueryPosicoesAtleta();
+    MontarTreeViewPosicoes();
 
   except
     on e: Exception do
@@ -358,6 +383,13 @@ procedure TfrmPrincipal.btnInicioClick(Sender: TObject);
 begin
 
   pcPrincipal.ActivePage := tbInicio;
+
+end;
+
+procedure TfrmPrincipal.btnLimparFichaClick(Sender: TObject);
+begin
+
+  LimparFichaAtleta();
 
 end;
 
@@ -409,9 +441,22 @@ begin
   pcFichasAtleta.ActivePage := tbListaFichasAtleta;
 end;
 
-procedure TfrmPrincipal.CarregarInformacoes;
+procedure TfrmPrincipal.CarregarDadosAtleta;
 begin
-  //Carregar Classe Atleta;
+
+  edtNome.Text := FDadosAtleta.Nome;
+  edtEmail.Text := FDadosAtleta.Email;
+  edtTelefone.Text:= FDadosAtleta.Telefone;
+  edtRG.Text := FDadosAtleta.RG;
+  edtOrgaoExpeditor.Text := FDadosAtleta.OrgaoExpeditor;
+  edtCPF.Text := FDadosAtleta.CPF;
+  dtDataNascimento.Date := FDadosAtleta.DataNascimento;
+
+end;
+
+procedure TfrmPrincipal.CarregarInformacoesObjeto;
+begin
+
   FDadosAtleta.Codigo := dmPrincipal.qryListaAtletasid.AsInteger;
   FDadosAtleta.CodigoClube := dmPrincipal.qryListaAtletasid_clube.AsInteger;
   FDadosAtleta.Nome := dmPrincipal.qryListaAtletasnome.AsString;
@@ -423,15 +468,13 @@ begin
   FDadosAtleta.CPF := dmPrincipal.qryListaAtletascpf.AsString;
   FDadosAtleta.Status := dmPrincipal.qryListaAtletasstatus.AsInteger;
 
-  //Atribuir Valores aos campos
-  edtNome.Text := FDadosAtleta.Nome;
-  edtEmail.Text := FDadosAtleta.Email;
-  edtTelefone.Text:= FDadosAtleta.Telefone;
-  edtRG.Text := FDadosAtleta.RG;
-  edtOrgaoExpeditor.Text := FDadosAtleta.OrgaoExpeditor;
-  edtCPF.Text := FDadosAtleta.CPF;
-  dtDataNascimento.Date := FDadosAtleta.DataNascimento;
+end;
 
+procedure TfrmPrincipal.CarregarMedicoes;
+begin
+
+  getMelhorMedicao();
+  getUltimaMedicao();
 
 end;
 
@@ -452,7 +495,41 @@ procedure TfrmPrincipal.dbgrdListaAtletasDrawColumnCell(Sender: TObject;
   const Rect: TRect; DataCol: Integer; Column: TColumn;
   State: TGridDrawState);
 begin
-  CarregarInformacoes;
+  CarregarInformacoesObjeto;
+  CarregarDadosAtleta;
+end;
+
+procedure TfrmPrincipal.edtPesoExit(Sender: TObject);
+begin
+
+  if (Trim(edtAltura.Text) <> EmptyStr) and (Trim(edtPeso.Text) <> EmptyStr) then
+  begin
+
+    FDadosAtleta.GetIMC(StrToFloat(edtPeso.Text), StrToFloat(edtAltura.Text));
+
+    if FDadosAtleta.FFichaAtleta.IMC < 17 then
+      edtIMCAtual.Text := FloatToStr(FDadosAtleta.FFichaAtleta.IMC) + ' | 3 - Muito abaixo'
+    else
+    if (FDadosAtleta.FFichaAtleta.IMC >= 17) and (FDadosAtleta.FFichaAtleta.IMC < 18.49) then
+      edtIMCAtual.Text := FloatToStr(FDadosAtleta.FFichaAtleta.IMC) + ' | 1 - Abaixo'
+    else
+    if (FDadosAtleta.FFichaAtleta.IMC >= 18.5) and (FDadosAtleta.FFichaAtleta.IMC < 25) then
+      edtIMCAtual.Text := FloatToStr(FDadosAtleta.FFichaAtleta.IMC) + ' | 0 - Normal'
+    else
+    if (FDadosAtleta.FFichaAtleta.IMC >= 25) and (FDadosAtleta.FFichaAtleta.IMC < 30) then
+      edtIMCAtual.Text := FloatToStr(FDadosAtleta.FFichaAtleta.IMC) + ' | 2 - Acima'
+    else
+    if (FDadosAtleta.FFichaAtleta.IMC >= 30) and (FDadosAtleta.FFichaAtleta.IMC < 35) then
+      edtIMCAtual.Text := FloatToStr(FDadosAtleta.FFichaAtleta.IMC) + ' | 4 - Obesidade I'
+    else
+    if (FDadosAtleta.FFichaAtleta.IMC >= 35) and (FDadosAtleta.FFichaAtleta.IMC < 40) then
+      edtIMCAtual.Text := FloatToStr(FDadosAtleta.FFichaAtleta.IMC) + ' | 5 - Obesidade II'
+    else
+    if (FDadosAtleta.FFichaAtleta.IMC >= 40) then
+      edtIMCAtual.Text := FloatToStr(FDadosAtleta.FFichaAtleta.IMC) + ' | 6 - Obesidade III'
+
+  end;
+
 end;
 
 procedure TfrmPrincipal.EncerrarAplicacao;
@@ -525,6 +602,68 @@ begin
 
 end;
 
+procedure TfrmPrincipal.getMelhorMedicao;
+begin
+
+  FDadosAtleta.GetMelhorMedicao;
+
+  edtMelhorAltura.Text := FloatToStr(FDadosAtleta.FFichaAtleta.FMelhorMedicao.Altura);
+  dtMelhorAltura.Date := FDadosAtleta.FFichaAtleta.FMelhorMedicao.DataAltura;
+
+  edtMelhorPeso.Text := FloatToStr(FDadosAtleta.FFichaAtleta.FMelhorMedicao.Peso);
+  dtMelhorPeso.Date := FDadosAtleta.FFichaAtleta.FMelhorMedicao.DataPeso;
+
+  edtMelhorIMC.Text := FloatToStr(FDadosAtleta.FFichaAtleta.FMelhorMedicao.IMC) + ' ' + FDadosAtleta.FFichaAtleta.FMelhorMedicao.DescricaoIMC;
+  dtMelhorIMC.Date := FDadosAtleta.FFichaAtleta.FMelhorMedicao.DataIMC;
+
+  edtMelhorSaltoVertical.Text := FloatToStr(FDadosAtleta.FFichaAtleta.FMelhorMedicao.SaltoVertical);
+  dtMelhorSaltoVertical.Date := FDadosAtleta.FFichaAtleta.FMelhorMedicao.DataSaltoVertical;
+
+  edtMelhor40Jardas.Text := FloatToStr(FDadosAtleta.FFichaAtleta.FMelhorMedicao.D40Jardas);
+  dtMelhor40Jardas.Date := FDadosAtleta.FFichaAtleta.FMelhorMedicao.Data40Jardas;
+
+  edtMelhorSaltoHorizontal.Text := FloatToStr(FDadosAtleta.FFichaAtleta.FMelhorMedicao.SaltoHorizontal);
+  dtMelhorSaltoHorizontal.Date := FDadosAtleta.FFichaAtleta.FMelhorMedicao.DataSaltoHorizontal;
+
+  edtMelhorShuttle.Text := FloatToStr(FDadosAtleta.FFichaAtleta.FMelhorMedicao.Shuttle);
+  dtMelhorShuttle.Date := FDadosAtleta.FFichaAtleta.FMelhorMedicao.DataShuttle;
+
+  edtMelhor3Cones.Text := FloatToStr(FDadosAtleta.FFichaAtleta.FMelhorMedicao.D3Cones);
+  dtMelhor3Cones.Date := FDadosAtleta.FFichaAtleta.FMelhorMedicao.Data3Cones;
+
+end;
+
+procedure TfrmPrincipal.getUltimaMedicao;
+begin
+
+  FDadosAtleta.GetUltimaMedicao;
+
+  edtUltimaAltura.Text := FloatToStr(FDadosAtleta.FFichaAtleta.FUltimaMedicao.Altura);
+  dtUltimaAltura.Date := FDadosAtleta.FFichaAtleta.FUltimaMedicao.DataAltura;
+
+  edtUltimoPeso.Text := FloatToStr(FDadosAtleta.FFichaAtleta.FUltimaMedicao.Peso);
+  dtUltimoPeso.Date := FDadosAtleta.FFichaAtleta.FUltimaMedicao.DataPeso;
+
+  edtUltimoIMC.Text := FloatToStr(FDadosAtleta.FFichaAtleta.FUltimaMedicao.IMC) + ' ' + FDadosAtleta.FFichaAtleta.FUltimaMedicao.DescricaoIMC;
+  dtUltimoIMC.Date := FDadosAtleta.FFichaAtleta.FUltimaMedicao.DataIMC;
+
+  edtUltimoSaltoVertical.Text := FloatToStr(FDadosAtleta.FFichaAtleta.FUltimaMedicao.SaltoVertical);
+  dtUltimoSaltoVertical.Date := FDadosAtleta.FFichaAtleta.FUltimaMedicao.DataSaltoVertical;
+
+  edtUltimo40Jardas.Text := FloatToStr(FDadosAtleta.FFichaAtleta.FUltimaMedicao.D40Jardas);
+  dtUltimo40Jardas.Date := FDadosAtleta.FFichaAtleta.FUltimaMedicao.Data40Jardas;
+
+  edtUltimoSaltoHorizontal.Text := FloatToStr(FDadosAtleta.FFichaAtleta.FUltimaMedicao.SaltoHorizontal);
+  dtUltimoSaltoHorizontal.Date := FDadosAtleta.FFichaAtleta.FUltimaMedicao.DataSaltoHorizontal;
+
+  edtUltimoShuttle.Text := FloatToStr(FDadosAtleta.FFichaAtleta.FUltimaMedicao.Shuttle);
+  dtUltimoShuttle.Date := FDadosAtleta.FFichaAtleta.FUltimaMedicao.DataShuttle;
+
+  edtUltimo3Cones.Text := FloatToStr(FDadosAtleta.FFichaAtleta.FUltimaMedicao.D3Cones);
+  dtUltimo3Cones.Date := FDadosAtleta.FFichaAtleta.FUltimaMedicao.Data3Cones;
+
+end;
+
 procedure TfrmPrincipal.GravarDadosAtleta;
 begin
 
@@ -567,6 +706,28 @@ begin
 
 end;
 
+procedure TfrmPrincipal.InserirFichaAtleta;
+begin
+
+  try
+
+    FDadosAtleta.FFichaAtleta.Altura := StrToFloatDef(edtAltura.Text,0);
+    FDadosAtleta.FFichaAtleta.Peso := StrToFloatDef(edtPeso.Text,0);
+    FDadosAtleta.FFichaAtleta.SaltoVertical := StrToFloatDef(edtSaltoVertical.Text,0);
+    FDadosAtleta.FFichaAtleta.D40Jardas := StrToFloatDef(edt40Jardas.Text,0);
+    FDadosAtleta.FFichaAtleta.SaltoHorizontal := StrToFloatDef(edtSaltoHorizontal.Text,0);
+    FDadosAtleta.FFichaAtleta.Shuttle := StrToFloatDef(edtShuttle.Text,0);
+    FDadosAtleta.FFichaAtleta.D3Cones := StrToFloatDef(edt3Cones.Text,0);
+
+    FDadosAtleta.InserirFichaAtleta();
+
+  except
+    on e:Exception do
+      FMensagens.MensagemErro(e.Message);
+
+  end;
+end;
+
 procedure TfrmPrincipal.LimparCampos;
 begin
   edtNome.Clear;
@@ -575,6 +736,20 @@ begin
   edtRG.Clear;
   edtOrgaoExpeditor.Clear;
   edtCPF.Clear;
+end;
+
+procedure TfrmPrincipal.LimparFichaAtleta;
+begin
+
+  edtAltura.Clear;
+  edtPeso.Clear;
+  edtIMCAtual.Clear;
+  edtSaltoVertical.Clear;
+  edt40Jardas.Clear;
+  edtSaltoHorizontal.Clear;
+  edtShuttle.Clear;
+  edt3Cones.Clear;
+
 end;
 
 procedure TfrmPrincipal.MontarTreeViewPosicoes;
@@ -636,6 +811,20 @@ begin
 
 end;
 
+procedure TfrmPrincipal.btnAdicionarFichaClick(Sender: TObject);
+begin
+
+  if not FMensagens.MensagemConfirmacao('Confirma inserir ficha do atleta?') then
+    Exit;
+
+  InserirFichaAtleta();
+
+  LimparFichaAtleta();
+
+  CarregarMedicoes();
+
+end;
+
 procedure TfrmPrincipal.btnAbaListaFichaClick(Sender: TObject);
 begin
   pcFichasAtleta.ActivePage := tbListaFichasAtleta;
@@ -646,6 +835,10 @@ begin
   pcFichasAtleta.ActivePage := tbDetalhesFichaAtleta;
 
   dtDataFicha.Date := Now;
+  edtNomeFicha.Text := FDadosAtleta.Nome;
+
+  CarregarMedicoes();
+
 end;
 
 function TfrmPrincipal.ValidarDadosAtletaObrigatorio: Boolean;

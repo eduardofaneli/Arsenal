@@ -1,9 +1,9 @@
 object frmPrincipal: TfrmPrincipal
-  Left = 296
-  Top = 116
+  Left = 234
+  Top = 64
   Caption = 'Arsenal'
-  ClientHeight = 451
-  ClientWidth = 832
+  ClientHeight = 492
+  ClientWidth = 855
   Color = clWindow
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -21,17 +21,18 @@ object frmPrincipal: TfrmPrincipal
     Left = 0
     Top = 0
     Width = 43
-    Height = 451
+    Height = 492
     Align = alLeft
     BevelKind = bkSoft
     BevelOuter = bvNone
     Constraints.MaxWidth = 130
     Constraints.MinWidth = 43
     TabOrder = 0
+    ExplicitLeft = -4
     object btnSair: TPngBitBtn
       AlignWithMargins = True
       Left = 3
-      Top = 411
+      Top = 452
       Width = 33
       Height = 33
       Align = alBottom
@@ -247,29 +248,32 @@ object frmPrincipal: TfrmPrincipal
   object pnlPrincipal: TPanel
     Left = 70
     Top = 0
-    Width = 762
-    Height = 451
+    Width = 785
+    Height = 492
     Align = alClient
     BevelOuter = bvNone
     TabOrder = 1
     ExplicitLeft = 200
     ExplicitWidth = 602
+    ExplicitHeight = 451
     object pcPrincipal: TPageControl
       Left = 0
       Top = 0
-      Width = 762
-      Height = 451
+      Width = 785
+      Height = 492
       ActivePage = tbFichaAtleta
       Align = alClient
       TabOrder = 0
       ExplicitLeft = 4
+      ExplicitWidth = 762
+      ExplicitHeight = 451
       object tbInicio: TTabSheet
         Caption = 'tbInicio'
         object imgInicio: TImage
           Left = 0
           Top = 0
-          Width = 754
-          Height = 423
+          Width = 777
+          Height = 464
           Align = alClient
           AutoSize = True
           Center = True
@@ -1465,8 +1469,8 @@ object frmPrincipal: TfrmPrincipal
         object pnlAtleta: TPanel
           Left = 0
           Top = 0
-          Width = 754
-          Height = 423
+          Width = 777
+          Height = 464
           Align = alClient
           BevelOuter = bvNone
           TabOrder = 0
@@ -1477,19 +1481,20 @@ object frmPrincipal: TfrmPrincipal
           object pcAtleta: TPageControl
             Left = 0
             Top = 43
-            Width = 754
-            Height = 380
-            ActivePage = tbDadosAtleta
+            Width = 777
+            Height = 421
+            ActivePage = tbListaAtletas
             Align = alClient
             TabOrder = 0
             ExplicitWidth = 724
+            ExplicitHeight = 380
             object tbListaAtletas: TTabSheet
               Caption = 'tbListaAtletas'
               object dbgrdListaAtletas: TDBGrid
                 Left = 0
                 Top = 0
-                Width = 746
-                Height = 352
+                Width = 769
+                Height = 393
                 Align = alClient
                 DataSource = dmPrincipal.dsListaAtletas
                 Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
@@ -1535,27 +1540,29 @@ object frmPrincipal: TfrmPrincipal
               object pnlDadosPessoaisAtletas: TPanel
                 Left = 0
                 Top = 0
-                Width = 446
-                Height = 352
+                Width = 469
+                Height = 393
                 Align = alClient
                 BevelOuter = bvNone
                 TabOrder = 0
                 ExplicitWidth = 365
+                ExplicitHeight = 352
                 object gbDadosPessoaisAtletas: TGroupBox
                   AlignWithMargins = True
                   Left = 3
                   Top = 3
-                  Width = 440
-                  Height = 346
+                  Width = 463
+                  Height = 387
                   Align = alClient
                   Caption = 'Dados Pessoais'
                   TabOrder = 0
                   ExplicitWidth = 286
+                  ExplicitHeight = 346
                   object Label1: TLabel
                     AlignWithMargins = True
                     Left = 5
                     Top = 18
-                    Width = 430
+                    Width = 453
                     Height = 13
                     Align = alTop
                     Caption = 'Nome'
@@ -1565,7 +1572,7 @@ object frmPrincipal: TfrmPrincipal
                     AlignWithMargins = True
                     Left = 5
                     Top = 61
-                    Width = 430
+                    Width = 453
                     Height = 13
                     Align = alTop
                     Caption = 'Email'
@@ -1574,7 +1581,7 @@ object frmPrincipal: TfrmPrincipal
                   object Label6: TLabel
                     Left = 2
                     Top = 190
-                    Width = 436
+                    Width = 459
                     Height = 13
                     Align = alTop
                     Caption = 'CPF'
@@ -1583,7 +1590,7 @@ object frmPrincipal: TfrmPrincipal
                   object Label7: TLabel
                     Left = 2
                     Top = 232
-                    Width = 436
+                    Width = 459
                     Height = 13
                     Align = alTop
                     Caption = 'Data de Nascimento'
@@ -1593,7 +1600,7 @@ object frmPrincipal: TfrmPrincipal
                     AlignWithMargins = True
                     Left = 5
                     Top = 104
-                    Width = 430
+                    Width = 453
                     Height = 13
                     Align = alTop
                     Caption = 'Telefone'
@@ -1603,7 +1610,7 @@ object frmPrincipal: TfrmPrincipal
                     AlignWithMargins = True
                     Left = 5
                     Top = 34
-                    Width = 430
+                    Width = 453
                     Height = 21
                     Align = alTop
                     TabOrder = 0
@@ -1614,7 +1621,7 @@ object frmPrincipal: TfrmPrincipal
                     AlignWithMargins = True
                     Left = 5
                     Top = 77
-                    Width = 430
+                    Width = 453
                     Height = 21
                     Hint = 'Exemplo: "exemplo@exemplo.com'
                     Align = alTop
@@ -1628,7 +1635,7 @@ object frmPrincipal: TfrmPrincipal
                   object pnlTelefoneAtleta: TPanel
                     Left = 2
                     Top = 117
-                    Width = 436
+                    Width = 459
                     Height = 29
                     Align = alTop
                     BevelOuter = bvNone
@@ -1654,7 +1661,7 @@ object frmPrincipal: TfrmPrincipal
                   object pnlDocumentoAtleta: TPanel
                     Left = 2
                     Top = 146
-                    Width = 436
+                    Width = 459
                     Height = 44
                     Align = alTop
                     BevelOuter = bvNone
@@ -1695,7 +1702,7 @@ object frmPrincipal: TfrmPrincipal
                   object pnlCPFAtleta: TPanel
                     Left = 2
                     Top = 203
-                    Width = 436
+                    Width = 459
                     Height = 29
                     Align = alTop
                     BevelOuter = bvNone
@@ -1719,7 +1726,7 @@ object frmPrincipal: TfrmPrincipal
                   object pnlNascimentoAtleta: TPanel
                     Left = 2
                     Top = 245
-                    Width = 436
+                    Width = 459
                     Height = 29
                     Align = alTop
                     BevelOuter = bvNone
@@ -1739,7 +1746,7 @@ object frmPrincipal: TfrmPrincipal
                   object pnlStatusAtleta: TPanel
                     Left = 2
                     Top = 274
-                    Width = 436
+                    Width = 459
                     Height = 50
                     Align = alTop
                     BevelOuter = bvNone
@@ -1748,7 +1755,7 @@ object frmPrincipal: TfrmPrincipal
                       AlignWithMargins = True
                       Left = 3
                       Top = 3
-                      Width = 430
+                      Width = 453
                       Height = 44
                       Align = alClient
                       Caption = 'Status'
@@ -1764,29 +1771,32 @@ object frmPrincipal: TfrmPrincipal
                 end
               end
               object pnlDadosAtletas: TPanel
-                Left = 446
+                Left = 469
                 Top = 0
                 Width = 300
-                Height = 352
+                Height = 393
                 Align = alRight
                 BevelOuter = bvNone
                 TabOrder = 1
+                ExplicitLeft = 446
+                ExplicitHeight = 352
                 object gbPosicoesAtleta: TGroupBox
                   AlignWithMargins = True
                   Left = 3
                   Top = 3
                   Width = 294
-                  Height = 346
+                  Height = 387
                   Align = alClient
                   Caption = 'Posi'#231#245'es'
                   TabOrder = 0
                   ExplicitWidth = 369
+                  ExplicitHeight = 346
                   object tvPosicoes: TTreeView
                     AlignWithMargins = True
                     Left = 5
                     Top = 70
                     Width = 284
-                    Height = 216
+                    Height = 257
                     Align = alClient
                     Images = imgTreeViewPosicoes
                     Indent = 19
@@ -1861,7 +1871,7 @@ object frmPrincipal: TfrmPrincipal
                   end
                   object pnlLegendaPosicao: TPanel
                     Left = 2
-                    Top = 289
+                    Top = 330
                     Width = 290
                     Height = 55
                     Align = alBottom
@@ -1988,7 +1998,7 @@ object frmPrincipal: TfrmPrincipal
           object pnlMenuAtleta: TPanel
             Left = 0
             Top = 0
-            Width = 754
+            Width = 777
             Height = 43
             Align = alTop
             BevelKind = bkTile
@@ -1996,7 +2006,7 @@ object frmPrincipal: TfrmPrincipal
             TabOrder = 1
             object btnSairAtleta: TPngBitBtn
               AlignWithMargins = True
-              Left = 714
+              Left = 737
               Top = 3
               Width = 33
               Height = 33
@@ -2277,11 +2287,15 @@ object frmPrincipal: TfrmPrincipal
       object tbFichaAtleta: TTabSheet
         Caption = 'tbFichaAtleta'
         ImageIndex = 2
+        ExplicitLeft = 0
+        ExplicitTop = 0
+        ExplicitWidth = 0
+        ExplicitHeight = 0
         object pnlFichaAtlelas: TPanel
           Left = 0
           Top = 0
-          Width = 754
-          Height = 423
+          Width = 777
+          Height = 464
           Align = alClient
           BevelOuter = bvNone
           TabOrder = 0
@@ -2292,18 +2306,20 @@ object frmPrincipal: TfrmPrincipal
           object pcFichasAtleta: TPageControl
             Left = 0
             Top = 43
-            Width = 754
-            Height = 380
+            Width = 777
+            Height = 421
             ActivePage = tbDetalhesFichaAtleta
             Align = alClient
             TabOrder = 0
+            ExplicitWidth = 754
+            ExplicitHeight = 380
             object tbListaFichasAtleta: TTabSheet
               Caption = 'tbListaFichasAtleta'
               object dbGridListaFichas: TDBGrid
                 Left = 0
                 Top = 0
-                Width = 746
-                Height = 352
+                Width = 769
+                Height = 393
                 Align = alClient
                 DataSource = dmPrincipal.dsListaAtletas
                 Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
@@ -2343,15 +2359,18 @@ object frmPrincipal: TfrmPrincipal
               Caption = 'tbDetalhesFichaAtleta'
               ImageIndex = 1
               ExplicitLeft = 2
+              ExplicitTop = 0
+              ExplicitWidth = 0
+              ExplicitHeight = 0
               object pnlUltimaMedicao: TPanel
                 Left = 0
-                Top = 172
-                Width = 746
-                Height = 88
+                Top = 193
+                Width = 769
+                Height = 110
                 Align = alTop
                 BevelKind = bkTile
                 TabOrder = 0
-                ExplicitTop = 89
+                ExplicitWidth = 746
                 object Label11: TLabel
                   Left = 16
                   Top = 36
@@ -2367,35 +2386,35 @@ object frmPrincipal: TfrmPrincipal
                   Caption = 'Peso (KG)'
                 end
                 object Label13: TLabel
-                  Left = 283
+                  Left = 318
                   Top = 36
                   Width = 67
                   Height = 13
                   Caption = 'Salto Vertical'
                 end
                 object Label14: TLabel
-                  Left = 372
+                  Left = 407
                   Top = 36
                   Width = 47
                   Height = 13
                   Caption = '40 Jardas'
                 end
                 object Label15: TLabel
-                  Left = 461
+                  Left = 496
                   Top = 36
                   Width = 83
                   Height = 13
                   Caption = 'Salto Horizontal'
                 end
                 object Label16: TLabel
-                  Left = 550
+                  Left = 585
                   Top = 36
                   Width = 37
                   Height = 13
                   Caption = 'Shuttle'
                 end
                 object Label17: TLabel
-                  Left = 639
+                  Left = 674
                   Top = 36
                   Width = 41
                   Height = 13
@@ -2411,7 +2430,7 @@ object frmPrincipal: TfrmPrincipal
                 object Panel3: TPanel
                   Left = 1
                   Top = 1
-                  Width = 740
+                  Width = 763
                   Height = 34
                   Align = alTop
                   BevelKind = bkTile
@@ -2472,22 +2491,6 @@ object frmPrincipal: TfrmPrincipal
                     ParentFont = False
                     ExplicitHeight = 21
                   end
-                  object DateTimePicker2: TDateTimePicker
-                    AlignWithMargins = True
-                    Left = 641
-                    Top = 3
-                    Width = 92
-                    Height = 24
-                    Align = alRight
-                    Date = 42906.750214479170000000
-                    Time = 42906.750214479170000000
-                    Color = clInactiveCaption
-                    Enabled = False
-                    TabOrder = 0
-                    ExplicitLeft = 639
-                    ExplicitTop = 9
-                    ExplicitHeight = 21
-                  end
                 end
                 object edtUltimaAltura: TAEditReal
                   Left = 16
@@ -2508,7 +2511,7 @@ object frmPrincipal: TfrmPrincipal
                   TabOrder = 2
                 end
                 object edtUltimoSaltoVertical: TAEditReal
-                  Left = 283
+                  Left = 318
                   Top = 52
                   Width = 83
                   Height = 21
@@ -2517,7 +2520,7 @@ object frmPrincipal: TfrmPrincipal
                   TabOrder = 4
                 end
                 object edtUltimo40Jardas: TAEditReal
-                  Left = 372
+                  Left = 407
                   Top = 52
                   Width = 83
                   Height = 21
@@ -2526,7 +2529,7 @@ object frmPrincipal: TfrmPrincipal
                   TabOrder = 5
                 end
                 object edtUltimoSaltoHorizontal: TAEditReal
-                  Left = 461
+                  Left = 496
                   Top = 52
                   Width = 83
                   Height = 21
@@ -2535,7 +2538,7 @@ object frmPrincipal: TfrmPrincipal
                   TabOrder = 6
                 end
                 object edtUltimoShuttle: TAEditReal
-                  Left = 550
+                  Left = 585
                   Top = 52
                   Width = 83
                   Height = 21
@@ -2544,7 +2547,7 @@ object frmPrincipal: TfrmPrincipal
                   TabOrder = 7
                 end
                 object edtUltimo3Cones: TAEditReal
-                  Left = 639
+                  Left = 674
                   Top = 52
                   Width = 83
                   Height = 21
@@ -2555,22 +2558,118 @@ object frmPrincipal: TfrmPrincipal
                 object edtUltimoIMC: TAEditReal
                   Left = 194
                   Top = 52
-                  Width = 83
+                  Width = 118
                   Height = 21
                   Color = clInactiveCaption
                   Enabled = False
                   TabOrder = 3
                 end
+                object dtUltimaAltura: TDateTimePicker
+                  AlignWithMargins = True
+                  Left = 16
+                  Top = 79
+                  Width = 83
+                  Height = 21
+                  Date = 42906.750214479170000000
+                  Time = 42906.750214479170000000
+                  Color = clInactiveCaption
+                  Enabled = False
+                  TabOrder = 9
+                end
+                object dtUltimoPeso: TDateTimePicker
+                  AlignWithMargins = True
+                  Left = 105
+                  Top = 79
+                  Width = 83
+                  Height = 21
+                  Date = 42906.750214479170000000
+                  Time = 42906.750214479170000000
+                  Color = clInactiveCaption
+                  Enabled = False
+                  TabOrder = 10
+                end
+                object dtUltimoIMC: TDateTimePicker
+                  AlignWithMargins = True
+                  Left = 194
+                  Top = 79
+                  Width = 118
+                  Height = 21
+                  Date = 42906.750214479170000000
+                  Time = 42906.750214479170000000
+                  Color = clInactiveCaption
+                  Enabled = False
+                  TabOrder = 11
+                end
+                object dtUltimoSaltoVertical: TDateTimePicker
+                  AlignWithMargins = True
+                  Left = 318
+                  Top = 81
+                  Width = 83
+                  Height = 21
+                  Date = 42906.750214479170000000
+                  Time = 42906.750214479170000000
+                  Color = clInactiveCaption
+                  Enabled = False
+                  TabOrder = 12
+                end
+                object dtUltimo40Jardas: TDateTimePicker
+                  AlignWithMargins = True
+                  Left = 407
+                  Top = 79
+                  Width = 83
+                  Height = 21
+                  Date = 42906.750214479170000000
+                  Time = 42906.750214479170000000
+                  Color = clInactiveCaption
+                  Enabled = False
+                  TabOrder = 13
+                end
+                object dtUltimoSaltoHorizontal: TDateTimePicker
+                  AlignWithMargins = True
+                  Left = 496
+                  Top = 79
+                  Width = 83
+                  Height = 21
+                  Date = 42906.750214479170000000
+                  Time = 42906.750214479170000000
+                  Color = clInactiveCaption
+                  Enabled = False
+                  TabOrder = 14
+                end
+                object dtUltimoShuttle: TDateTimePicker
+                  AlignWithMargins = True
+                  Left = 585
+                  Top = 79
+                  Width = 83
+                  Height = 21
+                  Date = 42906.750214479170000000
+                  Time = 42906.750214479170000000
+                  Color = clInactiveCaption
+                  Enabled = False
+                  TabOrder = 15
+                end
+                object dtUltimo3Cones: TDateTimePicker
+                  AlignWithMargins = True
+                  Left = 674
+                  Top = 79
+                  Width = 83
+                  Height = 21
+                  Date = 42906.750214479170000000
+                  Time = 42906.750214479170000000
+                  Color = clInactiveCaption
+                  Enabled = False
+                  TabOrder = 16
+                end
               end
               object pnlMelhorMedicao: TPanel
                 Left = 0
                 Top = 83
-                Width = 746
-                Height = 89
+                Width = 769
+                Height = 110
                 Align = alTop
                 BevelKind = bkTile
                 TabOrder = 1
-                ExplicitTop = 0
+                ExplicitWidth = 746
                 object Label19: TLabel
                   Left = 16
                   Top = 36
@@ -2586,35 +2685,35 @@ object frmPrincipal: TfrmPrincipal
                   Caption = 'Peso (KG)'
                 end
                 object Label21: TLabel
-                  Left = 283
+                  Left = 318
                   Top = 36
                   Width = 67
                   Height = 13
                   Caption = 'Salto Vertical'
                 end
                 object Label22: TLabel
-                  Left = 372
+                  Left = 407
                   Top = 36
                   Width = 47
                   Height = 13
                   Caption = '40 Jardas'
                 end
                 object Label23: TLabel
-                  Left = 461
+                  Left = 496
                   Top = 36
                   Width = 83
                   Height = 13
                   Caption = 'Salto Horizontal'
                 end
                 object Label24: TLabel
-                  Left = 550
+                  Left = 585
                   Top = 36
                   Width = 37
                   Height = 13
                   Caption = 'Shuttle'
                 end
                 object Label25: TLabel
-                  Left = 639
+                  Left = 674
                   Top = 36
                   Width = 41
                   Height = 13
@@ -2630,7 +2729,7 @@ object frmPrincipal: TfrmPrincipal
                 object Panel4: TPanel
                   Left = 1
                   Top = 1
-                  Width = 740
+                  Width = 763
                   Height = 34
                   Align = alTop
                   BevelKind = bkTile
@@ -2700,22 +2799,6 @@ object frmPrincipal: TfrmPrincipal
                     ParentFont = False
                     ExplicitHeight = 21
                   end
-                  object DateTimePicker1: TDateTimePicker
-                    AlignWithMargins = True
-                    Left = 641
-                    Top = 3
-                    Width = 92
-                    Height = 24
-                    Align = alRight
-                    Date = 42906.750214479170000000
-                    Time = 42906.750214479170000000
-                    Color = clInactiveCaption
-                    Enabled = False
-                    TabOrder = 0
-                    ExplicitLeft = 639
-                    ExplicitTop = 9
-                    ExplicitHeight = 21
-                  end
                 end
                 object edtMelhorAltura: TAEditReal
                   Left = 16
@@ -2736,7 +2819,7 @@ object frmPrincipal: TfrmPrincipal
                   TabOrder = 2
                 end
                 object edtMelhorSaltoVertical: TAEditReal
-                  Left = 283
+                  Left = 318
                   Top = 52
                   Width = 83
                   Height = 21
@@ -2745,7 +2828,7 @@ object frmPrincipal: TfrmPrincipal
                   TabOrder = 3
                 end
                 object edtMelhor40Jardas: TAEditReal
-                  Left = 372
+                  Left = 407
                   Top = 52
                   Width = 83
                   Height = 21
@@ -2754,7 +2837,7 @@ object frmPrincipal: TfrmPrincipal
                   TabOrder = 4
                 end
                 object edtMelhorSaltoHorizontal: TAEditReal
-                  Left = 461
+                  Left = 496
                   Top = 52
                   Width = 83
                   Height = 21
@@ -2763,7 +2846,7 @@ object frmPrincipal: TfrmPrincipal
                   TabOrder = 5
                 end
                 object edtMelhorShuttle: TAEditReal
-                  Left = 550
+                  Left = 585
                   Top = 52
                   Width = 83
                   Height = 21
@@ -2772,7 +2855,7 @@ object frmPrincipal: TfrmPrincipal
                   TabOrder = 6
                 end
                 object edtMelhor3Cones: TAEditReal
-                  Left = 639
+                  Left = 674
                   Top = 52
                   Width = 83
                   Height = 21
@@ -2783,22 +2866,117 @@ object frmPrincipal: TfrmPrincipal
                 object edtMelhorIMC: TAEditReal
                   Left = 194
                   Top = 52
-                  Width = 83
+                  Width = 118
                   Height = 21
                   Color = clInactiveCaption
                   Enabled = False
                   TabOrder = 8
                 end
+                object dtMelhorAltura: TDateTimePicker
+                  AlignWithMargins = True
+                  Left = 16
+                  Top = 79
+                  Width = 83
+                  Height = 21
+                  Date = 42909.750214479170000000
+                  Time = 42909.750214479170000000
+                  Color = clInactiveCaption
+                  Enabled = False
+                  TabOrder = 9
+                end
+                object dtMelhorPeso: TDateTimePicker
+                  AlignWithMargins = True
+                  Left = 105
+                  Top = 79
+                  Width = 83
+                  Height = 21
+                  Date = 42909.750214479170000000
+                  Time = 42909.750214479170000000
+                  Color = clInactiveCaption
+                  Enabled = False
+                  TabOrder = 10
+                end
+                object dtMelhorIMC: TDateTimePicker
+                  AlignWithMargins = True
+                  Left = 194
+                  Top = 79
+                  Width = 118
+                  Height = 21
+                  Date = 42909.750214479170000000
+                  Time = 42909.750214479170000000
+                  Color = clInactiveCaption
+                  Enabled = False
+                  TabOrder = 11
+                end
+                object dtMelhorSaltoVertical: TDateTimePicker
+                  AlignWithMargins = True
+                  Left = 318
+                  Top = 81
+                  Width = 83
+                  Height = 21
+                  Date = 42909.750214479170000000
+                  Time = 42909.750214479170000000
+                  Color = clInactiveCaption
+                  Enabled = False
+                  TabOrder = 12
+                end
+                object dtMelhor40Jardas: TDateTimePicker
+                  AlignWithMargins = True
+                  Left = 407
+                  Top = 79
+                  Width = 83
+                  Height = 21
+                  Date = 42909.750214479170000000
+                  Time = 42909.750214479170000000
+                  Color = clInactiveCaption
+                  Enabled = False
+                  TabOrder = 13
+                end
+                object dtMelhorSaltoHorizontal: TDateTimePicker
+                  AlignWithMargins = True
+                  Left = 496
+                  Top = 79
+                  Width = 83
+                  Height = 21
+                  Date = 42909.750214479170000000
+                  Time = 42909.750214479170000000
+                  Color = clInactiveCaption
+                  Enabled = False
+                  TabOrder = 14
+                end
+                object dtMelhorShuttle: TDateTimePicker
+                  AlignWithMargins = True
+                  Left = 585
+                  Top = 79
+                  Width = 83
+                  Height = 21
+                  Date = 42909.750214479170000000
+                  Time = 42909.750214479170000000
+                  Color = clInactiveCaption
+                  Enabled = False
+                  TabOrder = 15
+                end
+                object dtMelhor3Cones: TDateTimePicker
+                  AlignWithMargins = True
+                  Left = 674
+                  Top = 79
+                  Width = 83
+                  Height = 21
+                  Date = 42909.750214479170000000
+                  Time = 42909.750214479170000000
+                  Color = clInactiveCaption
+                  Enabled = False
+                  TabOrder = 16
+                end
               end
               object Panel2: TPanel
                 Left = 0
-                Top = 260
-                Width = 746
+                Top = 303
+                Width = 769
                 Height = 88
                 Align = alTop
                 BevelKind = bkTile
                 TabOrder = 2
-                ExplicitTop = 89
                 object Label26: TLabel
                   Left = 16
                   Top = 36
@@ -2814,44 +2992,51 @@ object frmPrincipal: TfrmPrincipal
                   Caption = 'Peso (KG)'
                 end
                 object Label28: TLabel
-                  Left = 194
+                  Left = 318
                   Top = 36
                   Width = 67
                   Height = 13
                   Caption = 'Salto Vertical'
                 end
                 object Label29: TLabel
-                  Left = 283
+                  Left = 407
                   Top = 36
                   Width = 47
                   Height = 13
                   Caption = '40 Jardas'
                 end
                 object Label30: TLabel
-                  Left = 372
+                  Left = 496
                   Top = 36
                   Width = 83
                   Height = 13
                   Caption = 'Salto Horizontal'
                 end
                 object Label31: TLabel
-                  Left = 461
+                  Left = 585
                   Top = 36
                   Width = 37
                   Height = 13
                   Caption = 'Shuttle'
                 end
                 object Label32: TLabel
-                  Left = 550
+                  Left = 674
                   Top = 36
                   Width = 41
                   Height = 13
                   Caption = '3 Cones'
                 end
+                object Label38: TLabel
+                  Left = 194
+                  Top = 36
+                  Width = 20
+                  Height = 13
+                  Caption = 'IMC'
+                end
                 object Panel5: TPanel
                   Left = 1
                   Top = 1
-                  Width = 740
+                  Width = 763
                   Height = 34
                   Align = alTop
                   BevelKind = bkTile
@@ -2926,44 +3111,12 @@ object frmPrincipal: TfrmPrincipal
                     ExplicitHeight = 21
                   end
                   object btnLimparFicha: TPngSpeedButton
-                    Left = 706
+                    Left = 699
                     Top = 0
                     Width = 30
                     Height = 30
                     Align = alRight
-                    PngImage.Data = {
-                      89504E470D0A1A0A0000000D4948445200000018000000180806000000E0773D
-                      F800000006624B474400FF00FF00FFA0BDA7930000029C4944415478DA636420
-                      1284AE2AE4E47CCF260A627F17FCF57A7558FF7762F431E2938C9D5762CECDC6
-                      95FFFFDF7F47365616162E7676B0FA6F3F7FFEFFF9FBCF1F6626A67D5F7F7C9F
-                      B828A5EB144916C4CC2D53E761E75820C0C3A3AE25A720282628C8C0C4C884A2
-                      E6DFFF7F0C2FDFBF67B8FEF0FEFB779FBF5EFFF5F77BC282C4EEDB042D485A58
-                      EEC9C1C2BED056C75054989F8FA8E07BF3E903C3E1CB975EFDF8FB236E7E5CE7
-                      4E9C16242F28F7E6E5E25DE8626822CCC6CA4A6CF480C1CFDFBF19F69C3BFDF6
-                      F38F2FB1F3E23BB76358103DAF588B9F95FB8097859528A986235BB2FDE4F157
-                      9F7E7EB75B92DC7513C582B44575A71D0D0C4C84F9F8711AA0C8AF00A6EF7F7C
-                      8037B80E5EBC7072666CB305DC8298D9A5B63222A21B9D0C8D05F1B9D05CD214
-                      4C9F7C7E1AAF4FF69E3FFBFEE9EBB73E4BD23A8F812DC8585AB7C6465B3F584C
-                      4080811A16BCFCF08EE1E8E54BAB66C43687832D485F5CF32CC8C64192919191
-                      2A16FCFBF79F61C3D183CF8016483326CD2DE305A69C3BDE9656620C0400B116
-                      80C0D6E3475FBDFBFD4989316E56A59A9498E061270363140B40112AC6258AA2
-                      899B950B4C7FFDFD0D45FCD5B7D71811BFEFC2B9572FDEBFB26104E55A596191
-                      438E34B0E0D9AB77B68CA1531B78244498EEFA9A5B533588360383E805F37B05
-                      482A5A52FB34D0DA5E8ACA91FC1418C9326013D316D72C0626D318092121AA58
-                      F0FCDD5B86A357AF2C9C15DB9400B6206E6EB98D9490F006604613A686057BCE
-                      9F7DF3E2DD2BBF45C93DC7E16192BAA8F69093A1918D302F1FCE7022B2A8F8BF
-                      FFC28583B3E39A1D417CB861F1334B957978B88F7A9A59885354D89D3AF6F2F3
-                      B76F968B537BEEA358000209F32B3C04B8799650525C7FFCF63D724162DB6E98
-                      387D2B1C18A06995890C6856E96303E4365B001D086E4FFC437A270000000049
-                      454E44AE426082}
-                    ExplicitLeft = 704
-                  end
-                  object btnAdicionarFicha: TPngSpeedButton
-                    Left = 676
-                    Top = 0
-                    Width = 30
-                    Height = 30
-                    Align = alRight
+                    OnClick = btnLimparFichaClick
                     PngImage.Data = {
                       89504E470D0A1A0A0000000D4948445200000018000000180806000000E0773D
                       F800000006624B474400FF00FF00FFA0BDA793000003234944415478DA636420
@@ -2993,7 +3146,42 @@ object frmPrincipal: TfrmPrincipal
                       C7ABF7FAED3BD693870F6CFBF0EECD07620DFEFFEFFFE25307B71EC65FE10093
                       707673BFD68DB3A784BE7CFAFC8D1497FFF9CFF4F0EC81CD6F0017FE66152C58
                       13D80000000049454E44AE426082}
-                    ExplicitLeft = 704
+                    ExplicitLeft = 0
+                    ExplicitHeight = 736
+                  end
+                  object btnAdicionarFicha: TPngBitBtn
+                    Left = 729
+                    Top = 0
+                    Width = 30
+                    Height = 30
+                    Align = alRight
+                    TabOrder = 0
+                    OnClick = btnAdicionarFichaClick
+                    PngImage.Data = {
+                      89504E470D0A1A0A0000000D4948445200000018000000180806000000E0773D
+                      F800000006624B474400FF00FF00FFA0BDA7930000029C4944415478DA636420
+                      1284AE2AE4E47CCF260A627F17FCF57A7558FF7762F431E2938C9D5762CECDC6
+                      95FFFFDF7F47365616162E7676B0FA6F3F7FFEFFF9FBCF1F6626A67D5F7F7C9F
+                      B828A5EB144916C4CC2D53E761E75820C0C3A3AE25A720282628C8C0C4C884A2
+                      E6DFFF7F0C2FDFBF67B8FEF0FEFB779FBF5EFFF5F77BC282C4EEDB042D485A58
+                      EEC9C1C2BED056C75054989F8FA8E07BF3E903C3E1CB975EFDF8FB236E7E5CE7
+                      4E9C16242F28F7E6E5E25DE8626822CCC6CA4A6CF480C1CFDFBF19F69C3BFDF6
+                      F38F2FB1F3E23BB76358103DAF588B9F95FB8097859528A986235BB2FDE4F157
+                      9F7E7EB75B92DC7513C582B44575A71D0D0C4C84F9F8711AA0C8AF00A6EF7F7C
+                      8037B80E5EBC7072666CB305DC8298D9A5B63222A21B9D0C8D05F1B9D05CD214
+                      4C9F7C7E1AAF4FF69E3FFBFEE9EBB73E4BD23A8F812DC8585AB7C6465B3F584C
+                      4080811A16BCFCF08EE1E8E54BAB66C43687832D485F5CF32CC8C64192919191
+                      2A16FCFBF79F61C3D183CF8016483326CD2DE305A69C3BDE9656620C0400B116
+                      80C0D6E3475FBDFBFD4989316E56A59A9498E061270363140B40112AC6258AA2
+                      899B950B4C7FFDFD0D45FCD5B7D71811BFEFC2B9572FDEBFB26104E55A596191
+                      438E34B0E0D9AB77B68CA1531B78244498EEFA9A5B533588360383E805F37B05
+                      482A5A52FB34D0DA5E8ACA91FC1418C9326013D316D72C0626D318092121AA58
+                      F0FCDD5B86A357AF2C9C15DB9400B6206E6EB98D9490F006604613A686057BCE
+                      9F7DF3E2DD2BBF45C93DC7E16192BAA8F69093A1918D302F1FCE7022B2A8F8BF
+                      FFC28583B3E39A1D417CB861F1334B957978B88F7A9A59885354D89D3AF6F2F3
+                      B76F968B537BEEA358000209F32B3C04B8799650525C7FFCF63D724162DB6E98
+                      387D2B1C18A06995890C6856E96303E4365B001D086E4FFC437A270000000049
+                      454E44AE426082}
                   end
                 end
                 object edtAltura: TAEditReal
@@ -3009,51 +3197,62 @@ object frmPrincipal: TfrmPrincipal
                   Width = 83
                   Height = 21
                   TabOrder = 2
+                  OnExit = edtPesoExit
                 end
                 object edtSaltoVertical: TAEditReal
-                  Left = 194
-                  Top = 52
-                  Width = 83
-                  Height = 21
-                  TabOrder = 3
-                end
-                object edt40Jardas: TAEditReal
-                  Left = 283
+                  Left = 318
                   Top = 52
                   Width = 83
                   Height = 21
                   TabOrder = 4
                 end
-                object edtSaltoHorizontal: TAEditReal
-                  Left = 372
+                object edt40Jardas: TAEditReal
+                  Left = 407
                   Top = 52
                   Width = 83
                   Height = 21
                   TabOrder = 5
                 end
-                object edtShuttle: TAEditReal
-                  Left = 461
+                object edtSaltoHorizontal: TAEditReal
+                  Left = 496
                   Top = 52
                   Width = 83
                   Height = 21
                   TabOrder = 6
                 end
-                object edt3Cones: TAEditReal
-                  Left = 550
+                object edtShuttle: TAEditReal
+                  Left = 585
                   Top = 52
                   Width = 83
                   Height = 21
                   TabOrder = 7
                 end
+                object edt3Cones: TAEditReal
+                  Left = 674
+                  Top = 52
+                  Width = 83
+                  Height = 21
+                  TabOrder = 8
+                end
+                object edtIMCAtual: TAEditReal
+                  Left = 194
+                  Top = 52
+                  Width = 118
+                  Height = 21
+                  Color = clInactiveCaption
+                  Enabled = False
+                  TabOrder = 3
+                end
               end
               object Panel6: TPanel
                 Left = 0
                 Top = 0
-                Width = 746
+                Width = 769
                 Height = 83
                 Align = alTop
                 BevelKind = bkTile
                 TabOrder = 3
+                ExplicitWidth = 746
                 object Label10: TLabel
                   Left = 11
                   Top = 37
@@ -3071,7 +3270,7 @@ object frmPrincipal: TfrmPrincipal
                 object Panel7: TPanel
                   Left = 1
                   Top = 1
-                  Width = 740
+                  Width = 763
                   Height = 34
                   Align = alTop
                   BevelKind = bkTile
@@ -3119,7 +3318,7 @@ object frmPrincipal: TfrmPrincipal
                     AlignWithMargins = True
                     Left = 33
                     Top = 3
-                    Width = 60
+                    Width = 46
                     Height = 27
                     Align = alLeft
                     Caption = 'Atleta'
@@ -3129,6 +3328,7 @@ object frmPrincipal: TfrmPrincipal
                     Font.Name = 'Segoe UI'
                     Font.Style = [fsBold]
                     ParentFont = False
+                    ExplicitHeight = 21
                   end
                 end
                 object edtNomeFicha: TAEdit
@@ -3157,16 +3357,15 @@ object frmPrincipal: TfrmPrincipal
           object pnlMenuFichas: TPanel
             Left = 0
             Top = 0
-            Width = 754
+            Width = 777
             Height = 43
             Align = alTop
             BevelKind = bkTile
             BevelOuter = bvNone
             TabOrder = 1
-            ExplicitLeft = 2
             object btnSairFichas: TPngBitBtn
               AlignWithMargins = True
-              Left = 714
+              Left = 737
               Top = 3
               Width = 33
               Height = 33
@@ -3300,7 +3499,7 @@ object frmPrincipal: TfrmPrincipal
     Left = 43
     Top = 0
     Width = 27
-    Height = 451
+    Height = 492
     Align = alLeft
     BevelKind = bkTile
     BevelOuter = bvNone
@@ -3309,7 +3508,7 @@ object frmPrincipal: TfrmPrincipal
       Left = 0
       Top = 0
       Width = 23
-      Height = 447
+      Height = 488
       Align = alClient
       Flat = True
       OnClick = btnExpansorClick
@@ -3326,6 +3525,7 @@ object frmPrincipal: TfrmPrincipal
         20CD4A542CE048075003C84F48141BF00B48B3D1DF00620100D73FC711CC3FC9
         5C0000000049454E44AE426082}
       ExplicitWidth = 29
+      ExplicitHeight = 447
     end
   end
   object imgTreeViewPosicoes: TImageList
