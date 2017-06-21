@@ -28,7 +28,6 @@ object frmPrincipal: TfrmPrincipal
     Constraints.MaxWidth = 130
     Constraints.MinWidth = 43
     TabOrder = 0
-    ExplicitLeft = -4
     object btnSair: TPngBitBtn
       AlignWithMargins = True
       Left = 3
@@ -269,11 +268,15 @@ object frmPrincipal: TfrmPrincipal
       ExplicitHeight = 451
       object tbInicio: TTabSheet
         Caption = 'tbInicio'
+        ExplicitLeft = 0
+        ExplicitTop = 0
+        ExplicitWidth = 0
+        ExplicitHeight = 0
         object imgInicio: TImage
           Left = 0
           Top = 0
-          Width = 777
-          Height = 464
+          Width = 400
+          Height = 147
           Align = alClient
           AutoSize = True
           Center = True
@@ -1490,6 +1493,10 @@ object frmPrincipal: TfrmPrincipal
             ExplicitHeight = 380
             object tbListaAtletas: TTabSheet
               Caption = 'tbListaAtletas'
+              ExplicitLeft = 0
+              ExplicitTop = 0
+              ExplicitWidth = 0
+              ExplicitHeight = 0
               object dbgrdListaAtletas: TDBGrid
                 Left = 0
                 Top = 0
@@ -1928,7 +1935,7 @@ object frmPrincipal: TfrmPrincipal
                         Left = 37
                         Top = 25
                         Width = 88
-                        Height = 22
+                        Height = 13
                         Margins.Top = 10
                         Align = alLeft
                         Caption = 'Posi'#231#227'o principal'
@@ -1938,7 +1945,6 @@ object frmPrincipal: TfrmPrincipal
                         Font.Name = 'Segoe UI'
                         Font.Style = [fsBold]
                         ParentFont = False
-                        ExplicitHeight = 13
                       end
                       object Image2: TImage
                         AlignWithMargins = True
@@ -1977,7 +1983,7 @@ object frmPrincipal: TfrmPrincipal
                         Left = 163
                         Top = 25
                         Width = 109
-                        Height = 22
+                        Height = 13
                         Margins.Top = 10
                         Align = alLeft
                         Caption = 'Posi'#231#245'es secund'#225'rias'
@@ -1987,7 +1993,6 @@ object frmPrincipal: TfrmPrincipal
                         Font.Name = 'Segoe UI'
                         Font.Style = [fsBold]
                         ParentFont = False
-                        ExplicitHeight = 13
                       end
                     end
                   end
@@ -2315,6 +2320,10 @@ object frmPrincipal: TfrmPrincipal
             ExplicitHeight = 380
             object tbListaFichasAtleta: TTabSheet
               Caption = 'tbListaFichasAtleta'
+              ExplicitLeft = 0
+              ExplicitTop = 0
+              ExplicitWidth = 0
+              ExplicitHeight = 0
               object dbGridListaFichas: TDBGrid
                 Left = 0
                 Top = 0

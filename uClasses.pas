@@ -325,6 +325,7 @@ begin
     SQL.Clear;
     SQL.Add(' select "3Cones", "DATA"  ');
     SQL.Add(' from FichaAtleta ');
+    SQL.Add(' where "3Cones" is not null ');
 
   end;
 
@@ -342,6 +343,7 @@ begin
     SQL.Clear;
     SQL.Add(' select "40Jardas", "DATA" ');
     SQL.Add(' from FichaAtleta ');
+    SQL.Add(' where "40Jardas" is not null ');
 
   end;
 
@@ -359,6 +361,7 @@ begin
     SQL.Clear;
     SQL.Add(' select Altura, "DATA"  ');
     SQL.Add(' from FichaAtleta ');
+    SQL.Add(' where Altura is not null ');
 
   end;
 
@@ -404,6 +407,7 @@ begin
     SQL.Clear;
     SQL.Add(' select Peso, "DATA" ');
     SQL.Add(' from FichaAtleta ');
+    SQL.Add(' where Peso is not null ');
 
   end;
 
@@ -445,6 +449,7 @@ begin
     SQL.Clear;
     SQL.Add(' select SaltoHorizontal, "DATA"  ');
     SQL.Add(' from FichaAtleta ');
+    SQL.Add(' where SaltoHorizontal is not null ');
 
   end;
 
@@ -462,7 +467,7 @@ begin
     SQL.Clear;
     SQL.Add(' select SaltoVertical, "DATA"  ');
     SQL.Add(' from FichaAtleta ');
-
+    SQL.Add(' where SaltoVertical is not null ');
   end;
 
 end;
@@ -495,6 +500,7 @@ begin
     SQL.Clear;
     SQL.Add(' select Shuttle, "DATA"  ');
     SQL.Add(' from FichaAtleta ');
+    SQL.Add(' where Shuttle is not null ');
 
   end;
 
