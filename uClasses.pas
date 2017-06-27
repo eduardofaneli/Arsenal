@@ -6,12 +6,12 @@ uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Buttons, PngSpeedButton,
   Vcl.StdCtrls, PngBitBtn, Vcl.ExtCtrls, Vcl.Imaging.pngimage, Vcl.ComCtrls,
-  Vcl.Grids, Vcl.DBGrids, uADStanExprFuncs, uADGUIxIntf,
-  uADGUIxFormsWait, uADStanIntf, uADStanOption, uADStanError, uADPhysIntf,
-  uADStanDef, uADStanPool, uADStanAsync, uADPhysManager, uADStanParam,
-  uADDatSManager, uADDAptIntf, uADDAptManager, Data.DB, uADCompDataSet,
-  uADCompClient, uADCompGUIx, uADPhysSQLite, uDmPrincipal, System.Generics.Collections,
-  System.Math;
+  Vcl.Grids, Vcl.DBGrids, uDmPrincipal, System.Generics.Collections,
+  System.Math, FireDAC.Stan.Intf, FireDAC.Stan.Option,
+  FireDAC.Stan.Error, FireDAC.UI.Intf, FireDAC.Phys.Intf, FireDAC.Stan.Def,
+  FireDAC.Stan.Pool, FireDAC.Stan.Async, FireDAC.Phys, FireDAC.VCLUI.Wait,
+  FireDAC.Stan.ExprFuncs, FireDAC.Phys.SQLiteDef, FireDAC.Phys.SQLite,
+  FireDAC.Comp.UI, Data.DB, FireDAC.Comp.Client;
 
 type
   TMensagens = class
@@ -23,28 +23,28 @@ type
 
   TQuery = class
     private
-      FConnection: TADConnection;
+      FConnection: TFDConnection;
 
-      function GetQry: TADQuery;
+      function GetQry: TFDQuery;
 
     public
       constructor Create;
 
-      function getSequenceAtleta: TADQuery;
-      function InserirAtleta: TADQuery;
-      function ExcluirAtleta: TADQuery;
-      function AdicionarPosicaoJogador: TADQuery;
-      function getPosicaoPrincipal: TADQuery;
-      function ExcluirPosicaoJogador: TADQuery;
-      function AdicionarFichaAtleta: TADQuery;
-      function getAltura: TADQuery;
-      function getPeso: TADQuery;
-      function get40Jardas: TADQuery;
-      function getShuttle: TADQuery;
-      function get3Cones: TADQuery;
-      function getSaltoVertical: TADQuery;
-      function getSaltoHorizontal: TADQuery;
-      function getIMC: TADQuery;
+      function getSequenceAtleta: TFDQuery;
+      function InserirAtleta: TFDQuery;
+      function ExcluirAtleta: TFDQuery;
+      function AdicionarPosicaoJogador: TFDQuery;
+      function getPosicaoPrincipal: TFDQuery;
+      function ExcluirPosicaoJogador: TFDQuery;
+      function AdicionarFichaAtleta: TFDQuery;
+      function getAltura: TFDQuery;
+      function getPeso: TFDQuery;
+      function get40Jardas: TFDQuery;
+      function getShuttle: TFDQuery;
+      function get3Cones: TFDQuery;
+      function getSaltoVertical: TFDQuery;
+      function getSaltoHorizontal: TFDQuery;
+      function getIMC: TFDQuery;
 
   end;
 
@@ -62,23 +62,23 @@ type
 
   TMelhorMedicao = class
     private
-    FDataPeso: TDate;
-    FDataShuttle: TDate;
-    FData40Jardas: TDate;
-    FPeso: Double;
-    FShuttle: Double;
-    FDataSaltoHorizontal: TDate;
-    FSaltoHorizontal: Double;
-    FDataAltura: TDate;
-    FData3Cones: TDate;
-    FAltura: Double;
-    FDataIMC: TDate;
-    FIMC: Double;
-    FD40Jardas: Double;
-    FD3Cones: Double;
-    FDataSaltoVertical: TDate;
-    FSaltoVertical: Double;
-    FDescricaoIMC: string;
+      FDataPeso: TDate;
+      FDataShuttle: TDate;
+      FData40Jardas: TDate;
+      FPeso: Double;
+      FShuttle: Double;
+      FDataSaltoHorizontal: TDate;
+      FSaltoHorizontal: Double;
+      FDataAltura: TDate;
+      FData3Cones: TDate;
+      FAltura: Double;
+      FDataIMC: TDate;
+      FIMC: Double;
+      FD40Jardas: Double;
+      FD3Cones: Double;
+      FDataSaltoVertical: TDate;
+      FSaltoVertical: Double;
+      FDescricaoIMC: string;
 
     published
       property Altura              : Double read FAltura              write FAltura              ;
@@ -222,7 +222,7 @@ implementation
 
 { TQuery }
 
-function TQuery.AdicionarFichaAtleta: TADQuery;
+function TQuery.AdicionarFichaAtleta: TFDQuery;
 begin
 
   Result := GetQry;
@@ -255,7 +255,7 @@ begin
 
 end;
 
-function TQuery.AdicionarPosicaoJogador: TADQuery;
+function TQuery.AdicionarPosicaoJogador: TFDQuery;
 begin
 
   Result := GetQry;
@@ -277,7 +277,7 @@ begin
   FConnection := dmPrincipal.Conexao;
 end;
 
-function TQuery.ExcluirAtleta: TADQuery;
+function TQuery.ExcluirAtleta: TFDQuery;
 begin
 
   Result := GetQry;
@@ -295,7 +295,7 @@ begin
 
 end;
 
-function TQuery.ExcluirPosicaoJogador: TADQuery;
+function TQuery.ExcluirPosicaoJogador: TFDQuery;
 begin
 
   Result := GetQry;
@@ -313,7 +313,7 @@ begin
 
 end;
 
-function TQuery.get3Cones: TADQuery;
+function TQuery.get3Cones: TFDQuery;
 begin
 
   Result := GetQry;
@@ -326,12 +326,13 @@ begin
     SQL.Add(' select "3Cones", "DATA"  ');
     SQL.Add(' from FichaAtleta ');
     SQL.Add(' where "3Cones" is not null ');
+    SQL.Add('   and id_atleta = :atleta');
 
   end;
 
 end;
 
-function TQuery.get40Jardas: TADQuery;
+function TQuery.get40Jardas: TFDQuery;
 begin
 
   Result := GetQry;
@@ -344,12 +345,12 @@ begin
     SQL.Add(' select "40Jardas", "DATA" ');
     SQL.Add(' from FichaAtleta ');
     SQL.Add(' where "40Jardas" is not null ');
-
+    SQL.Add('   and id_atleta = :atleta');
   end;
 
 end;
 
-function TQuery.getAltura: TADQuery;
+function TQuery.getAltura: TFDQuery;
 begin
 
   Result := GetQry;
@@ -362,12 +363,13 @@ begin
     SQL.Add(' select Altura, "DATA"  ');
     SQL.Add(' from FichaAtleta ');
     SQL.Add(' where Altura is not null ');
+    SQL.Add('   and id_atleta = :atleta');
 
   end;
 
 end;
 
-function TQuery.getIMC: TADQuery;
+function TQuery.getIMC: TFDQuery;
 begin
 
   Result := GetQry;
@@ -390,12 +392,13 @@ begin
     SQL.Add('         ,"DATA"  ');
     SQL.Add(' from FichaAtleta ');
     SQL.Add(' where IMC is not null ');
+    SQL.Add('   and id_atleta = :atleta');
 
   end;
 
 end;
 
-function TQuery.getPeso: TADQuery;
+function TQuery.getPeso: TFDQuery;
 begin
 
   Result := GetQry;
@@ -408,12 +411,13 @@ begin
     SQL.Add(' select Peso, "DATA" ');
     SQL.Add(' from FichaAtleta ');
     SQL.Add(' where Peso is not null ');
+    SQL.Add('   and id_atleta = :atleta');
 
   end;
 
 end;
 
-function TQuery.getPosicaoPrincipal: TADQuery;
+function TQuery.getPosicaoPrincipal: TFDQuery;
 begin
 
   Result := GetQry;
@@ -431,13 +435,13 @@ begin
 
 end;
 
-function TQuery.GetQry: TADQuery;
+function TQuery.GetQry: TFDQuery;
 begin
-  Result := TADQuery.Create(nil);
+  Result := TFDQuery.Create(nil);
   Result.Connection := FConnection;
 end;
 
-function TQuery.getSaltoHorizontal: TADQuery;
+function TQuery.getSaltoHorizontal: TFDQuery;
 begin
 
   Result := GetQry;
@@ -450,12 +454,13 @@ begin
     SQL.Add(' select SaltoHorizontal, "DATA"  ');
     SQL.Add(' from FichaAtleta ');
     SQL.Add(' where SaltoHorizontal is not null ');
+    SQL.Add('   and id_atleta = :atleta');
 
   end;
 
 end;
 
-function TQuery.getSaltoVertical: TADQuery;
+function TQuery.getSaltoVertical: TFDQuery;
 begin
 
   Result := GetQry;
@@ -468,11 +473,13 @@ begin
     SQL.Add(' select SaltoVertical, "DATA"  ');
     SQL.Add(' from FichaAtleta ');
     SQL.Add(' where SaltoVertical is not null ');
+    SQL.Add('   and id_atleta = :atleta');
+
   end;
 
 end;
 
-function TQuery.getSequenceAtleta: TADQuery;
+function TQuery.getSequenceAtleta: TFDQuery;
 begin
 
   Result := GetQry;
@@ -482,13 +489,13 @@ begin
 
     Close;
     SQL.Clear;
-    SQL.Add(' select * from sqlite_sequence where name = ''Atleta'' ');
+    SQL.Add(' select max(id) as seq from Atleta ');
 
   end;
 
 end;
 
-function TQuery.getShuttle: TADQuery;
+function TQuery.getShuttle: TFDQuery;
 begin
 
   Result := GetQry;
@@ -501,12 +508,13 @@ begin
     SQL.Add(' select Shuttle, "DATA"  ');
     SQL.Add(' from FichaAtleta ');
     SQL.Add(' where Shuttle is not null ');
+    SQL.Add('   and id_atleta = :atleta');
 
   end;
 
 end;
 
-function TQuery.InserirAtleta: TADQuery;
+function TQuery.InserirAtleta: TFDQuery;
 begin
 
   Result := GetQry;
@@ -564,7 +572,7 @@ end;
 
 procedure TAtleta.AdicionarPosicaoJogador;
 var
-  qryAdicionarPosicaoJogador: TADQuery;
+  qryAdicionarPosicaoJogador: TFDQuery;
 begin
 
   qryAdicionarPosicaoJogador := FQueryAtleta.AdicionarPosicaoJogador;
@@ -594,7 +602,7 @@ end;
 
 procedure TAtleta.CadastrarAtleta;
 var
-  qryCadastrarAtleta: TADQuery;
+  qryCadastrarAtleta: TFDQuery;
 begin
 
   qryCadastrarAtleta := FQueryAtleta.InserirAtleta;
@@ -643,7 +651,7 @@ end;
 
 procedure TAtleta.ExcluirAtleta;
 var
-  qryExcluirAtleta: TADQuery;
+  qryExcluirAtleta: TFDQuery;
 begin
 
   qryExcluirAtleta := FQueryAtleta.ExcluirAtleta;
@@ -674,7 +682,7 @@ end;
 
 procedure TAtleta.ExcluirPosicaoJogador;
 var
-  qryExcluirPosicao: TADQuery;
+  qryExcluirPosicao: TFDQuery;
 begin
 
   qryExcluirPosicao := FQueryAtleta.ExcluirPosicaoJogador;
@@ -704,7 +712,7 @@ end;
 
 function TAtleta.ExistePosicaoPrincipal: Boolean;
 var
-  qryVerificar: TADQuery;
+  qryVerificar: TFDQuery;
 begin
 
   qryVerificar := FQueryAtleta.getPosicaoPrincipal;
@@ -735,12 +743,14 @@ end;
 
 procedure TAtleta.GetMelhorMedicao;
 var
-  qryMelhorMedicao: TADQuery;
+  qryMelhorMedicao: TFDQuery;
 begin
 
   qryMelhorMedicao := FQueryAtleta.getAltura;
   try
+
     qryMelhorMedicao.SQL.Add(' order by 1 desc limit 1 ');
+    qryMelhorMedicao.ParamByName('Atleta').AsInteger := Codigo;
     qryMelhorMedicao.Open;
 
     FFichaAtleta.FMelhorMedicao.Altura     := qryMelhorMedicao.FieldByName('Altura').AsFloat;
@@ -751,7 +761,9 @@ begin
 
   qryMelhorMedicao := FQueryAtleta.getPeso;
   try
+
     qryMelhorMedicao.SQL.Add(' order by 1 limit 1 ');
+    qryMelhorMedicao.ParamByName('Atleta').AsInteger := Codigo;
     qryMelhorMedicao.Open;
 
     FFichaAtleta.FMelhorMedicao.Peso     := qryMelhorMedicao.FieldByName('Peso').AsFloat;
@@ -762,7 +774,9 @@ begin
 
   qryMelhorMedicao := FQueryAtleta.getIMC;
   try
+
     qryMelhorMedicao.SQL.Add(' order by 2 limit 1 ');
+    qryMelhorMedicao.ParamByName('Atleta').AsInteger := Codigo;
     qryMelhorMedicao.Open;
 
     FFichaAtleta.FMelhorMedicao.IMC := qryMelhorMedicao.FieldByName('IMC').AsFloat;
@@ -774,7 +788,9 @@ begin
 
   qryMelhorMedicao := FQueryAtleta.get40Jardas;
   try
+
     qryMelhorMedicao.SQL.Add(' order by 1 limit 1 ');
+    qryMelhorMedicao.ParamByName('Atleta').AsInteger := Codigo;
     qryMelhorMedicao.Open;
 
     FFichaAtleta.FMelhorMedicao.D40Jardas     := qryMelhorMedicao.FieldByName('40jardas').AsFloat;
@@ -785,7 +801,9 @@ begin
 
   qryMelhorMedicao := FQueryAtleta.getShuttle;
   try
+
     qryMelhorMedicao.SQL.Add(' order by 1 limit 1 ');
+    qryMelhorMedicao.ParamByName('Atleta').AsInteger := Codigo;
     qryMelhorMedicao.Open;
 
     FFichaAtleta.FMelhorMedicao.Shuttle     := qryMelhorMedicao.FieldByName('Shuttle').AsFloat;
@@ -796,7 +814,9 @@ begin
 
   qryMelhorMedicao := FQueryAtleta.get3Cones;
   try
+
     qryMelhorMedicao.SQL.Add(' order by 1 limit 1 ');
+    qryMelhorMedicao.ParamByName('Atleta').AsInteger := Codigo;
     qryMelhorMedicao.Open;
 
     FFichaAtleta.FMelhorMedicao.D3Cones     := qryMelhorMedicao.FieldByName('3Cones').AsFloat;
@@ -807,7 +827,9 @@ begin
 
   qryMelhorMedicao := FQueryAtleta.getSaltoVertical;
   try
+
     qryMelhorMedicao.SQL.Add(' order by 1 desc limit 1 ');
+    qryMelhorMedicao.ParamByName('Atleta').AsInteger := Codigo;
     qryMelhorMedicao.Open;
 
     FFichaAtleta.FMelhorMedicao.SaltoVertical     := qryMelhorMedicao.FieldByName('SaltoVertical').AsFloat;
@@ -818,7 +840,9 @@ begin
 
   qryMelhorMedicao := FQueryAtleta.getSaltoHorizontal;
   try
+
     qryMelhorMedicao.SQL.Add(' order by 1 desc limit 1 ');
+    qryMelhorMedicao.ParamByName('Atleta').AsInteger := Codigo;
     qryMelhorMedicao.Open;
 
     FFichaAtleta.FMelhorMedicao.SaltoHorizontal     := qryMelhorMedicao.FieldByName('SaltoHorizontal').AsFloat;
@@ -831,12 +855,14 @@ end;
 
 procedure TAtleta.GetUltimaMedicao;
 var
-  qryUltimaMedicao: TADQuery;
+  qryUltimaMedicao: TFDQuery;
 begin
 
   qryUltimaMedicao := FQueryAtleta.getAltura;
   try
+
     qryUltimaMedicao.SQL.Add(' order by 2 desc limit 1 ');
+    qryUltimaMedicao.ParamByName('Atleta').AsInteger := Codigo;
     qryUltimaMedicao.Open;
 
     FFichaAtleta.FUltimaMedicao.Altura     := qryUltimaMedicao.FieldByName('Altura').AsFloat;
@@ -847,7 +873,9 @@ begin
 
   qryUltimaMedicao := FQueryAtleta.getPeso;
   try
+
     qryUltimaMedicao.SQL.Add(' order by 2 desc limit 1 ');
+    qryUltimaMedicao.ParamByName('Atleta').AsInteger := Codigo;
     qryUltimaMedicao.Open;
 
     FFichaAtleta.FUltimaMedicao.Peso     := qryUltimaMedicao.FieldByName('Peso').AsFloat;
@@ -858,7 +886,9 @@ begin
 
   qryUltimaMedicao := FQueryAtleta.getIMC;
   try
+
     qryUltimaMedicao.SQL.Add(' order by 3 desc limit 1 ');
+    qryUltimaMedicao.ParamByName('Atleta').AsInteger := Codigo;
     qryUltimaMedicao.Open;
 
     FFichaAtleta.FUltimaMedicao.IMC := qryUltimaMedicao.FieldByName('IMC').AsFloat;
@@ -870,7 +900,9 @@ begin
 
   qryUltimaMedicao := FQueryAtleta.get40Jardas;
   try
+
     qryUltimaMedicao.SQL.Add(' order by 2 desc limit 1 ');
+    qryUltimaMedicao.ParamByName('Atleta').AsInteger := Codigo;
     qryUltimaMedicao.Open;
 
     FFichaAtleta.FUltimaMedicao.D40Jardas     := qryUltimaMedicao.FieldByName('40jardas').AsFloat;
@@ -881,7 +913,9 @@ begin
 
   qryUltimaMedicao := FQueryAtleta.getShuttle;
   try
+
     qryUltimaMedicao.SQL.Add(' order by 2 desc limit 1 ');
+    qryUltimaMedicao.ParamByName('Atleta').AsInteger := Codigo;
     qryUltimaMedicao.Open;
 
     FFichaAtleta.FUltimaMedicao.Shuttle     := qryUltimaMedicao.FieldByName('Shuttle').AsFloat;
@@ -892,7 +926,9 @@ begin
 
   qryUltimaMedicao := FQueryAtleta.get3Cones;
   try
+
     qryUltimaMedicao.SQL.Add(' order by 2 desc limit 1 ');
+    qryUltimaMedicao.ParamByName('Atleta').AsInteger := Codigo;
     qryUltimaMedicao.Open;
 
     FFichaAtleta.FUltimaMedicao.D3Cones     := qryUltimaMedicao.FieldByName('3Cones').AsFloat;
@@ -903,7 +939,9 @@ begin
 
   qryUltimaMedicao := FQueryAtleta.getSaltoVertical;
   try
+
     qryUltimaMedicao.SQL.Add(' order by 2 desc limit 1 ');
+    qryUltimaMedicao.ParamByName('Atleta').AsInteger := Codigo;
     qryUltimaMedicao.Open;
 
     FFichaAtleta.FUltimaMedicao.SaltoVertical     := qryUltimaMedicao.FieldByName('SaltoVertical').AsFloat;
@@ -914,7 +952,9 @@ begin
 
   qryUltimaMedicao := FQueryAtleta.getSaltoHorizontal;
   try
+
     qryUltimaMedicao.SQL.Add(' order by 2 desc limit 1 ');
+    qryUltimaMedicao.ParamByName('Atleta').AsInteger := Codigo;
     qryUltimaMedicao.Open;
 
     FFichaAtleta.FUltimaMedicao.SaltoHorizontal     := qryUltimaMedicao.FieldByName('SaltoHorizontal').AsFloat;
@@ -927,7 +967,7 @@ end;
 
 procedure TAtleta.InserirFichaAtleta;
 var
-  qryInserirFicha: TADQuery;
+  qryInserirFicha: TFDQuery;
 begin
 
   qryInserirFicha := FQueryAtleta.AdicionarFichaAtleta;
@@ -1022,7 +1062,7 @@ end;
 
 function TAtleta.setSequenceAtleta: Integer;
 var
-  qrySequenciaAtleta: TADQuery;
+  qrySequenciaAtleta: TFDQuery;
 begin
 
   qrySequenciaAtleta := FQueryAtleta.getSequenceAtleta;

@@ -8,7 +8,7 @@ uses
   Vcl.StdCtrls, PngBitBtn, Vcl.ExtCtrls, Vcl.Imaging.pngimage, Vcl.ComCtrls,
   Vcl.Grids, Vcl.DBGrids, uClasses, uDmPrincipal, uAEdit, uAEditInteiro,
   uAEditCPF, uAEditData, uAEditTelefone, uAEditEmail, Vcl.DBCtrls,
-  Vcl.ImgList, Vcl.Menus, uAEditReal;
+  Vcl.ImgList, Vcl.Menus, uAEditReal, Data.DB, System.ImageList;
 
 type
   EAcao = (stCadastrar, stAlterar);

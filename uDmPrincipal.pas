@@ -3,19 +3,26 @@ unit uDmPrincipal;
 interface
 
 uses
-  System.SysUtils, System.Classes, uADStanExprFuncs, uADGUIxIntf,
-  uADGUIxFormsWait, uADStanIntf, uADStanOption, uADStanError, uADPhysIntf,
-  uADStanDef, uADStanPool, uADStanAsync, uADPhysManager, Data.DB,
-  uADCompClient, uADCompGUIx, uADPhysSQLite, Vcl.Forms, Winapi.Windows,
-  uADStanParam, uADDatSManager, uADDAptIntf, uADDAptManager, uADCompDataSet;
+  System.SysUtils, System.Classes, Vcl.Forms, Winapi.Windows,
+  FireDAC.Stan.Intf, FireDAC.Stan.Option,
+  FireDAC.Stan.Error, FireDAC.UI.Intf, FireDAC.Phys.Intf, FireDAC.Stan.Def,
+  FireDAC.Stan.Pool, FireDAC.Stan.Async, FireDAC.Phys, FireDAC.VCLUI.Wait,
+  FireDAC.Stan.ExprFuncs, FireDAC.Phys.SQLiteDef, FireDAC.Phys.SQLite,
+  FireDAC.Comp.UI, Data.DB, FireDAC.Comp.Client, FireDAC.Stan.Param,
+  FireDAC.DatS, FireDAC.DApt.Intf, FireDAC.DApt, FireDAC.Comp.DataSet;
 
 type
   TdmPrincipal = class(TDataModule)
-    Driver: TADPhysSQLiteDriverLink;
-    Cursor: TADGUIxWaitCursor;
-    Conexao: TADConnection;
-    qryListaAtletas: TADQuery;
+    qryListaAtletas: TFDQuery;
     dsListaAtletas: TDataSource;
+    qryPosicoes: TFDQuery;
+    dsPosicoes: TDataSource;
+    qryTvPosicoes: TFDQuery;
+    Cursor: TFDGUIxWaitCursor;
+    Driver: TFDPhysSQLiteDriverLink;
+    Conexao: TFDConnection;
+    qryListaAtletasid: TIntegerField;
+    qryListaAtletasid_clube: TIntegerField;
     qryListaAtletasnome: TStringField;
     qryListaAtletasemail: TStringField;
     qryListaAtletastelefone: TStringField;
@@ -24,16 +31,12 @@ type
     qryListaAtletasorgao_expeditor: TStringField;
     qryListaAtletascpf: TStringField;
     qryListaAtletasstatus: TIntegerField;
+    qryListaAtletasDesc_Status: TWideStringField;
     qryListaAtletasdata_cadastro: TSQLTimeStampField;
     qryListaAtletasdata_atualizacao: TSQLTimeStampField;
-    qryListaAtletasid: TADAutoIncField;
-    qryListaAtletasid_clube: TIntegerField;
-    qryPosicoes: TADQuery;
-    dsPosicoes: TDataSource;
     qryPosicoesid: TIntegerField;
-    qryPosicoesnome: TStringField;
+    qryPosicoesnome: TWideStringField;
     qryPosicoesSigla: TStringField;
-    qryTvPosicoes: TADQuery;
     qryTvPosicoesid: TIntegerField;
     qryTvPosicoesnome: TStringField;
     qryTvPosicoesSigla: TStringField;

@@ -1,28 +1,9 @@
 object dmPrincipal: TdmPrincipal
   OldCreateOrder = False
   OnCreate = DataModuleCreate
-  Left = 417
-  Top = 187
   Height = 320
   Width = 464
-  object Driver: TADPhysSQLiteDriverLink
-    Left = 112
-    Top = 8
-  end
-  object Cursor: TADGUIxWaitCursor
-    Left = 72
-    Top = 8
-  end
-  object Conexao: TADConnection
-    Params.Strings = (
-      'Database=C:\Eduardo Faneli\GIT\Arsenal\BD\kaepernick.s3db'
-      'LockingMode=Normal'
-      'DriverID=SQLite')
-    LoginPrompt = False
-    Left = 32
-    Top = 8
-  end
-  object qryListaAtletas: TADQuery
+  object qryListaAtletas: TFDQuery
     Connection = Conexao
     SQL.Strings = (
       'select id'
@@ -48,6 +29,17 @@ object dmPrincipal: TdmPrincipal
       'where status <> 3')
     Left = 28
     Top = 68
+    object qryListaAtletasid: TIntegerField
+      FieldName = 'id'
+      Origin = 'id'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+    end
+    object qryListaAtletasid_clube: TIntegerField
+      FieldName = 'id_clube'
+      Origin = 'id_clube'
+      Required = True
+    end
     object qryListaAtletasnome: TStringField
       FieldName = 'nome'
       Origin = 'nome'
@@ -94,6 +86,14 @@ object dmPrincipal: TdmPrincipal
       Origin = 'status'
       Required = True
     end
+    object qryListaAtletasDesc_Status: TWideStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'Desc_Status'
+      Origin = 'Desc_Status'
+      ProviderFlags = []
+      ReadOnly = True
+      Size = 32767
+    end
     object qryListaAtletasdata_cadastro: TSQLTimeStampField
       FieldName = 'data_cadastro'
       Origin = 'data_cadastro'
@@ -103,24 +103,13 @@ object dmPrincipal: TdmPrincipal
       FieldName = 'data_atualizacao'
       Origin = 'data_atualizacao'
     end
-    object qryListaAtletasid: TADAutoIncField
-      FieldName = 'id'
-      Origin = 'id'
-      ProviderFlags = [pfInWhere, pfInKey]
-      ReadOnly = False
-    end
-    object qryListaAtletasid_clube: TIntegerField
-      FieldName = 'id_clube'
-      Origin = 'id_clube'
-      Required = True
-    end
   end
   object dsListaAtletas: TDataSource
     DataSet = qryListaAtletas
     Left = 28
     Top = 116
   end
-  object qryPosicoes: TADQuery
+  object qryPosicoes: TFDQuery
     Connection = Conexao
     SQL.Strings = (
       'select id'
@@ -145,7 +134,7 @@ object dmPrincipal: TdmPrincipal
       ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
       Required = True
     end
-    object qryPosicoesnome: TStringField
+    object qryPosicoesnome: TWideStringField
       AutoGenerateValue = arDefault
       FieldName = 'nome'
       Origin = 'nome'
@@ -165,7 +154,7 @@ object dmPrincipal: TdmPrincipal
     Left = 92
     Top = 116
   end
-  object qryTvPosicoes: TADQuery
+  object qryTvPosicoes: TFDQuery
     Connection = Conexao
     SQL.Strings = (
       'select p.* '
@@ -212,5 +201,21 @@ object dmPrincipal: TdmPrincipal
       ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
       Required = True
     end
+  end
+  object Cursor: TFDGUIxWaitCursor
+    Left = 152
+    Top = 16
+  end
+  object Driver: TFDPhysSQLiteDriverLink
+    Left = 96
+    Top = 16
+  end
+  object Conexao: TFDConnection
+    Params.Strings = (
+      'LockingMode=Normal'
+      'DriverID=SQLite')
+    LoginPrompt = False
+    Left = 24
+    Top = 16
   end
 end
