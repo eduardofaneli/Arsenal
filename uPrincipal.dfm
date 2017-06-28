@@ -2,7 +2,7 @@ object frmPrincipal: TfrmPrincipal
   Left = 234
   Top = 64
   Caption = 'Arsenal'
-  ClientHeight = 492
+  ClientHeight = 488
   ClientWidth = 855
   Color = clWindow
   Font.Charset = DEFAULT_CHARSET
@@ -21,17 +21,18 @@ object frmPrincipal: TfrmPrincipal
     Left = 0
     Top = 0
     Width = 43
-    Height = 492
+    Height = 488
     Align = alLeft
     BevelKind = bkSoft
     BevelOuter = bvNone
     Constraints.MaxWidth = 130
     Constraints.MinWidth = 43
     TabOrder = 0
+    ExplicitHeight = 492
     object btnSair: TPngBitBtn
       AlignWithMargins = True
       Left = 3
-      Top = 452
+      Top = 448
       Width = 33
       Height = 33
       Align = alBottom
@@ -64,6 +65,7 @@ object frmPrincipal: TfrmPrincipal
         818F9785C1D7C380E1F94B1A655850112421C6CFE0EEACCBF0FFDF3FDA154167
         CE010B550348A1FAF2C57B86F3676F0DF16A62D42230A05B738B160D4800C35C
         5C81A3706D100000000049454E44AE426082}
+      ExplicitTop = 452
     end
     object PngBitBtn2: TPngBitBtn
       AlignWithMargins = True
@@ -248,25 +250,28 @@ object frmPrincipal: TfrmPrincipal
     Left = 70
     Top = 0
     Width = 785
-    Height = 492
+    Height = 488
     Align = alClient
     BevelOuter = bvNone
     TabOrder = 1
+    ExplicitHeight = 492
     object pcPrincipal: TPageControl
       Left = 0
       Top = 0
       Width = 785
-      Height = 492
-      ActivePage = tbFichaAtleta
+      Height = 488
+      ActivePage = tbAtleta
       Align = alClient
       TabOrder = 0
+      ExplicitHeight = 492
       object tbInicio: TTabSheet
         Caption = 'tbInicio'
+        ExplicitHeight = 464
         object imgInicio: TImage
           Left = 0
           Top = 0
           Width = 777
-          Height = 464
+          Height = 460
           Align = alClient
           AutoSize = True
           Center = True
@@ -1455,29 +1460,33 @@ object frmPrincipal: TfrmPrincipal
       object tbAtleta: TTabSheet
         Caption = 'tbAtleta'
         ImageIndex = 1
+        ExplicitHeight = 464
         object pnlAtleta: TPanel
           Left = 0
           Top = 0
           Width = 777
-          Height = 464
+          Height = 460
           Align = alClient
           BevelOuter = bvNone
           TabOrder = 0
+          ExplicitHeight = 464
           object pcAtleta: TPageControl
             Left = 0
             Top = 43
             Width = 777
-            Height = 421
+            Height = 417
             ActivePage = tbDadosAtleta
             Align = alClient
             TabOrder = 0
+            ExplicitHeight = 421
             object tbListaAtletas: TTabSheet
               Caption = 'tbListaAtletas'
+              ExplicitHeight = 393
               object dbgrdListaAtletas: TDBGrid
                 Left = 0
                 Top = 0
                 Width = 769
-                Height = 393
+                Height = 389
                 Align = alClient
                 DataSource = dmPrincipal.dsListaAtletas
                 Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
@@ -1516,23 +1525,26 @@ object frmPrincipal: TfrmPrincipal
             object tbDadosAtleta: TTabSheet
               Caption = 'tbDadosAtleta'
               ImageIndex = 1
+              ExplicitHeight = 393
               object pnlDadosPessoaisAtletas: TPanel
                 Left = 0
                 Top = 0
                 Width = 469
-                Height = 393
+                Height = 389
                 Align = alClient
                 BevelOuter = bvNone
                 TabOrder = 0
+                ExplicitHeight = 393
                 object gbDadosPessoaisAtletas: TGroupBox
                   AlignWithMargins = True
                   Left = 3
                   Top = 3
                   Width = 463
-                  Height = 387
+                  Height = 383
                   Align = alClient
                   Caption = 'Dados Pessoais'
                   TabOrder = 0
+                  ExplicitHeight = 387
                   object Label1: TLabel
                     AlignWithMargins = True
                     Left = 5
@@ -1546,40 +1558,55 @@ object frmPrincipal: TfrmPrincipal
                   object Label2: TLabel
                     AlignWithMargins = True
                     Left = 5
-                    Top = 64
+                    Top = 110
                     Width = 453
                     Height = 13
                     Align = alTop
                     Caption = 'Email'
-                    ExplicitWidth = 27
+                    ExplicitTop = 109
                   end
                   object Label6: TLabel
                     Left = 2
-                    Top = 199
+                    Top = 201
                     Width = 459
                     Height = 13
                     Align = alTop
                     Caption = 'CPF'
+                    ExplicitTop = 199
                     ExplicitWidth = 19
                   end
                   object Label7: TLabel
                     Left = 2
-                    Top = 241
+                    Top = 287
                     Width = 459
                     Height = 13
                     Align = alTop
                     Caption = 'Data de Nascimento'
+                    ExplicitLeft = 250
+                    ExplicitTop = 249
                     ExplicitWidth = 103
                   end
                   object Label3: TLabel
                     AlignWithMargins = True
                     Left = 5
-                    Top = 110
+                    Top = 156
                     Width = 453
                     Height = 13
                     Align = alTop
                     Caption = 'Telefone'
+                    ExplicitLeft = 197
+                    ExplicitTop = 196
                     ExplicitWidth = 43
+                  end
+                  object Label43: TLabel
+                    AlignWithMargins = True
+                    Left = 5
+                    Top = 64
+                    Width = 453
+                    Height = 13
+                    Align = alTop
+                    Caption = 'Apelido'
+                    ExplicitWidth = 40
                   end
                   object edtNome: TAEdit
                     AlignWithMargins = True
@@ -1595,26 +1622,28 @@ object frmPrincipal: TfrmPrincipal
                   object edtEmail: TAEditEmail
                     AlignWithMargins = True
                     Left = 5
-                    Top = 83
+                    Top = 129
                     Width = 453
                     Height = 21
                     Hint = 'Exemplo: "exemplo@exemplo.com'
                     Align = alTop
                     ParentShowHint = False
                     ShowHint = True
-                    TabOrder = 1
+                    TabOrder = 2
                     ColorOnFocus = clInfoBk
                     Required = True
                     InvalidColor = clRed
+                    ExplicitTop = 83
                   end
                   object pnlTelefoneAtleta: TPanel
                     Left = 2
-                    Top = 126
+                    Top = 172
                     Width = 459
                     Height = 29
                     Align = alTop
                     BevelOuter = bvNone
-                    TabOrder = 2
+                    TabOrder = 3
+                    ExplicitTop = 161
                     object edtTelefone: TAEditTelefone
                       AlignWithMargins = True
                       Left = 3
@@ -1630,17 +1659,20 @@ object frmPrincipal: TfrmPrincipal
                       ColorOnFocus = clInfoBk
                       Required = True
                       InvalidColor = clRed
-                      ExplicitHeight = 21
+                      ExplicitLeft = 10
+                      ExplicitTop = 7
                     end
                   end
                   object pnlDocumentoAtleta: TPanel
                     Left = 2
-                    Top = 155
+                    Top = 243
                     Width = 459
                     Height = 44
                     Align = alTop
                     BevelOuter = bvNone
-                    TabOrder = 3
+                    TabOrder = 5
+                    ExplicitLeft = 1
+                    ExplicitTop = 245
                     object Label4: TLabel
                       Left = 3
                       Top = 4
@@ -1676,19 +1708,21 @@ object frmPrincipal: TfrmPrincipal
                   end
                   object pnlCPFAtleta: TPanel
                     Left = 2
-                    Top = 212
+                    Top = 214
                     Width = 459
                     Height = 29
                     Align = alTop
                     BevelOuter = bvNone
                     TabOrder = 4
+                    ExplicitTop = 247
                     object edtCPF: TAEditCPF
                       AlignWithMargins = True
-                      Left = 5
-                      Top = 6
+                      Left = 3
+                      Top = 3
                       Width = 136
-                      Height = 21
+                      Height = 23
                       Hint = 'Exemplo "00011122233"'
+                      Align = alLeft
                       MaxLength = 11
                       ParentShowHint = False
                       ShowHint = True
@@ -1700,31 +1734,37 @@ object frmPrincipal: TfrmPrincipal
                   end
                   object pnlNascimentoAtleta: TPanel
                     Left = 2
-                    Top = 254
+                    Top = 300
                     Width = 459
                     Height = 29
                     Align = alTop
                     BevelOuter = bvNone
-                    TabOrder = 5
+                    TabOrder = 6
+                    ExplicitTop = 289
                     object dtDataNascimento: TDateTimePicker
                       AlignWithMargins = True
-                      Left = 5
-                      Top = 6
+                      Left = 3
+                      Top = 3
                       Width = 136
-                      Height = 21
+                      Height = 23
+                      Align = alLeft
                       Date = 42905.691160555560000000
                       Time = 42905.691160555560000000
                       TabOrder = 0
+                      ExplicitLeft = 10
+                      ExplicitTop = 17
+                      ExplicitHeight = 21
                     end
                   end
                   object pnlStatusAtleta: TPanel
                     Left = 2
-                    Top = 283
+                    Top = 329
                     Width = 459
                     Height = 50
                     Align = alTop
                     BevelOuter = bvNone
-                    TabOrder = 6
+                    TabOrder = 7
+                    ExplicitTop = 283
                     object rgStatus: TRadioGroup
                       AlignWithMargins = True
                       Left = 3
@@ -1740,7 +1780,21 @@ object frmPrincipal: TfrmPrincipal
                         'Ativo'
                         'Suspenso')
                       TabOrder = 0
+                      ExplicitLeft = 5
+                      ExplicitTop = 27
                     end
+                  end
+                  object edtApelido: TAEdit
+                    AlignWithMargins = True
+                    Left = 5
+                    Top = 83
+                    Width = 453
+                    Height = 21
+                    Align = alTop
+                    TabOrder = 1
+                    ColorOnFocus = clInfoBk
+                    Required = True
+                    ExplicitTop = 37
                   end
                 end
               end
@@ -1748,30 +1802,33 @@ object frmPrincipal: TfrmPrincipal
                 Left = 469
                 Top = 0
                 Width = 300
-                Height = 393
+                Height = 389
                 Align = alRight
                 BevelOuter = bvNone
                 TabOrder = 1
+                ExplicitHeight = 393
                 object gbPosicoesAtleta: TGroupBox
                   AlignWithMargins = True
                   Left = 3
                   Top = 3
                   Width = 294
-                  Height = 387
+                  Height = 383
                   Align = alClient
                   Caption = 'Posi'#231#245'es'
                   TabOrder = 0
+                  ExplicitHeight = 387
                   object tvPosicoes: TTreeView
                     AlignWithMargins = True
                     Left = 5
                     Top = 70
                     Width = 284
-                    Height = 257
+                    Height = 253
                     Align = alClient
                     Images = imgTreeViewPosicoes
                     Indent = 19
                     PopupMenu = ppmTreeView
                     TabOrder = 0
+                    ExplicitHeight = 257
                   end
                   object pnlIncluirPosicao: TPanel
                     Left = 2
@@ -1838,12 +1895,13 @@ object frmPrincipal: TfrmPrincipal
                   end
                   object pnlLegendaPosicao: TPanel
                     Left = 2
-                    Top = 330
+                    Top = 326
                     Width = 290
                     Height = 55
                     Align = alBottom
                     BevelOuter = bvNone
                     TabOrder = 2
+                    ExplicitTop = 330
                     object GroupBox1: TGroupBox
                       AlignWithMargins = True
                       Left = 3
@@ -2254,29 +2312,33 @@ object frmPrincipal: TfrmPrincipal
       object tbFichaAtleta: TTabSheet
         Caption = 'tbFichaAtleta'
         ImageIndex = 2
+        ExplicitHeight = 464
         object pnlFichaAtlelas: TPanel
           Left = 0
           Top = 0
           Width = 777
-          Height = 464
+          Height = 460
           Align = alClient
           BevelOuter = bvNone
           TabOrder = 0
+          ExplicitHeight = 464
           object pcFichasAtleta: TPageControl
             Left = 0
             Top = 43
             Width = 777
-            Height = 421
-            ActivePage = tbListaFichasAtleta
+            Height = 417
+            ActivePage = tbFichasAtleta
             Align = alClient
             TabOrder = 0
+            ExplicitHeight = 421
             object tbListaFichasAtleta: TTabSheet
               Caption = 'tbListaFichasAtleta'
+              ExplicitHeight = 393
               object dbGridListaFichas: TDBGrid
                 Left = 0
                 Top = 0
                 Width = 769
-                Height = 393
+                Height = 389
                 Align = alClient
                 DataSource = dmPrincipal.dsListaAtletas
                 Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
@@ -2315,6 +2377,7 @@ object frmPrincipal: TfrmPrincipal
             object tbDetalhesFichaAtleta: TTabSheet
               Caption = 'tbDetalhesFichaAtleta'
               ImageIndex = 1
+              ExplicitHeight = 393
               object pnlUltimaMedicao: TPanel
                 Left = 0
                 Top = 193
@@ -3211,11 +3274,18 @@ object frmPrincipal: TfrmPrincipal
                   Caption = 'Nome'
                 end
                 object Label18: TLabel
-                  Left = 272
+                  Left = 533
                   Top = 37
                   Width = 24
                   Height = 13
                   Caption = 'Data'
+                end
+                object Label42: TLabel
+                  Left = 272
+                  Top = 37
+                  Width = 40
+                  Height = 13
+                  Caption = 'Apelido'
                 end
                 object Panel7: TPanel
                   Left = 1
@@ -3291,12 +3361,212 @@ object frmPrincipal: TfrmPrincipal
                   TabOrder = 1
                 end
                 object dtDataFicha: TDateTimePicker
-                  Left = 272
+                  Left = 533
                   Top = 53
                   Width = 92
                   Height = 21
                   Date = 42906.750214479170000000
                   Time = 42906.750214479170000000
+                  Color = clInactiveCaption
+                  Enabled = False
+                  TabOrder = 2
+                end
+                object edtApelidoFicha: TAEdit
+                  Left = 272
+                  Top = 53
+                  Width = 255
+                  Height = 21
+                  Color = clInactiveCaption
+                  Enabled = False
+                  TabOrder = 3
+                end
+              end
+            end
+            object tbFichasAtleta: TTabSheet
+              Caption = 'tbFichasAtleta'
+              ImageIndex = 2
+              ExplicitHeight = 393
+              object grdFichasAtleta: TDBGrid
+                Left = 0
+                Top = 83
+                Width = 769
+                Height = 306
+                Align = alClient
+                DataSource = dmPrincipal.dsFichasAtleta
+                Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
+                TabOrder = 0
+                TitleFont.Charset = DEFAULT_CHARSET
+                TitleFont.Color = clWindowText
+                TitleFont.Height = -11
+                TitleFont.Name = 'Segoe UI'
+                TitleFont.Style = []
+                Columns = <
+                  item
+                    Alignment = taCenter
+                    Expanded = False
+                    FieldName = 'Altura'
+                    Title.Alignment = taCenter
+                    Visible = True
+                  end
+                  item
+                    Alignment = taCenter
+                    Expanded = False
+                    FieldName = 'Peso'
+                    Title.Alignment = taCenter
+                    Visible = True
+                  end
+                  item
+                    Alignment = taCenter
+                    Expanded = False
+                    FieldName = 'IMC'
+                    Title.Alignment = taCenter
+                    Width = 25
+                    Visible = True
+                  end
+                  item
+                    Alignment = taCenter
+                    Expanded = False
+                    FieldName = 'SaltoVertical'
+                    Title.Alignment = taCenter
+                    Visible = True
+                  end
+                  item
+                    Alignment = taCenter
+                    Expanded = False
+                    FieldName = '40Jardas'
+                    Title.Alignment = taCenter
+                    Visible = True
+                  end
+                  item
+                    Alignment = taCenter
+                    Expanded = False
+                    FieldName = 'SaltoHorizontal'
+                    Title.Alignment = taCenter
+                    Visible = True
+                  end
+                  item
+                    Alignment = taCenter
+                    Expanded = False
+                    FieldName = 'Shuttle'
+                    Title.Alignment = taCenter
+                    Visible = True
+                  end
+                  item
+                    Alignment = taCenter
+                    Expanded = False
+                    FieldName = '3Cones'
+                    Title.Alignment = taCenter
+                    Visible = True
+                  end
+                  item
+                    Alignment = taCenter
+                    Expanded = False
+                    FieldName = 'data'
+                    Title.Alignment = taCenter
+                    Width = 65
+                    Visible = True
+                  end>
+              end
+              object Panel1: TPanel
+                Left = 0
+                Top = 0
+                Width = 769
+                Height = 83
+                Align = alTop
+                BevelKind = bkTile
+                TabOrder = 1
+                object Label39: TLabel
+                  Left = 11
+                  Top = 37
+                  Width = 30
+                  Height = 13
+                  Caption = 'Nome'
+                end
+                object Label40: TLabel
+                  Left = 272
+                  Top = 37
+                  Width = 40
+                  Height = 13
+                  Caption = 'Apelido'
+                end
+                object Panel8: TPanel
+                  Left = 1
+                  Top = 1
+                  Width = 763
+                  Height = 34
+                  Align = alTop
+                  BevelKind = bkTile
+                  BevelOuter = bvNone
+                  Color = clActiveCaption
+                  ParentBackground = False
+                  TabOrder = 0
+                  object Image7: TImage
+                    AlignWithMargins = True
+                    Left = 3
+                    Top = 3
+                    Width = 24
+                    Height = 24
+                    Align = alLeft
+                    AutoSize = True
+                    Center = True
+                    Picture.Data = {
+                      0954506E67496D61676589504E470D0A1A0A0000000D49484452000000180000
+                      00180806000000E0773DF800000006624B474400FF00FF00FFA0BDA793000002
+                      BF4944415478DAE5935B4853711CC7BFE7BF9B9B9B53A7E5149C97D108616A93
+                      F09265915111DD0B82BC615608411091DA8B2F6910412F85668A652F11A10F06
+                      7981C0407D68797948A553E64CA74EE76CF3B2B99DD3D989459189AC4550DFA7
+                      DFF9DD3EBFDFEF9C43E10F8BFA65840555585F7E9681A79430EC9A790CA15802
+                      C1BDC6E2EAC75C27764380BCFB6517C512729962A10D55C8A865A78BD89756D6
+                      9C412193422A163136C712CBB2A05DABCC9DA6F3376B7E00545656920FB18E3D
+                      2222BA24A088C1CD30D1BAD8184A299772746E2C6E2EF39C1533F30BE0607C91
+                      5422C6A63025D4AA7050947759169F1D4B18364DB2422131310CFBCAE5F6D426
+                      8C4BBBA982BA32832448D0A18D8E0A0B91CB30488F21591BE7D7BD07E88FD06B
+                      353C8C9E9C9A77AE787279802A34F8053775842FE97700BEDA11D3C4EC9C6D71
+                      FF3F02502AA49D9AA8C8506F809E3023451BCF27B10C303E6CC69BCE216C4D4F
+                      806E7B1CFA38FB9DD104C6C34293A446FA613DF7A2BF7E8CFDF428B4316ADE1E
+                      9BB2D816ECCB7BA9FCDA6BB1444CAA080581372024D431834E2BF1DACF6BBAB0
+                      EAF4C06A5E40D6F11484A8E4686BE8C6C10B3B4008412B17DF75DA80787D0CDF
+                      D438423BDD0CDBECB519161EC6C554FCF41F943CBA6E49D325F2E7B25B17A108
+                      0F464359330748C58CC98A65FB0AF61565F2B96D0D3D904845C83993C63FBF1E
+                      793F5B977F23F2FB7EEB027CF20146073F2124428ECCA329BCBFBBA51FB6693B
+                      B751766000DEDBABA295C83892CCFB7B5A0660B33870A0242B308049DA02F7AA
+                      07B905E9BCBFE3612F8282C5C83EB92D3000894C8CAE27461C2ADDC957B6DEED
+                      426E5106D4091181016C498B83B1FD2D867A47211451D0E7E8909495F82DCF6F
+                      C046F59F00AE3CABB2EED6A786F9037839D8377FFB4445F8DFDDA0B8B1DCAED9
+                      1C29F70730366D71D417562BD605E43DB87ACA9FE63E359DBBF5745D40A0F505
+                      2AFC746FD6CED3850000000049454E44AE426082}
+                  end
+                  object Label41: TLabel
+                    AlignWithMargins = True
+                    Left = 33
+                    Top = 3
+                    Width = 46
+                    Height = 24
+                    Align = alLeft
+                    Caption = 'Atleta'
+                    Font.Charset = DEFAULT_CHARSET
+                    Font.Color = clWindowText
+                    Font.Height = -16
+                    Font.Name = 'Segoe UI'
+                    Font.Style = [fsBold]
+                    ParentFont = False
+                    ExplicitHeight = 21
+                  end
+                end
+                object edtNomeFichas: TAEdit
+                  Left = 11
+                  Top = 53
+                  Width = 255
+                  Height = 21
+                  Color = clInactiveCaption
+                  Enabled = False
+                  TabOrder = 1
+                end
+                object edtApelidoFichas: TAEdit
+                  Left = 272
+                  Top = 53
+                  Width = 255
+                  Height = 21
                   Color = clInactiveCaption
                   Enabled = False
                   TabOrder = 2
@@ -3440,6 +3710,48 @@ object frmPrincipal: TfrmPrincipal
                 1B76DCD9207118115573CA1C52350CC3FDD9E8B834FE3B2FFC84878BA2333F00
                 00000049454E44AE426082}
             end
+            object btnFichasAtleta: TPngBitBtn
+              AlignWithMargins = True
+              Left = 81
+              Top = 3
+              Width = 33
+              Height = 33
+              Align = alLeft
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clWindow
+              Font.Height = -11
+              Font.Name = 'Segoe UI'
+              Font.Style = []
+              Margin = 4
+              ParentFont = False
+              TabOrder = 3
+              OnClick = btnFichasAtletaClick
+              PngImage.Data = {
+                89504E470D0A1A0A0000000D494844520000001A0000001A0806000000A94A4C
+                CE000002A84944415478DA6364A01360C42698BCA07A3F2313033F5906FE67F8
+                303BBED589A04531B34B1C0C55D4D7E92A2A099263D19507F7DE9DB975CB7959
+                5AF705BC16652EADDBE16A6CE6FEF7DF6F866F3FBE9164091707170333132BC3
+                EEB3A7764E8F6EF2C06B51D9BACE3B2E4626CA8FDF3C61F8F3F72F49163133B1
+                30C8894A33EC3977E66E5750B90A4E8B62E796265868684F931113E57CF1EE25
+                3921C7202124CEF0E4F5EB6FC7AF5D8B5E92D2B501AB45F92B9A8EB89A98597F
+                FCF691E1CBF7AF6459C4C3C9CDC0CFC5CFB0FBCCA9A31323EA6C302C4A985F20
+                20292075C9D1D058F6E1EB470CFFFEFD27CB2226607295179365D87FFEECE3E7
+                1F9EE92D489CF001C5A2E8D9A553D4A465B2D95859187EFEFE89A29985999941
+                548017ABC1AF3F7CC6884B765676865F7FFE30DC7EFAB873494A4F058A45B1B3
+                4B0FB89A98DA4B080A6318B6E7DC6906656931AC16DD7DFA8AC1C5C81443FCC5
+                FBB7C0E03B7D70716AB703D1163D7CF582E1FEF3270CF212A2A8E22F5E33284A
+                CA00834A823A1681C09D678F19EE3E7BCAC0CBC501E67FFEF68341594A9A4145
+                4A16AB7AB22D02815F7F7E33BCFBFC09CC16E2E563606361C5A996228B70590E
+                02E896E2B4286E4EE9041763D37C522C025972EDDE23868FDF3E3358EA68A358
+                06B268CFD9D31317A57417A05A34BBACC1C5C4A49E588B609664DBC7303C7CFB
+                8C61EDC5ED0CE69A5AA8169D39D3B828B5AB81688B4086DE7AFC8441475111C3
+                1210987A70098396921CA68F48B10864E8F12B57190C65B4196EBEB9CBA0AFA2
+                4CD012B22C02A5B2B76FBE31643944311CB8759261DFF5E30C159EE9782D213B
+                E83E7EF9CAF0F9E32F8644AB6030FFDBAFEF782D21DB2264CBC24DBC085A4291
+                4530CBAE3E78C060A2A186D7128A2D22050CBC45A06A9C9783B3812AB640C1E7
+                1FDF1B1627772F40B188D600002EEC9C2A053659D10000000049454E44AE4260
+                82}
+            end
           end
         end
       end
@@ -3449,16 +3761,17 @@ object frmPrincipal: TfrmPrincipal
     Left = 43
     Top = 0
     Width = 27
-    Height = 492
+    Height = 488
     Align = alLeft
     BevelKind = bkTile
     BevelOuter = bvNone
     TabOrder = 2
+    ExplicitHeight = 492
     object btnExpansor: TPngSpeedButton
       Left = 0
       Top = 0
       Width = 23
-      Height = 488
+      Height = 484
       Align = alClient
       Flat = True
       OnClick = btnExpansorClick
@@ -3483,7 +3796,7 @@ object frmPrincipal: TfrmPrincipal
     Left = 422
     Top = 2
     Bitmap = {
-      494C0101020005000C0010001000FFFFFFFF2110FFFFFFFFFFFFFFFF424D3600
+      494C010102000500140010001000FFFFFFFF2110FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000001000000001002000000000000010
       0000000000000000000000000000000000006CB1C9FF6EB1C9FFF9FCFDFF0000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -3637,7 +3950,7 @@ object frmPrincipal: TfrmPrincipal
     Left = 526
     Top = 2
     Bitmap = {
-      494C0101020005000C0010001000FFFFFFFF2110FFFFFFFFFFFFFFFF424D3600
+      494C010102000500140010001000FFFFFFFF2110FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000001000000001002000000000000010
       000000000000000000000000000000000000000000000000000000000000DEDE
       F5FFD7D7F3FFF9FAFDFFD5E8EFFFBEDCE7FFADD2E0FF96C6D9FF83BDD2FF6DB2

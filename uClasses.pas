@@ -32,6 +32,7 @@ type
 
       function getSequenceAtleta: TFDQuery;
       function InserirAtleta: TFDQuery;
+      function AtualizarAtleta: TFDQuery;
       function ExcluirAtleta: TFDQuery;
       function AdicionarPosicaoJogador: TFDQuery;
       function getPosicaoPrincipal: TFDQuery;
@@ -186,11 +187,13 @@ type
       FQueryAtleta: TQuery;
       FCodigoPosicao: Integer;
       FPosicaoPrincipal: String;
+    FApelido: String;
 
     public
       FFichaAtleta: TFichaAtleta;
       constructor Create;
       procedure CadastrarAtleta;
+      procedure AtualizarAtleta;
       procedure ExcluirAtleta;
       procedure AdicionarPosicaoJogador;
       procedure ExcluirPosicaoJogador;
@@ -215,6 +218,7 @@ type
       property Status           : Integer read FStatus           write FStatus         ;
       property CodigoPosicao    : Integer read FCodigoPosicao    write FCodigoPosicao  ;
       property PosicaoPrincipal : String  read FPosicaoPrincipal write FPosicaoPrincipal;
+      property Apelido          : String  read FApelido          write FApelido;
 
   end;
 
@@ -267,6 +271,32 @@ begin
     SQL.Clear;
     SQL.Add(' insert into posicao_jogador (id_atleta, id_posicao, Principal)  ');
     SQL.Add(' values (:id_atleta, :id_posicao, :Principal); ');
+
+  end;
+
+end;
+
+function TQuery.AtualizarAtleta: TFDQuery;
+begin
+
+  Result := GetQry();
+
+  with Result do
+  begin
+
+    Close;
+    SQL.CLear;
+    SQL.Add(' UPDATE Atleta                           ');
+    SQL.Add(' SET nome             = :nome            ');
+    SQL.Add('    ,email            = :email           ');
+    SQL.Add('    ,telefone         = :telefone        ');
+    SQL.Add('    ,data_nascimento  = :data_nascimento ');
+    SQL.Add('    ,rg               = :rg              ');
+    SQL.Add('    ,orgao_expeditor  = :orgao_expeditor ');
+    SQL.Add('    ,cpf              = :cpf             ');
+    SQL.Add('    ,status           = :status          ');
+    SQL.Add('    ,Apelido          = :apelido         ');
+    SQL.Add(' WHERE id = :atleta                      ');
 
   end;
 
@@ -528,6 +558,7 @@ begin
     SQL.Add('   (id ');
     SQL.Add('   ,id_clube ');
     SQL.Add('   ,nome ');
+    SQL.Add('   ,Apelido ');
     SQL.Add('   ,email ');
     SQL.Add('   ,telefone ');
     SQL.Add('   ,data_nascimento ');
@@ -538,6 +569,7 @@ begin
     SQL.Add(' values   (:id ');
     SQL.Add(' 		 ,:id_clube ');
     SQL.Add(' 		 ,:nome ');
+    SQL.Add('      ,:Apelido ');
     SQL.Add(' 		 ,:email ');
     SQL.Add(' 		 ,:telefone ');
     SQL.Add(' 		 ,:data_nascimento ');
@@ -600,6 +632,42 @@ begin
 
 end;
 
+procedure TAtleta.AtualizarAtleta;
+var
+  qryAtualizarAtleta: TFDQuery;
+begin
+
+  qryAtualizarAtleta := FQueryAtleta.AtualizarAtleta;
+
+  try
+
+    try
+
+      qryAtualizarAtleta.ParamByName('nome').AsString              := Nome;
+      qryAtualizarAtleta.ParamByName('email').AsString             := Email;
+      qryAtualizarAtleta.ParamByName('telefone').AsString          := Telefone;
+      qryAtualizarAtleta.ParamByName('data_nascimento').AsDateTime := DataNascimento;
+      qryAtualizarAtleta.ParamByName('rg').AsString                := RG;
+      qryAtualizarAtleta.ParamByName('orgao_expeditor').AsString   := OrgaoExpeditor;
+      qryAtualizarAtleta.ParamByName('cpf').AsString               := CPF;
+      qryAtualizarAtleta.ParamByName('status').AsInteger           := Status;
+      qryAtualizarAtleta.ParamByName('apelido').AsString           := Apelido;
+      qryAtualizarAtleta.ParamByName('atleta').AsInteger           := Codigo;
+      qryAtualizarAtleta.ExecSQL;
+
+    except
+      on e: Exception do
+        raise Exception.Create('Erro ao atualizar Atleta' + sLineBreak + 'Motivo: ' +  sLineBreak + e.Message);
+
+
+    end;
+
+  finally
+    FreeAndNil(qryAtualizarAtleta);
+  end;
+
+end;
+
 procedure TAtleta.CadastrarAtleta;
 var
   qryCadastrarAtleta: TFDQuery;
@@ -621,6 +689,7 @@ begin
       qryCadastrarAtleta.ParamByName('ORGAO_EXPEDITOR').AsString := OrgaoExpeditor;
       qryCadastrarAtleta.ParamByName('CPF').AsString := CPF;
       qryCadastrarAtleta.ParamByName('STATUS').AsInteger := Status;
+      qryCadastrarAtleta.ParamByName('Apelido').AsString := Apelido;
 
       qryCadastrarAtleta.ExecSQL;
 
@@ -1072,7 +1141,13 @@ begin
     qrySequenciaAtleta.Open;
 
     if qrySequenciaAtleta.RecordCount > 0 then
-      Result := qrySequenciaAtleta.FieldByName('SEQ').AsInteger + 1
+    begin
+      if qrySequenciaAtleta.FieldByName('SEQ').IsNull then
+        Result := 1
+      else
+        Result := qrySequenciaAtleta.FieldByName('SEQ').AsInteger + 1
+
+    end
     else
       Result := 1;  
 

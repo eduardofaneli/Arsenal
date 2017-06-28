@@ -175,6 +175,21 @@ type
     edtIMCAtual: TAEditReal;
     Label38: TLabel;
     btnAdicionarFicha: TPngBitBtn;
+    btnFichasAtleta: TPngBitBtn;
+    tbFichasAtleta: TTabSheet;
+    grdFichasAtleta: TDBGrid;
+    Panel1: TPanel;
+    Label39: TLabel;
+    Panel8: TPanel;
+    Image7: TImage;
+    Label41: TLabel;
+    edtNomeFichas: TAEdit;
+    Label40: TLabel;
+    edtApelidoFichas: TAEdit;
+    edtApelidoFicha: TAEdit;
+    Label42: TLabel;
+    Label43: TLabel;
+    edtApelido: TAEdit;
     procedure btnExpansorClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure btnInicioClick(Sender: TObject);
@@ -202,6 +217,7 @@ type
     procedure edtPesoExit(Sender: TObject);
     procedure btnLimparFichaClick(Sender: TObject);
     procedure btnAdicionarFichaClick(Sender: TObject);
+    procedure btnFichasAtletaClick(Sender: TObject);
   private
     FMensagens: TMensagens;
     FDadosAtleta: TAtleta;
@@ -222,6 +238,7 @@ type
     procedure CarregarMedicoes();
     procedure getMelhorMedicao();
     procedure getUltimaMedicao();
+    procedure AbrirQueryFichasAtleta();
 
     function ValidarDadosAtletaObrigatorio: Boolean;
 
@@ -245,6 +262,15 @@ begin
 
   dmPrincipal.qryListaAtletas.Close;
   dmPrincipal.qryListaAtletas.Open;
+
+end;
+
+procedure TfrmPrincipal.AbrirQueryFichasAtleta;
+begin
+
+  dmPrincipal.qryFichasAtleta.Close;
+  dmPrincipal.qryFichasAtleta.ParamByName('atleta').AsInteger := FDadosAtleta.Codigo;
+  dmPrincipal.qryFichasAtleta.Open;
 
 end;
 
@@ -315,6 +341,13 @@ begin
 
   pcFichasAtleta.ActivePage := tbListaFichasAtleta;
 
+end;
+
+procedure TfrmPrincipal.btnFichasAtletaClick(Sender: TObject);
+begin
+
+  AbrirQueryFichasAtleta();
+  pcFichasAtleta.ActivePage := tbFichasAtleta;
 end;
 
 procedure TfrmPrincipal.btnGravarAtletaClick(Sender: TObject);
@@ -445,6 +478,7 @@ procedure TfrmPrincipal.CarregarDadosAtleta;
 begin
 
   edtNome.Text := FDadosAtleta.Nome;
+  edtApelido.Text := FDadosAtleta.Apelido;
   edtEmail.Text := FDadosAtleta.Email;
   edtTelefone.Text:= FDadosAtleta.Telefone;
   edtRG.Text := FDadosAtleta.RG;
@@ -467,6 +501,7 @@ begin
   FDadosAtleta.OrgaoExpeditor := dmPrincipal.qryListaAtletasorgao_expeditor.AsString;
   FDadosAtleta.CPF := dmPrincipal.qryListaAtletascpf.AsString;
   FDadosAtleta.Status := dmPrincipal.qryListaAtletasstatus.AsInteger;
+  FDadosAtleta.Apelido := dmPrincipal.qryListaAtletasApelido.AsString;
 
 end;
 
@@ -667,30 +702,21 @@ end;
 procedure TfrmPrincipal.GravarDadosAtleta;
 begin
 
+  FDadosAtleta.CodigoClube := 1;
+  FDadosAtleta.Nome := Trim(edtNome.Text);
+  FDadosAtleta.Apelido := Trim(edtApelido.Text);
+  FDadosAtleta.Email := Trim(edtEmail.Text);
+  FDadosAtleta.Telefone := Trim(edtTelefone.Text);
+  FDadosAtleta.RG := Trim(edtRG.Text);
+  FDadosAtleta.OrgaoExpeditor := Trim(edtOrgaoExpeditor.Text);
+  FDadosAtleta.CPF := Trim(edtCPF.Text);
+  FDadosAtleta.DataNascimento := dtDataNascimento.Date;
+  FDadosAtleta.Status := rgStatus.ItemIndex;
+
   case FAcao of
-    stCadastrar:
-    begin
-
-      FDadosAtleta.CodigoClube := 1;
-      FDadosAtleta.Nome := Trim(edtNome.Text);
-      FDadosAtleta.Email := Trim(edtEmail.Text);
-      FDadosAtleta.Telefone := Trim(edtTelefone.Text);
-      FDadosAtleta.RG := Trim(edtRG.Text);
-      FDadosAtleta.OrgaoExpeditor := Trim(edtOrgaoExpeditor.Text);
-      FDadosAtleta.CPF := Trim(edtCPF.Text);
-      FDadosAtleta.DataNascimento := dtDataNascimento.Date;
-      FDadosAtleta.Status := rgStatus.ItemIndex;
-
-      FDadosAtleta.CadastrarAtleta;
-
-    end;
-    stAlterar:
-    begin
-
-    end;
+    stCadastrar: FDadosAtleta.CadastrarAtleta;
+    stAlterar: FDadosAtleta.AtualizarAtleta;
   end;
-
-
 
 end;
 
@@ -731,6 +757,7 @@ end;
 procedure TfrmPrincipal.LimparCampos;
 begin
   edtNome.Clear;
+  edtApelido.Clear;
   edtEmail.Clear;
   edtTelefone.Clear;
   edtRG.Clear;
@@ -836,6 +863,9 @@ begin
 
   dtDataFicha.Date := Now;
   edtNomeFicha.Text := FDadosAtleta.Nome;
+  edtApelidoFicha.Text := FDadosAtleta.Apelido;
+  edtNomefichas.Text := FDadosAtleta.Nome;
+  edtApelidoFichas.Text := FDadosAtleta.Apelido;
 
   CarregarMedicoes();
 

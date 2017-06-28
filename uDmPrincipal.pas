@@ -13,7 +13,6 @@ uses
 
 type
   TdmPrincipal = class(TDataModule)
-    qryListaAtletas: TFDQuery;
     dsListaAtletas: TDataSource;
     qryPosicoes: TFDQuery;
     dsPosicoes: TDataSource;
@@ -21,6 +20,28 @@ type
     Cursor: TFDGUIxWaitCursor;
     Driver: TFDPhysSQLiteDriverLink;
     Conexao: TFDConnection;
+    qryPosicoesid: TIntegerField;
+    qryPosicoesnome: TWideStringField;
+    qryPosicoesSigla: TStringField;
+    qryTvPosicoesid: TIntegerField;
+    qryTvPosicoesnome: TStringField;
+    qryTvPosicoesSigla: TStringField;
+    qryTvPosicoesPrincipal: TStringField;
+    qryTvPosicoesid_atleta: TIntegerField;
+    qryFichasAtleta: TFDQuery;
+    dsFichasAtleta: TDataSource;
+    qryFichasAtletaid: TIntegerField;
+    qryFichasAtletaid_Atleta: TIntegerField;
+    qryFichasAtletaAltura: TBCDField;
+    qryFichasAtletaPeso: TBCDField;
+    qryFichasAtletaBCDField40Jardas: TBCDField;
+    qryFichasAtletaShuttle: TBCDField;
+    qryFichasAtletaBCDField3Cones: TBCDField;
+    qryFichasAtletaSaltoVertical: TBCDField;
+    qryFichasAtletaSaltoHorizontal: TBCDField;
+    qryFichasAtletadata: TSQLTimeStampField;
+    qryFichasAtletaIMC: TBCDField;
+    qryListaAtletas: TFDQuery;
     qryListaAtletasid: TIntegerField;
     qryListaAtletasid_clube: TIntegerField;
     qryListaAtletasnome: TStringField;
@@ -34,14 +55,7 @@ type
     qryListaAtletasDesc_Status: TWideStringField;
     qryListaAtletasdata_cadastro: TSQLTimeStampField;
     qryListaAtletasdata_atualizacao: TSQLTimeStampField;
-    qryPosicoesid: TIntegerField;
-    qryPosicoesnome: TWideStringField;
-    qryPosicoesSigla: TStringField;
-    qryTvPosicoesid: TIntegerField;
-    qryTvPosicoesnome: TStringField;
-    qryTvPosicoesSigla: TStringField;
-    qryTvPosicoesPrincipal: TStringField;
-    qryTvPosicoesid_atleta: TIntegerField;
+    qryListaAtletasApelido: TStringField;
     procedure DataModuleCreate(Sender: TObject);
   private
     { Private declarations }
