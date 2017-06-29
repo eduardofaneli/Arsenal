@@ -4,7 +4,7 @@ interface
 
 uses
   System.SysUtils, System.Classes, Vcl.Controls, Vcl.StdCtrls, Vcl.Mask,
-  Vcl.DBCtrls, uADBEdit, Vcl.Graphics;
+  Vcl.DBCtrls, uADBEdit, Vcl.Graphics, System.RegularExpressions;
 
 type
   ADBEditEmail = class(ADBEdit)
@@ -51,20 +51,19 @@ end;
 
 procedure ADBEditEmail.KeyPressEmail(Sender: TObject; var Key: Char);
 begin
-  if not (Key in ['a'..'z','A'..'Z', '0'..'9', #46, #45, #64, #8]) then
+  if not (Key in ['a'..'z','A'..'Z', '0'..'9', '-', '.', '_', '@', #8, #32]) then
     Key := #0;
 end;
 
 procedure ADBEditEmail.ValidateEmail(Email: String);
+var
+  Validar: TRegEx;
 begin
-  Email := Trim(UpperCase(Email));
-  if Pos('@', Email) > 1 then
-  begin
-    Delete(Email, 1, pos('@', Email));
-    Self.Invalid := not ((Length(Email) > 0) and (Pos('.', Email) > 2));
-  end
-  else
-    Self.Invalid := True;
+
+  Validar.Create('^[A-z0-9_\\-]+([.][A-z0-9_\\-]+)*[@][A-z0-9_]+([.][A-z0-9_]+)*[.][A-z]{2,4}$');
+
+  Self.Invalid := not Validar.IsMatch(Email);
+
 end;
 
 end.

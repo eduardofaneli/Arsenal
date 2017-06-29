@@ -63,14 +63,6 @@ begin
 
   Self.Invalid := not Validar.IsMatch(Email);
 
-//  Email := Trim(UpperCase(Email));
-//  if Pos('@', Email) > 1 then
-//  begin
-//    Delete(Email, 1, pos('@', Email));
-//    Self.Invalid := not ((Length(Email) > 0) and (Pos('.', Email) > 2));
-//  end
-//  else
-//    Self.Invalid := True;
 end;
 
 end.

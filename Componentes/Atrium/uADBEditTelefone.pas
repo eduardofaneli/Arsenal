@@ -66,7 +66,10 @@ begin
   Validar.Create('^([0-9]{10,11})$');
 
   if Validar.IsMatch(Phone) then
+  begin
+    Self.Invalid := False;
     Self.Text := IfThen(Length(Phone) = 10, '('+ copy(Phone,1,2) + ') ' + copy(Phone,3,4) + '-' + copy(Phone,7,4), '('+ copy(Phone,1,2) + ') ' + copy(Phone,3,5) + '-' + copy(Phone,8,4))
+  end
   else
     Self.Invalid := True;
 
