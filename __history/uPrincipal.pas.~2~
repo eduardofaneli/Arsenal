@@ -348,11 +348,7 @@ procedure TfrmPrincipal.btnFichasAtletaClick(Sender: TObject);
 begin
 
   AbrirQueryFichasAtleta();
-
-  CarregarCabecalhoFicha();
-
   pcFichasAtleta.ActivePage := tbFichasAtleta;
-
 end;
 
 procedure TfrmPrincipal.btnGravarAtletaClick(Sender: TObject);
@@ -874,8 +870,6 @@ end;
 procedure TfrmPrincipal.btnAbaDetalhesFichaClick(Sender: TObject);
 begin
   pcFichasAtleta.ActivePage := tbDetalhesFichaAtleta;
-
-  CarregarCabecalhoFicha();
 
   CarregarMedicoes();
 

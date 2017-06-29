@@ -239,7 +239,6 @@ type
     procedure getMelhorMedicao();
     procedure getUltimaMedicao();
     procedure AbrirQueryFichasAtleta();
-    procedure CarregarCabecalhoFicha();
 
     function ValidarDadosAtletaObrigatorio: Boolean;
 
@@ -348,11 +347,7 @@ procedure TfrmPrincipal.btnFichasAtletaClick(Sender: TObject);
 begin
 
   AbrirQueryFichasAtleta();
-
-  CarregarCabecalhoFicha();
-
   pcFichasAtleta.ActivePage := tbFichasAtleta;
-
 end;
 
 procedure TfrmPrincipal.btnGravarAtletaClick(Sender: TObject);
@@ -477,15 +472,6 @@ procedure TfrmPrincipal.btnSairFichasClick(Sender: TObject);
 begin
   pcPrincipal.ActivePage := tbInicio;
   pcFichasAtleta.ActivePage := tbListaFichasAtleta;
-end;
-
-procedure TfrmPrincipal.CarregarCabecalhoFicha;
-begin
-  dtDataFicha.Date := Now;
-  edtNomeFicha.Text := FDadosAtleta.Nome;
-  edtApelidoFicha.Text := FDadosAtleta.Apelido;
-  edtNomefichas.Text := FDadosAtleta.Nome;
-  edtApelidoFichas.Text := FDadosAtleta.Apelido;
 end;
 
 procedure TfrmPrincipal.CarregarDadosAtleta;
@@ -875,7 +861,11 @@ procedure TfrmPrincipal.btnAbaDetalhesFichaClick(Sender: TObject);
 begin
   pcFichasAtleta.ActivePage := tbDetalhesFichaAtleta;
 
-  CarregarCabecalhoFicha();
+  dtDataFicha.Date := Now;
+  edtNomeFicha.Text := FDadosAtleta.Nome;
+  edtApelidoFicha.Text := FDadosAtleta.Apelido;
+  edtNomefichas.Text := FDadosAtleta.Nome;
+  edtApelidoFichas.Text := FDadosAtleta.Apelido;
 
   CarregarMedicoes();
 

@@ -352,7 +352,6 @@ begin
   CarregarCabecalhoFicha();
 
   pcFichasAtleta.ActivePage := tbFichasAtleta;
-
 end;
 
 procedure TfrmPrincipal.btnGravarAtletaClick(Sender: TObject);

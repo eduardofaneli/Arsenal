@@ -348,11 +348,7 @@ procedure TfrmPrincipal.btnFichasAtletaClick(Sender: TObject);
 begin
 
   AbrirQueryFichasAtleta();
-
-  CarregarCabecalhoFicha();
-
   pcFichasAtleta.ActivePage := tbFichasAtleta;
-
 end;
 
 procedure TfrmPrincipal.btnGravarAtletaClick(Sender: TObject);
