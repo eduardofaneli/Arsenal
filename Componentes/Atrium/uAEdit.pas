@@ -3,7 +3,7 @@ unit uAEdit;
 interface
 
 uses
-  System.SysUtils, System.Classes, Vcl.Controls, Vcl.StdCtrls, Vcl.Graphics;
+  System.SysUtils, System.Classes, Vcl.Controls, Vcl.StdCtrls, Vcl.Graphics, System.RegularExpressions;
 
 type
   TAEdit = class(TEdit)

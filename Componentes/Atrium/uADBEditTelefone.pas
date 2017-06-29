@@ -4,7 +4,7 @@ interface
 
 uses
   System.SysUtils, System.Classes, Vcl.Controls, Vcl.StdCtrls, Vcl.Mask,
-  Vcl.DBCtrls, uADBEdit, uADBEditInteiro, Vcl.Graphics;
+  Vcl.DBCtrls, uADBEdit, uADBEditInteiro, Vcl.Graphics, System.RegularExpressions, System.StrUtils;
 
 type
   ADBEditTelefone = class(ADBEditInteiro)
@@ -59,21 +59,17 @@ begin
 end;
 
 procedure ADBEditTelefone.ValidatePhone(Phone: String);
+var
+  Validar: TRegEx;
 begin
-  case Length(Self.Text) of
-    10:
-    begin
-      Self.Invalid := False;
-      Self.Text := '('+ copy(Phone,1,2) + ')' + copy(Phone,3,4) + '-' + copy(Phone,7,4);
-    end;
-    11:
-    begin
-      Self.Invalid := False;
-      Self.Text := '('+ copy(Phone,1,2) + ')' + copy(Phone,3,5) + '-' + copy(Phone,8,4);
-    end;
+
+  Validar.Create('^([0-9]{10,11})$');
+
+  if Validar.IsMatch(Phone) then
+    Self.Text := IfThen(Length(Phone) = 10, '('+ copy(Phone,1,2) + ') ' + copy(Phone,3,4) + '-' + copy(Phone,7,4), '('+ copy(Phone,1,2) + ') ' + copy(Phone,3,5) + '-' + copy(Phone,8,4))
   else
-      Self.Invalid := True;
-  end;
+    Self.Invalid := True;
+
 end;
 
 end.
